@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -31,19 +32,35 @@ public class InicioSesion {
     private Button SalirButton;
     private Image imgLoadFondo;
     private ImageView imgFondo;
+    private Image imgLoadLogin;
+    private ImageView imgLogin;
     public static TextField ingresoUsuario;
     public static TextField ingresoContraseña;
     public PasswordField ingreso_Contraseña;
     public static Label UsuarioLabel;
     public static Label ContraseñaLabel;
     public static Label MensajeLabel;
+    public static Label RolesLabel;
+    
+   //PARA PRESENTAR LISTA DE OPCIONES
+//    ObservableList<String> tiposRoles;
+//    ListView<String> listaRoles; 
+    
+    //Choice box for location 
+    ChoiceBox TiposRolesBox = new ChoiceBox(); 
+
+     
   
     public InicioSesion(Stage primaryStage) {
         this.primaryStage=primaryStage;
         this.imgLoadFondo=new Image("/imagenes/ESPOL-2-GRIS.png");
         this.imgFondo=new ImageView(imgLoadFondo);
-        this.imgFondo.setFitHeight(300);
-        this.imgFondo.setFitWidth(500);
+        this.imgFondo.setFitHeight(400);
+        this.imgFondo.setFitWidth(300);
+        this.imgLoadLogin=new Image("/imagenes/login.png");
+        this.imgLogin=new ImageView(imgLoadLogin);
+        this.imgLogin.setFitHeight(100);
+        this.imgLogin.setFitWidth(100);
         this.rootPrincipal=new BorderPane();
         this.ingresoUsuario=new TextField();
         this.ingreso_Contraseña=new PasswordField();
@@ -52,11 +69,19 @@ public class InicioSesion {
         this.UsuarioLabel=new Label("Usuario: ");
         this.ContraseñaLabel=new Label("Contraseña: ");
         this.MensajeLabel=new Label();
+        this.RolesLabel=new Label("Rol: ");
         this.IngresarButton= new Button("Ingresar");
         this.SalirButton= new Button("Salir");
         this.rootPrincipal.getChildren().add(imgFondo);
         this.informUsuarios=Persistencia.leerUsuarios();
         this.UserContra=new HashMap<>();
+        
+        this.TiposRolesBox = new ChoiceBox();
+        TiposRolesBox.getItems().addAll("Cliente","Asistente de Restaurante","Administrador");
+        //PARA PRESENTAR UNA LISTA DE OPCIONES
+//        this.tiposRoles = FXCollections.observableArrayList( 
+//        "Cliente", "Asistente de Restaurante", "Administrador"); 
+//        listaRoles = new ListView<String>(tiposRoles); 
         
     }
     public static BorderPane getRoot(){
@@ -94,7 +119,7 @@ public class InicioSesion {
         HBox buttonBox = new HBox(10,IngresarButton,SalirButton);
         buttonBox.setAlignment(Pos.CENTER);
         // Create the VBox
-        VBox root1 = new VBox(5,UsuarioLabel,ingresoUsuario,ContraseñaLabel,ingreso_Contraseña,MensajeLabel,buttonBox);
+        VBox root1 = new VBox(5,imgLogin,UsuarioLabel,ingresoUsuario,ContraseñaLabel,ingreso_Contraseña,RolesLabel,TiposRolesBox,MensajeLabel,buttonBox);
         // Set the Style-properties of the VBox
         root1.setStyle("-fx-padding: 10;" +
                         "-fx-border-style: solid inside;" +
