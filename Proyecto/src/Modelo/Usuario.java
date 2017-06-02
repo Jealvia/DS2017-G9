@@ -10,8 +10,13 @@ package Modelo;
  * @author Julio Alvia
  */
 public class Usuario {
-    private String id,contraseña,roles;
-    
-    public Usuario(){}
+    private String nombre, id, contraseña, rol;
+
+    public Usuario(String nombre, String id, String contraseña, String rol) {
+        this.nombre = nombre;
+        this.id = id;
+        this.contraseña = contraseña;
+        this.rol = rol;
+    }
     
 }

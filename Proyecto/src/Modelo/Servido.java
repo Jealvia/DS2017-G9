@@ -9,12 +9,15 @@ package Modelo;
  *
  * @author Julio Alvia
  */
-public class Platos {
-    private String nombre,descripcion;
-    private Restaurante nombreRestaurante;
-    private Categoria categoria;
-    private Tipo tipo;
-    private Servido servido;
+public enum Servido {
     
-    public Platos(){}
+    FRIO("Frio"),
+    CALIENTE("Caliente");
+    
+    private final String servido;
+    
+    private Servido(String servido){
+        this.servido=servido;
+    }
+    
 }
