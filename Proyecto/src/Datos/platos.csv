@@ -1,0 +1,10 @@
+categoria;nombre;descripcion;servido;tipo;restaurante
+estudiante;seco de pollo;Arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A
+ejecutivo;seco de carne;Arroz acompañado de un seco de carne xD;caliente;plato fuerte;B
+estudiante;arroz con menestra;Arroz acompañado de menestra y carne xD;caliente;plato fuerte;C
+ejecutivo;helado;helado de varios sabores;frio;postre;A
+estudiante;torta helada;torta helada de varios sabores;frio;postre;B
+ejecutivo;frutas;frutas de varios sabores;frio;postre;C
+estudiante;empanada;empanada de queso pollo o carne;caliente;aperitivo;A
+ejecutivo;patacones con queso;patacones que llevan queso;frio;aperitivo;B
+estudiante;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C
