@@ -20,16 +20,20 @@ public class Persistencia {
     public static HashMap<String, Usuario> leerUsuarios() {
         HashMap<String, Usuario> temporal = new HashMap<>();
         String linea;
+        
         try {
-            FileReader f = new FileReader("usuarios.csv");
+            
+            FileReader f = new FileReader("usuario.csv");
             BufferedReader br = new BufferedReader(f);
+            
             while (true) {
                 linea = br.readLine();
                 if (linea == null) {
+                    System.out.println(linea);
                     break;
                 }
                 String valores[];
-                valores = linea.split(",");
+                valores = linea.split(";");
                 String nombre = valores[0].trim();
                 String id = valores[1].trim();
                 String contrasena = valores[2].trim();
@@ -43,6 +47,8 @@ public class Persistencia {
                         temporal.put(nombre, new Usuario(nombre, id, contrasena, rol));
                         break;
                 }
+                
+                
             }
         } catch (IOException e) {
         }
@@ -55,7 +61,7 @@ public class Persistencia {
         HashMap<String, Platos> temporal = new HashMap<>();
         String linea;
         try {
-            FileReader f = new FileReader("usuarios.csv");
+            FileReader f = new FileReader("platos.csv");
             BufferedReader br = new BufferedReader(f);
             while (true) {
                 linea = br.readLine();

@@ -18,5 +18,14 @@ public class Usuario {
         this.contraseña = contraseña;
         this.rol = rol;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+    
     
 }

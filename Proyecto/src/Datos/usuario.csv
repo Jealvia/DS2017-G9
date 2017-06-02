@@ -1,4 +1,4 @@
-nombre;id;contraseña;rol
-julio;jealvia;julioespol;cliente
-jimmy;jimcelly;jimmyespol;asistente
-karol;karlopez;karlaespol;asistente
+id;nombre;contraseña;rol
+jealvia;julio;julioespol;cliente
+jimcelly;jimmy;jimmyespol;asistente
+karlopez;karol;karlaespol;asistente
