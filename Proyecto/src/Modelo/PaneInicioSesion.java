@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -22,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class InicioSesion {
+public class PaneInicioSesion {
     HashMap<String, Usuario> informUsuarios;
     HashMap<String, String> UserContra;
     
@@ -51,7 +52,7 @@ public class InicioSesion {
 
      
   
-    public InicioSesion(Stage primaryStage) {
+    public PaneInicioSesion(Stage primaryStage) {
         this.primaryStage=primaryStage;
         this.imgLoadFondo=new Image("/imagenes/ESPOL-2-GRIS.png");
         this.imgFondo=new ImageView(imgLoadFondo);
@@ -87,6 +88,24 @@ public class InicioSesion {
     public static BorderPane getRoot(){
         return rootPrincipal;
     }
+    static void pantallaCliente(Stage primaryStage){
+        PaneOrganizaCliente root=new PaneOrganizaCliente(primaryStage);       
+        Scene scene=new Scene(root.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    static void pantallaAsistente(Stage primaryStage){
+        PaneOrganizaAsistente root2=new PaneOrganizaAsistente(primaryStage);       
+        Scene scene=new Scene(root2.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    static void pantallaAdministrador(Stage primaryStage){
+        PaneOrganizaAdministrador root3=new PaneOrganizaAdministrador(primaryStage);       
+        Scene scene=new Scene(root3.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
     public void menuPrincipal(Stage primaryStage){
         IngresarButton.setOnAction(new EventHandler <ActionEvent>(){
             public void handle(ActionEvent event) 
@@ -98,6 +117,13 @@ public class InicioSesion {
                     MensajeLabel.setText("Your password has been confirmed!");
                     MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                     System.out.println("INGRESO AL SISTEMA");
+                    if(TiposRolesBox.getValue().equals("Cliente")){
+                        pantallaCliente(primaryStage);
+                    }else if(TiposRolesBox.getValue().equals("Asistente de Restaurante")){
+                        pantallaAsistente(primaryStage);
+                    }else{
+                        pantallaAdministrador(primaryStage);    
+                    }
                 }else{
                     MensajeLabel.setText("Your password is incorrect!");
                     MensajeLabel.setTextFill(Color.rgb(210, 39, 30));
@@ -130,5 +156,8 @@ public class InicioSesion {
         // Add the scene to the Stage
         rootPrincipal.setCenter(root1);
     }
+    
+    
+    
     
 }

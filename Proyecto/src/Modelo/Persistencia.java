@@ -75,14 +75,15 @@ public class Persistencia {
                 String descripcion = valores[2].trim();
                 String servido = valores[3].trim();
                 String tipo = valores[4].trim();
+                
                 String restaurante = valores[5].trim();
-
+                Restaurante rest=new Restaurante(restaurante);
                 switch (categoria) {
                     case "estudiantil":
-                        temporal.put(nombre, new Platos());
+                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest));
                         break;
                     case "ejecutivo":
-                        temporal.put(nombre, new Platos());
+                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest));
                         break;
                 }
             }
@@ -91,6 +92,32 @@ public class Persistencia {
         return temporal;
     }
 
+    public static HashMap<String, Restaurante> leerRestaurante()
+    {
+        HashMap<String, Restaurante> temporal = new HashMap<>();
+        String linea;
+        try {
+            FileReader f = new FileReader("restaurante.csv");
+            BufferedReader br = new BufferedReader(f);
+            while (true) {
+                linea = br.readLine();
+                if (linea == null) {
+                    break;
+                }
+                String valores[];
+                valores = linea.split(";");
+                String nombre = valores[0].trim();
+                String descripcion = valores[1].trim();
+                String telefono = valores[2].trim();
+                String asistente = valores[3].trim();
+                temporal.put(nombre,new Restaurante(nombre,descripcion,telefono));
+            }
+            
+        } catch (IOException e) {
+        }
+        return temporal;
+    }
+    
     public static boolean agregarAdministrador() {
 
         return true;

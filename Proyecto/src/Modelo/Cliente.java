@@ -7,17 +7,12 @@ package Modelo;
 
 /**
  *
- * @author Julio Alvia
+ * @author jimmy
  */
-public enum Servido {
+public class Cliente extends Usuario{
     
-    FRIO("Frio"),
-    CALIENTE("Caliente");
-    
-    private final String servido;
-    
-    private Servido(String servido){
-        this.servido=servido;
+    public Cliente(String nombre, String id, String contraseña, String rol) {
+        super(nombre, id, contraseña, rol);
     }
     
 }

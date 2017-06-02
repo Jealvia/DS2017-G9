@@ -5,16 +5,111 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Julio Alvia
  */
-public class Platos {
-    private String nombre,descripcion;
+public class Platos <E>{
+    private String nombre,descripcion,categoria,tipo,servido;
     private Restaurante nombreRestaurante;
-    private Categoria categoria;
-    private Tipo tipo;
-    private Servido servido;
+
+    public Platos(String nombre, String descripcion, String categoria, String tipo, String servido, Restaurante nombreRestaurante) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.tipo = tipo;
+        this.servido = servido;
+        this.nombreRestaurante = nombreRestaurante;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getServido() {
+        return servido;
+    }
+
+    public void setServido(String servido) {
+        this.servido = servido;
+    }
+
+    public Restaurante getNombreRestaurante() {
+        return nombreRestaurante;
+    }
+
+    public void setNombreRestaurante(Restaurante nombreRestaurante) {
+        this.nombreRestaurante = nombreRestaurante;
+    }
+    public ArrayList<E> listarPlatos(HashMap<String, Platos> listPlatos, String categoria) {
+        ArrayList<E> lista = new ArrayList<>();
+        int i = 0;
+        for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
+            if (entry.getKey() == categoria) {
+                lista.addAll((Collection<? extends E>) entry.getValue());
+            }
+        }
+
+        return lista;
+    }
+    //lista de platos que solo pertenecen a un restaurante
+    public ArrayList<E> listarPlatosAsistente(HashMap<String, Platos> listPlatos, String restaurante) {
+        ArrayList<E> lista = new ArrayList<>();
+        int i = 0;
+        for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
+            if (entry.getValue().getNombreRestaurante().getNombre() == restaurante) {
+                lista.addAll((Collection<? extends E>) entry.getValue());
+            }
+        }
+
+        return lista;
+    }
     
-    public Platos(){}
+    public boolean agregarPlatillo(String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante){
+        //Julio: agregar informacion al CSV
+        
+        return true;
+    }
+    
+    
+ 
+
+    
+
+    
+    
+    
 }
