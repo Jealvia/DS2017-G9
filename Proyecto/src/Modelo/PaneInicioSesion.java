@@ -112,7 +112,7 @@ public class PaneInicioSesion {
     }
     static void pantallaInformacionPlatos(Stage primaryStage){
         PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
-        Scene scene=new Scene(root4.getRoot(),800,500);
+        Scene scene=new Scene(root4.getRoot(),800,600);
         primaryStage.setScene(scene);
         root4.MenuObjetos(primaryStage);
         primaryStage.show();

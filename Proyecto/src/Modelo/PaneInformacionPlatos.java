@@ -50,12 +50,12 @@ public class PaneInformacionPlatos {
         imgFondo4=new ImageView(imgLoadFondo4);
 //        this.imgLoadLogin=new Image("/imagenes/login.png");
 //        this.imgLogin=new ImageView(imgLoadLogin);
-        imgFondo4.setFitHeight(500);
+        imgFondo4.setFitHeight(800);
         imgFondo4.setFitWidth(800);
-        imgLoadPlatos4=new Image("/imagenes/fondo2.jpg");
+        imgLoadPlatos4=new Image("/imagenes/pt1.jpg");
         imgPlatos4=new ImageView(imgLoadPlatos4);
-        imgPlatos4.setFitHeight(100);
-        imgPlatos4.setFitWidth(100);
+        imgPlatos4.setFitHeight(300);
+        imgPlatos4.setFitWidth(300);
         
         this.siguienteIMGButton=new Button(">");
         this.anteriorIMGButton=new Button("<");
@@ -93,20 +93,12 @@ public class PaneInformacionPlatos {
         return root4;
     }
     public void MenuObjetos(Stage primaryStage){
-        siguienteIMGButton.setOnAction(new EventHandler <ActionEvent>(){
-            public void handle(ActionEvent event) 
-            {
-                System.out.println("SALIO DEL SISTEMA");
-                imgLoadPlatos4=new Image("/imagenes/pt1.jpg");
-                imgPlatos4=new ImageView(imgLoadPlatos4);
-            }
-        });
-        HBox PaneHorizontal=new HBox(10,anteriorIMGButton,imgPlatos4,siguienteIMGButton);
+        HBox PaneHorizontal=new HBox(10,imgPlatos4);
         PaneHorizontal.setAlignment(Pos.CENTER);
         VBox PaneOjetos=new VBox(5,RestauranteLabel,RestauranteText,CategoriaLabel,CategoriaText
         ,IngredienteLabel,IngredientesText,DescripcionLabel,DescripcionText,PaneHorizontal);
         PaneOjetos.setAlignment(Pos.CENTER_LEFT);
-        root4.setStyle("-fx-padding: 10;" +
+        PaneOjetos.setStyle("-fx-padding: 10;" +
                         "-fx-border-style: solid inside;" +
                         "-fx-border-width: 8;" +
                         "-fx-border-insets: 5;" +
