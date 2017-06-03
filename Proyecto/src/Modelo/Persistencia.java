@@ -6,10 +6,15 @@
 package Modelo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -117,6 +122,27 @@ public class Persistencia {
         }
         return temporal;
     }
+    
+    public static boolean writePlatos(HashMap<String, Platos> listaplatos){
+        //public static void writeEventos(HashMap<String, Evento> eventos) {
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv")));
+            for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
+                String linea=entry.getValue().getCategoria()+";"+entry.getValue().getNombre()+entry.getValue().getDescripcion()+";"+entry.getValue().getServido()+";"+entry.getValue().getTipo()+entry.getValue().getNombreRestaurante().getNombre();
+                pw.println(linea);
+            }
+
+            pw.close();
+        
+        } catch (FileNotFoundException ex) {
+            System.out.println("el archivo eventos.csv no existe");
+        } catch (IOException ex) {
+            System.out.println("se produjo error al escribir eventos.csv");
+        }
+            return true;
+    }
+        
+    
     
     public static boolean agregarAdministrador() {
 

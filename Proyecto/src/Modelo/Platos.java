@@ -126,25 +126,13 @@ public class Platos <E>{
         Restaurante rest=new Restaurante(restaurante);
         Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest);
         
-        for (Map.Entry<Integer, String> entry : datos.entrySet()) {
-    System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
-}
-        try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("venta_boletos.csv")));
-            for (Usuario u : usuariosArray) {
-                if (u instanceof Cliente) {
-                    info =((Cliente) u).compraBoletos();
-                    if(info!=null)  pw.println(info);
-                }
+        for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
+            if(entry.getValue().getNombre()==identificador){
+                if(entry.getValue().getNombreRestaurante().getNombre()==restaurante)
+                    entry.setValue(temp);
             }
-
-            pw.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("el archivo venta_boletos.csv no existe");
-        } catch (IOException ex) {
-            System.out.println("se produjo error al escribir venta_boletos.csv");
         }
-        
+        Persistencia.writePlatos(listPlatos);
         return true;
     }
     
