@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  * @author jimmy
  */
 public class PaneOrganizaCliente {
+    
     public static BorderPane root1;
     private Image imgLoadFondo1;
     private ImageView imgFondo1;
