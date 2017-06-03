@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package InformacionPlatos;
 
-import static Modelo.PaneInicioSesion.MensajeLabel;
-import static Modelo.PaneInicioSesion.rootPrincipal;
-import static Modelo.PaneOrganizaCliente.root1;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

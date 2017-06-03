@@ -1,12 +1,13 @@
+package MenuBarAdministrador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
 
-import static Modelo.PaneOrganizaAsistente.root2;
-import static Modelo.PaneOrganizaCliente.root1;
+
+import static MenuBarAsistente.PaneOrganizaAsistente.root2;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -31,7 +32,7 @@ public class PaneOrganizaAdministrador {
     }
     
     // metodo que me obtiene el root1
-    BorderPane getRoot(){
+    public BorderPane getRoot(){
         return root3;
     }
 }

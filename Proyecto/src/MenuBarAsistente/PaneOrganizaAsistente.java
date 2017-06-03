@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package MenuBarAsistente;
 
-import static Modelo.PaneOrganizaCliente.root1;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -29,7 +28,7 @@ public class PaneOrganizaAsistente {
         root2.getChildren().add(imgFondo2);
     }
       // metodo que me obtiene el root1
-    BorderPane getRoot(){
+    public BorderPane getRoot(){
         return root2;
     }
     

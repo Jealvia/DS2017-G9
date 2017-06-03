@@ -1,6 +1,14 @@
-package Modelo;
+package InicioDeSesión;
 
 
+
+
+import InformacionPlatos.PaneInformacionPlatos;
+import MenuBarAdministrador.PaneOrganizaAdministrador;
+import MenuBarCliente.PaneOrganizeCliente;
+import MenuBarAsistente.PaneOrganizaAsistente;
+import Modelo.Persistencia;
+import Modelo.Usuario;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -92,12 +100,6 @@ public class PaneInicioSesion {
     public static BorderPane getRoot(){
         return rootPrincipal;
     }
-    static void pantallaCliente(Stage primaryStage){
-        PaneOrganizaCliente root=new PaneOrganizaCliente(primaryStage);       
-        Scene scene=new Scene(root.getRoot(),800,500);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
     static void pantallaAsistente(Stage primaryStage){
         PaneOrganizaAsistente root2=new PaneOrganizaAsistente(primaryStage);       
         Scene scene=new Scene(root2.getRoot(),800,500);
@@ -117,6 +119,13 @@ public class PaneInicioSesion {
         root4.MenuObjetos(primaryStage);
         primaryStage.show();
     }
+    static void pantallaCliente(Stage primaryStage){
+        PaneOrganizeCliente root4=new PaneOrganizeCliente();       
+        Scene scene=new Scene(root4.getRoot(),400,250,Color.ORANGERED);
+        primaryStage.setScene(scene);
+        root4.menuCliente(primaryStage);
+        primaryStage.show();
+    }
     public void menuPrincipal(Stage primaryStage){
         IngresarButton.setOnAction(new EventHandler <ActionEvent>(){
             public void handle(ActionEvent event) 
@@ -129,8 +138,8 @@ public class PaneInicioSesion {
                     MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                     System.out.println("INGRESO AL SISTEMA");
                     if(TiposRolesBox.getValue().equals("Cliente")){
-                        pantallaInformacionPlatos(primaryStage);
-//                        pantallaCliente(primaryStage);
+//                        pantallaInformacionPlatos(primaryStage);
+                        pantallaCliente(primaryStage);
                     }else if(TiposRolesBox.getValue().equals("Asistente de Restaurante")){
                         pantallaAsistente(primaryStage);
                     }else{
