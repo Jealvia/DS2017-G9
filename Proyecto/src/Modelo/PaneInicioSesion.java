@@ -79,6 +79,10 @@ public class PaneInicioSesion {
         
         this.TiposRolesBox = new ChoiceBox();
         TiposRolesBox.getItems().addAll("Cliente","Asistente de Restaurante","Administrador");
+        
+        //Colocar titulo a la ventana y desactivar el boton de control de maximizar
+        primaryStage.setTitle("INICIO DE SESION");
+        primaryStage.setResizable(false);
         //PARA PRESENTAR UNA LISTA DE OPCIONES
 //        this.tiposRoles = FXCollections.observableArrayList( 
 //        "Cliente", "Asistente de Restaurante", "Administrador"); 
@@ -106,6 +110,13 @@ public class PaneInicioSesion {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    static void pantallaInformacionPlatos(Stage primaryStage){
+        PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
+        Scene scene=new Scene(root4.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        root4.MenuObjetos(primaryStage);
+        primaryStage.show();
+    }
     public void menuPrincipal(Stage primaryStage){
         IngresarButton.setOnAction(new EventHandler <ActionEvent>(){
             public void handle(ActionEvent event) 
@@ -118,7 +129,8 @@ public class PaneInicioSesion {
                     MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                     System.out.println("INGRESO AL SISTEMA");
                     if(TiposRolesBox.getValue().equals("Cliente")){
-                        pantallaCliente(primaryStage);
+                        pantallaInformacionPlatos(primaryStage);
+//                        pantallaCliente(primaryStage);
                     }else if(TiposRolesBox.getValue().equals("Asistente de Restaurante")){
                         pantallaAsistente(primaryStage);
                     }else{
