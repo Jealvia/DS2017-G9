@@ -5,6 +5,11 @@
  */
 package Modelo;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,6 +32,9 @@ public class Platos <E>{
         this.nombreRestaurante = nombreRestaurante;
     }
 
+    public Platos(){
+    
+    }
     public String getNombre() {
         return nombre;
     }
@@ -97,9 +105,45 @@ public class Platos <E>{
 
         return lista;
     }
-    
+    //Solo sirve para agregar platillo
     public boolean agregarPlatillo(String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante){
         //Julio: agregar informacion al CSV
+        String info=categoria+";"+nombre+";"+descripcion+";"+servido+";"+tipo+";"+restaurante;
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv")),true);
+            pw.println(info);
+            pw.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("el archivo platos.csv no existe");
+        } catch (IOException ex) {
+            System.out.println("se produjo error al escribir platos.csv");
+        }
+        return true;
+    }
+    
+    //el primer valor que tiene que recibir debe ser un identificador(nombe)
+    public boolean modificarPlatillo(String identificador,String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,HashMap<String, Platos> listPlatos){
+        Restaurante rest=new Restaurante(restaurante);
+        Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest);
+        
+        for (Map.Entry<Integer, String> entry : datos.entrySet()) {
+    System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
+}
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("venta_boletos.csv")));
+            for (Usuario u : usuariosArray) {
+                if (u instanceof Cliente) {
+                    info =((Cliente) u).compraBoletos();
+                    if(info!=null)  pw.println(info);
+                }
+            }
+
+            pw.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("el archivo venta_boletos.csv no existe");
+        } catch (IOException ex) {
+            System.out.println("se produjo error al escribir venta_boletos.csv");
+        }
         
         return true;
     }
