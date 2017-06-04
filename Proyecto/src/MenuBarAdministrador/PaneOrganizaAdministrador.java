@@ -8,6 +8,7 @@ package MenuBarAdministrador;
 
 
 import static MenuBarAsistente.PaneOrganizaAsistente.root2;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -35,4 +36,11 @@ public class PaneOrganizaAdministrador {
     public BorderPane getRoot(){
         return root3;
     }
+    public static void pantallaAdministrador(Stage primaryStage){
+        PaneOrganizaAdministrador root3=new PaneOrganizaAdministrador(primaryStage);       
+        Scene scene=new Scene(root3.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
 }

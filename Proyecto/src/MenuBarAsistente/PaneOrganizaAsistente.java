@@ -5,6 +5,7 @@
  */
 package MenuBarAsistente;
 
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -32,4 +33,10 @@ public class PaneOrganizaAsistente {
         return root2;
     }
     
+    public static void pantallaAsistente(Stage primaryStage){
+        PaneOrganizaAsistente root2=new PaneOrganizaAsistente(primaryStage);       
+        Scene scene=new Scene(root2.getRoot(),800,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 }

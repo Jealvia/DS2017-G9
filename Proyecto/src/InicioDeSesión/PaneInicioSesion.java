@@ -100,32 +100,6 @@ public class PaneInicioSesion {
     public static BorderPane getRoot(){
         return rootPrincipal;
     }
-    static void pantallaAsistente(Stage primaryStage){
-        PaneOrganizaAsistente root2=new PaneOrganizaAsistente(primaryStage);       
-        Scene scene=new Scene(root2.getRoot(),800,500);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    static void pantallaAdministrador(Stage primaryStage){
-        PaneOrganizaAdministrador root3=new PaneOrganizaAdministrador(primaryStage);       
-        Scene scene=new Scene(root3.getRoot(),800,500);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    static void pantallaInformacionPlatos(Stage primaryStage){
-        PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
-        Scene scene=new Scene(root4.getRoot(),800,600);
-        primaryStage.setScene(scene);
-        root4.MenuObjetos(primaryStage);
-        primaryStage.show();
-    }
-    static void pantallaCliente(Stage primaryStage){
-        PaneOrganizeCliente root4=new PaneOrganizeCliente();       
-        Scene scene=new Scene(root4.getRoot(),400,250,Color.ORANGERED);
-        primaryStage.setScene(scene);
-        root4.menuCliente(primaryStage);
-        primaryStage.show();
-    }
     public void menuPrincipal(Stage primaryStage){
         IngresarButton.setOnAction(new EventHandler <ActionEvent>(){
             public void handle(ActionEvent event) 
@@ -139,11 +113,12 @@ public class PaneInicioSesion {
                     System.out.println("INGRESO AL SISTEMA");
                     if(TiposRolesBox.getValue().equals("Cliente")){
 //                        pantallaInformacionPlatos(primaryStage);
-                        pantallaCliente(primaryStage);
+                    
+                        PaneOrganizeCliente.pantallaCliente(primaryStage);
                     }else if(TiposRolesBox.getValue().equals("Asistente de Restaurante")){
-                        pantallaAsistente(primaryStage);
+                        PaneOrganizaAsistente.pantallaAsistente(primaryStage);
                     }else{
-                        pantallaAdministrador(primaryStage);    
+                        PaneOrganizaAdministrador.pantallaAdministrador(primaryStage);    
                     }
                 }else{
                     MensajeLabel.setText("Your password is incorrect!");

@@ -9,6 +9,7 @@ package InformacionPlatos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -105,5 +106,11 @@ public class PaneInformacionPlatos {
         
         root4.setCenter(PaneOjetos);
     }
-    
+    public static void pantallaInformacionPlatos(Stage primaryStage){
+        PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
+        Scene scene=new Scene(root4.getRoot(),800,600);
+        primaryStage.setScene(scene);
+        root4.MenuObjetos(primaryStage);
+        primaryStage.show();
+    }
 }
