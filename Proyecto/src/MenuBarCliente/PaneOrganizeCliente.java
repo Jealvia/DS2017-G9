@@ -64,13 +64,8 @@ public class PaneOrganizeCliente  {
         menuBar.getMenus().add(menu2);
         //Objeto Menu3
         Menu menu3 = new Menu("Cerrar Sesion");
-        menu3.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-               System.exit(0);
-                  
-            }
+        menu3.setOnAction((event) -> {
+            System.exit(0);
         });
         //Agregando el menu3 al menuBar
         menuBar.getMenus().add(menu3);
