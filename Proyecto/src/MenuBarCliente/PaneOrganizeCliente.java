@@ -11,6 +11,7 @@ package MenuBarCliente;
  */
 
 import InformacionPlatos.PaneInformacionPlatos;
+import InicioDeSesión.PaneInicioSesion;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -55,7 +56,6 @@ public class PaneOrganizeCliente  {
         //Separador
         menu.getItems().add(new SeparatorMenuItem());
         menu.getItems().add(new MenuItem("Ejecutivo"));
-        System.out.println("****"+menu.getText().intern());
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
         //Objeto Menu2
@@ -64,9 +64,20 @@ public class PaneOrganizeCliente  {
         menuBar.getMenus().add(menu2);
         //Objeto Menu3
         Menu menu3 = new Menu("Cerrar Sesion");
-        menu3.setOnAction((event) -> {
-            System.exit(0);
+        MenuItem opcion3 =new MenuItem("Regresar a Login");
+        opcion3.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                PaneInicioSesion root=new PaneInicioSesion(primaryStage);
+                root.menuPrincipal(primaryStage);
+                Scene scene=new Scene(root.getRoot(),300,400); 
+                primaryStage.setScene(scene);
+                primaryStage.show();
+                 
+            }
         });
+       menu3.getItems().add(opcion3);
         //Agregando el menu3 al menuBar
         menuBar.getMenus().add(menu3);
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
