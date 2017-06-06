@@ -39,6 +39,7 @@ public class ListaPlatos {
     static ListView<String> listaPlatos; 
 
     
+<<<<<<< Updated upstream
     public  ListaPlatos(ArrayList<Platos> lista,Stage primaryStage) {
         vbox=new VBox();
         hbox=new HBox();
@@ -64,6 +65,17 @@ public class ListaPlatos {
 //            hbox.getChildren().addAll(nombre);
 //            vbox.getChildren().add(nombre);
             vbox.setAlignment(Pos.CENTER);
+=======
+    public ListaPlatos(ArrayList<Platos> lista,Stage primaryStage) {
+        VBox vbox=new VBox();
+        
+        for (Platos m : lista) {
+            System.out.println(m.getNombre());
+            HBox hbox=new HBox();
+            Label nombre = new Label("Nombre: "+m.getNombre()+"\n"+"Restaurante: "+m.getNombreRestaurante().getNombre());
+            hbox.getChildren().addAll(nombre);
+            vbox.getChildren().add(hbox);
+>>>>>>> Stashed changes
         }
         //PARA PRESENTAR UNA LISTA DE OPCIONES
         ListaPlatos.tiposPlatos = FXCollections.observableArrayList(list); 
