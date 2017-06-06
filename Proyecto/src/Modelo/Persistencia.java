@@ -82,13 +82,14 @@ public class Persistencia {
                 String tipo = valores[4].trim();
                 
                 String restaurante = valores[5].trim();
+                String ingredientes = valores[6].trim();
                 Restaurante rest=new Restaurante(restaurante);
                 switch (categoria) {
                     case "estudiantil":
-                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest));
+                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
                         break;
                     case "ejecutivo":
-                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest));
+                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
                         break;
                 }
             }
