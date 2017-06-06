@@ -5,15 +5,30 @@
  */
 package Busqueda;
 
+import InformacionPlatos.ListaPlatos;
+import static InicioDeSesión.PaneInicioSesion.rootPrincipal;
+import MenuBarAdministrador.PaneOrganizaAdministrador;
 import Modelo.Platos;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 /**
  *
@@ -21,45 +36,44 @@ import javafx.scene.layout.VBox;
  */
 public class Busqueda {
     private BorderPane root;
-    private TextField text_nombre,text_descripcion;
-    private Label busqueda_nombre,busqueda_descripcion,busqueda;
-    private Button buscar_nombre,buscar_descipcion;
-    private HBox organizar,organizar1;
+    private TextField text_nombre;
+    private Label busqueda_nombre,busqueda;
+    private Button buscar_nombre;
+    private HBox organizar;
     private VBox centro;
-    
-    
+    private ScrollPane lmarcadores;
+    private ListaPlatos platos;
     public Busqueda(){
         
     
     }
     
-    public void Organizador(HashMap<String, Platos> listaplatos){
+    public void OrganizadorBusqueda(HashMap<String, Platos> listaplatos,Stage primaryStage){
         busqueda=new Label("BUSQUEDA");
         buscar_nombre=new Button("Buscar");
-        buscar_descipcion=new Button("Buscar");
         busqueda_nombre=new Label("Nombre");
-        busqueda_descripcion=new Label("Descripción");
         text_nombre=new TextField();
-        text_descripcion=new TextField();
         organizar=new HBox(busqueda_nombre,text_nombre,buscar_nombre);
-        organizar1=new HBox(busqueda_descripcion,text_descripcion,buscar_descipcion);
-        centro=new VBox(organizar,organizar1);
+        centro=new VBox(organizar);
         root=new BorderPane();
         root.setTop(busqueda);
         root.setCenter(centro);
         
+        Scene escena=new Scene(root);
+        primaryStage.setScene(escena);
+        primaryStage.show();
     
     
     buscar_nombre.setOnAction((ActionEvent e) -> {
-        
-    
-    
+        ArrayList<Platos> lista = new ArrayList<>();
+        for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
+            if (entry.getValue().getNombre().contains(text_nombre.getText()) || entry.getValue().getDescripcion().contains(text_nombre.getText()) ) {
+                lista.addAll((Collection<? extends Platos>) entry.getValue());
+            }
+        }
+        ListaPlatos platos=new ListaPlatos(lista,primaryStage);
     });
     
-    buscar_descipcion.setOnAction((ActionEvent e) -> {
-        
-    
-    
-    });
     }
+  
 }

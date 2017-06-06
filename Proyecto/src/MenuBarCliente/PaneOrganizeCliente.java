@@ -10,8 +10,15 @@ package MenuBarCliente;
  * @author jimmy
  */
 
+import Busqueda.Busqueda;
+import InformacionPlatos.ListaPlatos;
 import InformacionPlatos.PaneInformacionPlatos;
 import InicioDeSesión.PaneInicioSesion;
+import Modelo.Persistencia;
+import Modelo.Platos;
+import Modelo.Usuario;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -31,9 +38,17 @@ import javafx.scene.layout.BorderPane;
 
 public class PaneOrganizeCliente  {
     Group root;
-
+    ArrayList<Platos> lista;
+    HashMap<String, Platos> categoriaPlato;
+    Stage primaryStage;
     public PaneOrganizeCliente() {
+        this.primaryStage=primaryStage;
         this.root = new Group();
+        this.lista=new ArrayList<Platos>();
+        this.categoriaPlato=Persistencia.leerPlatos();
+      
+      
+        
     }
     
     public void menuCliente(Stage primaryStage){        
@@ -42,14 +57,18 @@ public class PaneOrganizeCliente  {
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
         Menu menu = new Menu("Categorias de Platos");
         //Creando los items(menuItem) quu iran en el primer menu
-        MenuItem opcion1 =new MenuItem("Estudiantil");
-        opcion1.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-//                System.exit(0);
-                  PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
-            }
+        MenuItem opcion1 =new MenuItem("Estudiantil"); 
+        System.out.println("**"+categoriaPlato.size());
+        for (Platos values : categoriaPlato.values()) { 
+            lista.add(values);  
+            System.out.println("*"+values.getNombre());
+        } 
+        
+        opcion1.setOnAction((ActionEvent event) -> {
+            //System.exit(0);
+            ListaPlatos lp=new ListaPlatos(lista, primaryStage);
+            lp.mostrarListaPltaos(lista,primaryStage);
+          
         });
         menu.getItems().add(opcion1);
         
@@ -59,14 +78,25 @@ public class PaneOrganizeCliente  {
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
         //Objeto Menu2
-        Menu menu2 = new Menu("Buscar Platos");
+        Menu menu2 = new Menu("Buscar Plaros");
+        MenuItem opcion2 =new MenuItem("Lista Platos");
+        
+        opcion2.setOnAction(new EventHandler<ActionEvent>() {
+             
+            @Override
+            public void handle(ActionEvent event) {
+              PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
+            }
+        });
+       menu2.getItems().add(opcion2);
         //Agregando el objeto menu2 al menuBar
         menuBar.getMenus().add(menu2);
         //Objeto Menu3
         Menu menu3 = new Menu("Cerrar Sesion");
         MenuItem opcion3 =new MenuItem("Regresar a Login");
+        
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
-
+             
             @Override
             public void handle(ActionEvent event) {
                 PaneInicioSesion root=new PaneInicioSesion(primaryStage);
@@ -74,7 +104,6 @@ public class PaneOrganizeCliente  {
                 Scene scene=new Scene(root.getRoot(),300,400); 
                 primaryStage.setScene(scene);
                 primaryStage.show();
-                 
             }
         });
        menu3.getItems().add(opcion3);

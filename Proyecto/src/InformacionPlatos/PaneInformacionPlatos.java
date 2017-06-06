@@ -6,8 +6,6 @@
 package InformacionPlatos;
 
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,8 +45,7 @@ public class PaneInformacionPlatos {
     public PaneInformacionPlatos(Stage primaryStage) {
         imgLoadFondo4=new Image("/imagenes/fondo4.jpg");
         imgFondo4=new ImageView(imgLoadFondo4);
-//        this.imgLoadLogin=new Image("/imagenes/login.png");
-//        this.imgLogin=new ImageView(imgLoadLogin);
+
         imgFondo4.setFitHeight(800);
         imgFondo4.setFitWidth(800);
         imgLoadPlatos4=new Image("/imagenes/pt1.jpg");

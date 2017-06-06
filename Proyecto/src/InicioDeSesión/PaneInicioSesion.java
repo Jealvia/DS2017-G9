@@ -90,7 +90,7 @@ public class PaneInicioSesion {
         
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("INICIO DE SESION");
-        primaryStage.setResizable(false);
+//        primaryStage.setResizable(false);
         //PARA PRESENTAR UNA LISTA DE OPCIONES
 //        this.tiposRoles = FXCollections.observableArrayList( 
 //        "Cliente", "Asistente de Restaurante", "Administrador"); 
@@ -106,6 +106,7 @@ public class PaneInicioSesion {
             {
                 for (Usuario values : informUsuarios.values()) {
                     UserContra.put(values.getId(), values.getContraseña()); 
+                    
                  }            
                 if(UserContra.containsKey(ingresoUsuario.getText()) && UserContra.containsValue(ingreso_Contraseña.getText())){
                     MensajeLabel.setText("Your password has been confirmed!");
