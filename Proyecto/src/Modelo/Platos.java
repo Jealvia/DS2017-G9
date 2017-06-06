@@ -20,16 +20,25 @@ import java.util.Map;
  * @author Julio Alvia
  */
 public class Platos <E>{
-    private String nombre,descripcion,categoria,tipo,servido;
+    private String nombre,descripcion,categoria,tipo,servido,ingredientes;
     private Restaurante nombreRestaurante;
 
-    public Platos(String nombre, String descripcion, String categoria, String tipo, String servido, Restaurante nombreRestaurante) {
+    public Platos(String nombre, String descripcion, String categoria, String tipo, String servido, Restaurante nombreRestaurante,String ingredientes) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.tipo = tipo;
         this.servido = servido;
         this.nombreRestaurante = nombreRestaurante;
+        this.ingredientes=ingredientes;
+    }
+
+    public String getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(String ingredientes) {
+        this.ingredientes = ingredientes;
     }
 
     public Platos(){
@@ -82,17 +91,18 @@ public class Platos <E>{
     public void setNombreRestaurante(Restaurante nombreRestaurante) {
         this.nombreRestaurante = nombreRestaurante;
     }
-    public ArrayList<E> listarPlatos(HashMap<String, Platos> listPlatos, String categoria) {
-        ArrayList<E> lista = new ArrayList<>();
+    
+    public ArrayList<Platos> listarPlatos(HashMap<String, Platos> listPlatos, String categoria) {
+        ArrayList<Platos> lista = new ArrayList<>();
         int i = 0;
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
             if (entry.getKey() == categoria) {
-                lista.addAll((Collection<? extends E>) entry.getValue());
+                lista.addAll((Collection<? extends Platos>) entry.getValue());
             }
         }
-
         return lista;
     }
+    
     //lista de platos que solo pertenecen a un restaurante
     public ArrayList<E> listarPlatosAsistente(HashMap<String, Platos> listPlatos, String restaurante) {
         ArrayList<E> lista = new ArrayList<>();
@@ -102,13 +112,12 @@ public class Platos <E>{
                 lista.addAll((Collection<? extends E>) entry.getValue());
             }
         }
-
         return lista;
     }
     //Solo sirve para agregar platillo
-    public boolean agregarPlatillo(String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante){
+    public boolean agregarPlatillo(String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingredientes){
         //Julio: agregar informacion al CSV
-        String info=categoria+";"+nombre+";"+descripcion+";"+servido+";"+tipo+";"+restaurante;
+        String info=categoria+";"+nombre+";"+descripcion+";"+servido+";"+tipo+";"+restaurante+";"+ingredientes;
         try {
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv")),true);
             pw.println(info);
@@ -122,9 +131,9 @@ public class Platos <E>{
     }
     
     //el primer valor que tiene que recibir debe ser un identificador(nombe)
-    public boolean modificarPlatillo(String identificador,String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,HashMap<String, Platos> listPlatos){
+    public boolean modificarPlatillo(String identificador,String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingrediente,HashMap<String, Platos> listPlatos){
         Restaurante rest=new Restaurante(restaurante);
-        Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest);
+        Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingrediente);
         
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
             if(entry.getValue().getNombre()==identificador){

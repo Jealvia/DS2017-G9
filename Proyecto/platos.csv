@@ -1,10 +1,10 @@
-categoria;nombre;descripcion;servido;tipo;restaurante
-estudiantil;seco de pollo;Arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A
-ejecutivo;seco de carne;Arroz acompañado de un seco de carne xD;caliente;plato fuerte;B
-estudiantil;arroz con menestra;Arroz acompañado de menestra y carne xD;caliente;plato fuerte;C
-ejecutivo;helado;helado de varios sabores;frio;postre;A
-estudiantil;torta helada;torta helada de varios sabores;frio;postre;B
-ejecutivo;frutas;frutas de varios sabores;frio;postre;C
-estudiantil;empanada;empanada de queso pollo o carne;caliente;aperitivo;A
-ejecutivo;patacones con queso;patacones que llevan queso;frio;aperitivo;B
-estudiantil;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C
+categoria;nombre;descripcion;servido;tipo;restaurante;ingredientes
+estudiantil;seco de pollo;Arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
+ejecutivo;seco de carne;Arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
+estudiantil;arroz con menestra;Arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
+ejecutivo;helado;helado de varios sabores;frio;postre;A;helado
+estudiantil;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
+ejecutivo;frutas;frutas de varios sabores;frio;postre;C;fruta
+estudiantil;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
+ejecutivo;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,queso
+estudiantil;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
