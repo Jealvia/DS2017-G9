@@ -12,7 +12,6 @@ package MenuBarCliente;
 
 import Busqueda.Busqueda;
 import InformacionPlatos.ListaPlatos;
-import InformacionPlatos.PaneInformacionPlatos;
 import InicioDeSesión.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
@@ -58,7 +57,8 @@ public class PaneOrganizeCliente {
                 System.out.println("*" + values.getNombre());
             }
         }
-
+        
+        //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
             //System.exit(0);
             for (Platos values : categoriaPlato.values()) {
@@ -82,7 +82,9 @@ public class PaneOrganizeCliente {
         //Objeto Menu2
         Menu menu2 = new Menu("Buscar Plaros");
         MenuItem opcion2 = new MenuItem("Lista Platos");
-
+        
+        
+        //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
             Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
             @Override

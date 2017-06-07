@@ -5,10 +5,8 @@
  */
 package InformacionPlatos;
 
-import Modelo.Persistencia;
 import Modelo.Platos;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
