@@ -67,6 +67,7 @@ public class Persistencia {
         try {
             FileReader f = new FileReader("platos.csv");
             BufferedReader br = new BufferedReader(f);
+            int i=0;
             while (true) {
                 linea = br.readLine();
                 if (linea == null) {
@@ -84,12 +85,13 @@ public class Persistencia {
                 Restaurante rest=new Restaurante(restaurante);
                 switch (categoria) {
                     case "estudiantil":
-                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
+                        temporal.put(categoria+i, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
                         break;
                     case "ejecutivo":
-                        temporal.put(categoria, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
+                        temporal.put(categoria+i, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
                         break;
                 }
+                i++;
             }
         } catch (IOException e) {
         }

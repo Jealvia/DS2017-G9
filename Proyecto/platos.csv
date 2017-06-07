@@ -1,7 +1,7 @@
 categoria;nombre;descripcion;servido;tipo;restaurante;ingredientes
-estudiantil;seco de pollo;Arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
-ejecutivo;seco de carne;Arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
-estudiantil;arroz con menestra;Arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
+estudiantil;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
+ejecutivo;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
+estudiantil;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
 ejecutivo;helado;helado de varios sabores;frio;postre;A;helado
 estudiantil;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
 ejecutivo;frutas;frutas de varios sabores;frio;postre;C;fruta

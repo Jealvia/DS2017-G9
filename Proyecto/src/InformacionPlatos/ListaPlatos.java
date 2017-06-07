@@ -27,6 +27,7 @@ import javafx.stage.Stage;
  * @author Julio Alvia
  */
 public class ListaPlatos {
+
     Label nombre;
     Rectangle rectangulo;
     static VBox vbox;
@@ -34,61 +35,64 @@ public class ListaPlatos {
     private Stage primaryStage;
     static BorderPane contenedor;
     static ArrayList<String> list;
-     //PARA PRESENTAR LISTA DE OPCIONES
+    //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
-    static ListView<String> listaPlatos; 
+    static ListView<String> listaPlatos;
 
+    /**
+     * public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) { vbox =
+     * new VBox(); hbox = new HBox(); list = new ArrayList<String>();
+     *
+     * //******************************************************************
+     * contenedor = new BorderPane(); contenedor.setCenter(vbox);
+     *
+     * // Scene escena=new Scene(contenedor); // primaryStage.setScene(escena);
+     * // primaryStage.show(); // hbox.setOnMouseClicked((MouseEvent me)->{ //
+     * //aqui se debe enlazar tu ventana Jimmy //
+     * PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage); // }); }
+     */
     
-<<<<<<< Updated upstream
-    public  ListaPlatos(ArrayList<Platos> lista,Stage primaryStage) {
-        vbox=new VBox();
-        hbox=new HBox();
-        list=new ArrayList<String>();
-        
-         //******************************************************************
-        contenedor=new BorderPane();
-        contenedor.setCenter(vbox);
-       
-//        Scene escena=new Scene(contenedor);
-//        primaryStage.setScene(escena);
-//        primaryStage.show();
-//        hbox.setOnMouseClicked((MouseEvent me)->{
-//            //aqui se debe enlazar tu ventana Jimmy
-//            PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
-//        });
-    }
-    public static  void mostrarListaPltaos(ArrayList<Platos> lista,Stage primaryStage){
+    public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
-            System.out.println("**"+m.getNombre());
-//            Label nombre = new Label("Nombre: "+m.getNombre()+"\n"+"Restaurante: "+m.getNombreRestaurante().getNombre());
-            list.add("Nombre: "+m.getNombre()+"\n"+"Restaurante: "+m.getNombreRestaurante().getNombre());
-//            hbox.getChildren().addAll(nombre);
-//            vbox.getChildren().add(nombre);
+            System.out.println("**" + m.getNombre());
+            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+            list.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+            //hbox.getChildren().addAll(nombre);
+            vbox.getChildren().add(nombre);
             vbox.setAlignment(Pos.CENTER);
-=======
-    public ListaPlatos(ArrayList<Platos> lista,Stage primaryStage) {
-        VBox vbox=new VBox();
-        
+        }
+    }
+
+    public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
+        VBox vbox = new VBox();
+        ArrayList<String> lista1=new ArrayList<>();
         for (Platos m : lista) {
             System.out.println(m.getNombre());
-            HBox hbox=new HBox();
-            Label nombre = new Label("Nombre: "+m.getNombre()+"\n"+"Restaurante: "+m.getNombreRestaurante().getNombre());
+            HBox hbox = new HBox();
+            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+            System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+            lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
             hbox.getChildren().addAll(nombre);
             vbox.getChildren().add(hbox);
->>>>>>> Stashed changes
         }
+
         //PARA PRESENTAR UNA LISTA DE OPCIONES
-        ListaPlatos.tiposPlatos = FXCollections.observableArrayList(list); 
+        ListaPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
         listaPlatos = new ListView<String>(tiposPlatos);
-        vbox.getChildren().add(listaPlatos);
-        Scene escena=new Scene(getContenedor(),800,400);
+        //vbox.getChildren().add(listaPlatos);
+        BorderPane contenedor=new BorderPane();
+        contenedor.setCenter(listaPlatos);
+        //contenedor.getChildren().add(listaPlatos);
+        Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
-        listaPlatos.setOnMouseClicked((MouseEvent me)->{
+        
+        listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             //aqui se debe enlazar tu ventana Jimmy
             PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
         });
         primaryStage.show();
     }
+
     public static BorderPane getContenedor() {
         return contenedor;
     }
@@ -96,10 +100,5 @@ public class ListaPlatos {
     public void setContenedor(BorderPane contenedor) {
         this.contenedor = contenedor;
     }
-    
-    
-    
-    
-    
-    
+
 }

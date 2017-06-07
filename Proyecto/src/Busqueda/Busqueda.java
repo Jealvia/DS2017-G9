@@ -42,7 +42,7 @@ public class Busqueda {
     
     }
     
-    public void OrganizadorBusqueda(HashMap<String, Platos> listaplatos,Stage primaryStage){
+    public Busqueda(HashMap<String, Platos> listaplatos,Stage primaryStage){
         busqueda=new Label("BUSQUEDA");
         buscar_nombre=new Button("Buscar");
         busqueda_nombre=new Label("Nombre");
@@ -62,7 +62,7 @@ public class Busqueda {
         ArrayList<Platos> lista = new ArrayList<>();
         for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
             if (entry.getValue().getNombre().contains(text_nombre.getText()) || entry.getValue().getDescripcion().contains(text_nombre.getText()) ) {
-                lista.addAll((Collection<? extends Platos>) entry.getValue());
+                lista.add(entry.getValue());
             }
         }
         ListaPlatos platos=new ListaPlatos(lista,primaryStage);
