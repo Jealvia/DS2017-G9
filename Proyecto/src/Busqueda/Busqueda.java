@@ -47,11 +47,9 @@ public class Busqueda {
         root = new BorderPane();
         root.setTop(busqueda);
         root.setCenter(centro);
-
-        Scene escena = new Scene(root);
-        primaryStage.setScene(escena);
-        primaryStage.show();
-
+         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
+        primaryStage.setTitle("BUSQUEDAD DE PLATOS");
+        primaryStage.setResizable(false);
         //Busca por nombre o descripcion y luego llama al metodo para mostrar la lista de platos para su 
         //posterior selección.
         buscar_nombre.setOnAction((ActionEvent e) -> {
@@ -64,6 +62,11 @@ public class Busqueda {
             ListaPlatos platos = new ListaPlatos(lista, primaryStage);
         });
 
+    }
+    public void pantallaBusquedad(Stage primaryStage){
+        Scene escena = new Scene(root,800,400);
+        primaryStage.setScene(escena);
+        primaryStage.show();
     }
 
 }

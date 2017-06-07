@@ -76,11 +76,16 @@ public class PaneOrganizeCliente {
         //Separador
         menu.getItems().add(new SeparatorMenuItem());
         menu.getItems().add(new MenuItem("Ejecutivo"));
+        
+        //**********************************************************************
+        //aqui deberias de trabajar Julio 
+        //**********************************************************************
+        
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
 
         //Objeto Menu2
-        Menu menu2 = new Menu("Buscar Plaros");
+        Menu menu2 = new Menu("Buscar Platos");
         MenuItem opcion2 = new MenuItem("Lista Platos");
         
         
@@ -89,7 +94,8 @@ public class PaneOrganizeCliente {
             Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
             @Override
             public void handle(ActionEvent event) {
-              //  PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
+              // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
+              busq.pantallaBusquedad(primaryStage);
             }
         });
         menu2.getItems().add(opcion2);
