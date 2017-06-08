@@ -99,49 +99,6 @@ public class PaneInformacionPlatos {
         
     }
 
-    public TextField getNombreText() {
-        return NombreText;
-    }
-
-    public void setNombreText(TextField NombreText) {
-        this.NombreText = NombreText;
-    }
-
-    public TextField getRestauranteText() {
-        return RestauranteText;
-    }
-
-    public void setRestauranteText(TextField RestauranteText) {
-        this.RestauranteText = RestauranteText;
-    }
-
-    public TextField getCategoriaText() {
-        return CategoriaText;
-    }
-
-    public void setCategoriaText(TextField CategoriaText) {
-        this.CategoriaText = CategoriaText;
-    }
-
-    public static TextField getIngredientesText() {
-        return IngredientesText;
-    }
-
-    public void setIngredientesText(TextField IngredientesText) {
-        this.IngredientesText = IngredientesText;
-    }
-
-    public static TextField getDescripcionText() {
-        return DescripcionText;
-    }
-
-    public void setDescripcionText(TextField DescripcionText) {
-        this.DescripcionText = DescripcionText;
-    }
-
-    
-
-    
     public static BorderPane getRoot(){
         return root4;
     }
@@ -150,19 +107,26 @@ public class PaneInformacionPlatos {
         PaneHorizontal.setAlignment(Pos.CENTER);
         Iterator it = numPlt.keySet().iterator();
             while(it.hasNext()){
-              Integer key = (Integer) it.next();
-              if(key==opcion){
-                System.out.println("Clave: " + key + " -> Valor: " + numPlt.get(opcion).getNombre());
-                NombreText.setText(numPlt.get(opcion).getNombre());
-                IngredientesText.setText(numPlt.get(opcion).getIngredientes());
-                RestauranteText.setText(numPlt.get(opcion).getNombreRestaurante().getNombre());
-                DescripcionText.setText(numPlt.get(opcion).getDescripcion());
-                CategoriaText.setText(numPlt.get(opcion).getCategoria());
-                imgPlatos4.setImage(new Image("/imagenes/pt"+key+".jpg"));
-               
-              }
-               
-                
+                Integer key = (Integer) it.next();
+                if(key==opcion){
+                    System.out.println("Clave: " + key + " -> Valor: " + numPlt.get(opcion).getNombre());
+                    NombreText.setText(numPlt.get(opcion).getNombre());
+                    IngredientesText.setText(numPlt.get(opcion).getIngredientes());
+                    RestauranteText.setText(numPlt.get(opcion).getNombreRestaurante().getNombre());
+                    DescripcionText.setText(numPlt.get(opcion).getDescripcion());
+                    CategoriaText.setText(numPlt.get(opcion).getCategoria());
+                    imgPlatos4.setImage(new Image("/imagenes/pt"+key+".jpg"));
+                    //Para que no se pueda editar la informacion en los textfielts
+                    NombreText.setEditable(false);
+                    IngredientesText.setEditable(false);
+                    RestauranteText.setEditable(false);
+                    DescripcionText.setEditable(false);
+                    CategoriaText.setEditable(false);
+                   
+                 
+                    
+
+                }
             }
         VBox PaneOjetos=new VBox(5,NombreLabel,NombreText,RestauranteLabel,RestauranteText,CategoriaLabel,CategoriaText
         ,IngredienteLabel,IngredientesText,DescripcionLabel,DescripcionText,PaneHorizontal);
