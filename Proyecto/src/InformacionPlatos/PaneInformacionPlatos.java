@@ -6,6 +6,10 @@
 package InformacionPlatos;
 
 
+import Modelo.Platos;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,17 +35,18 @@ public class PaneInformacionPlatos {
     private ImageView imgFondo4;
     private Image imgLoadPlatos4;
     private ImageView imgPlatos4;
-    public static Label RestauranteLabel;
-    public static Label CategoriaLabel;
-    public static Label IngredienteLabel;
-    public static Label DescripcionLabel;
-    public static TextField RestauranteText;
-    public static TextField CategoriaText;
-    public static TextField IngredientesText;
+    public  Label NombreLabel;
+    public  Label RestauranteLabel;
+    public  Label CategoriaLabel;
+    public Label IngredienteLabel;
+    public Label DescripcionLabel;
+    public static   TextField NombreText;
+    public static  TextField RestauranteText;
+    public static  TextField CategoriaText;
+    public static  TextField IngredientesText;
     public static TextField DescripcionText;
-    public static Button siguienteIMGButton;
-    public static Button anteriorIMGButton;
-
+    public  Button siguienteIMGButton;
+    public  Button anteriorIMGButton;
     public PaneInformacionPlatos(Stage primaryStage) {
         imgLoadFondo4=new Image("/imagenes/fondo4.jpg");
         imgFondo4=new ImageView(imgLoadFondo4);
@@ -50,17 +55,21 @@ public class PaneInformacionPlatos {
         imgFondo4.setFitWidth(800);
         imgLoadPlatos4=new Image("/imagenes/pt1.jpg");
         imgPlatos4=new ImageView(imgLoadPlatos4);
-        imgPlatos4.setFitHeight(300);
-        imgPlatos4.setFitWidth(300);
+        imgPlatos4.setFitHeight(200);
+        imgPlatos4.setFitWidth(200);
         
         this.siguienteIMGButton=new Button(">");
         this.anteriorIMGButton=new Button("<");
         
+        this.NombreText=new TextField();
         this.RestauranteText=new TextField();
         this.CategoriaText=new TextField();
         this.IngredientesText=new TextField();
         this.DescripcionText=new TextField();
+       
+      
         
+        this.NombreLabel=new Label("Nombre: ");
         this.RestauranteLabel=new Label("Restaurante: ");
         this.CategoriaLabel=new Label("Categoria: ");
         this.IngredienteLabel=new Label("Ingredientes: ");
@@ -71,7 +80,9 @@ public class PaneInformacionPlatos {
         CategoriaLabel.setTextFill(Color.rgb(21, 117, 84));
         IngredienteLabel.setTextFill(Color.rgb(21, 117, 84));
         DescripcionLabel.setTextFill(Color.rgb(21, 117, 84));
+        NombreLabel.setTextFill(Color.rgb(21, 117, 84));
         
+        NombreLabel.setFont(theFont);
         RestauranteLabel.setFont(theFont);
         CategoriaLabel.setFont(theFont);
         IngredienteLabel.setFont(theFont);
@@ -84,14 +95,76 @@ public class PaneInformacionPlatos {
         primaryStage.setTitle("Informacion Platos");
         primaryStage.setResizable(false);
         
+        
+        
     }
+
+    public TextField getNombreText() {
+        return NombreText;
+    }
+
+    public void setNombreText(TextField NombreText) {
+        this.NombreText = NombreText;
+    }
+
+    public TextField getRestauranteText() {
+        return RestauranteText;
+    }
+
+    public void setRestauranteText(TextField RestauranteText) {
+        this.RestauranteText = RestauranteText;
+    }
+
+    public TextField getCategoriaText() {
+        return CategoriaText;
+    }
+
+    public void setCategoriaText(TextField CategoriaText) {
+        this.CategoriaText = CategoriaText;
+    }
+
+    public static TextField getIngredientesText() {
+        return IngredientesText;
+    }
+
+    public void setIngredientesText(TextField IngredientesText) {
+        this.IngredientesText = IngredientesText;
+    }
+
+    public static TextField getDescripcionText() {
+        return DescripcionText;
+    }
+
+    public void setDescripcionText(TextField DescripcionText) {
+        this.DescripcionText = DescripcionText;
+    }
+
+    
+
+    
     public static BorderPane getRoot(){
         return root4;
     }
-    public void MenuObjetos(Stage primaryStage){
+    public void MenuObjetos(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion){
         HBox PaneHorizontal=new HBox(10,imgPlatos4);
         PaneHorizontal.setAlignment(Pos.CENTER);
-        VBox PaneOjetos=new VBox(5,RestauranteLabel,RestauranteText,CategoriaLabel,CategoriaText
+        Iterator it = numPlt.keySet().iterator();
+            while(it.hasNext()){
+              Integer key = (Integer) it.next();
+              if(key==opcion){
+                System.out.println("Clave: " + key + " -> Valor: " + numPlt.get(opcion).getNombre());
+                NombreText.setText(numPlt.get(opcion).getNombre());
+                IngredientesText.setText(numPlt.get(opcion).getIngredientes());
+                RestauranteText.setText(numPlt.get(opcion).getNombreRestaurante().getNombre());
+                DescripcionText.setText(numPlt.get(opcion).getDescripcion());
+                CategoriaText.setText(numPlt.get(opcion).getCategoria());
+                imgPlatos4.setImage(new Image("/imagenes/pt"+key+".jpg"));
+               
+              }
+               
+                
+            }
+        VBox PaneOjetos=new VBox(5,NombreLabel,NombreText,RestauranteLabel,RestauranteText,CategoriaLabel,CategoriaText
         ,IngredienteLabel,IngredientesText,DescripcionLabel,DescripcionText,PaneHorizontal);
         PaneOjetos.setAlignment(Pos.CENTER_LEFT);
         PaneOjetos.setStyle("-fx-padding: 10;" +
@@ -103,11 +176,12 @@ public class PaneInformacionPlatos {
         
         root4.setCenter(PaneOjetos);
     }
-    public static void pantallaInformacionPlatos(Stage primaryStage){
+    public static void pantallaInformacionPlatos(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion){
         PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
-        Scene scene=new Scene(root4.getRoot(),800,600);
+        Scene scene=new Scene(root4.getRoot(),800,800);
         primaryStage.setScene(scene);
-        root4.MenuObjetos(primaryStage);
+        root4.MenuObjetos(primaryStage,numPlt,opcion);
         primaryStage.show();
     }
+  
 }

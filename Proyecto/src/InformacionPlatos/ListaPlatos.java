@@ -5,14 +5,19 @@
  */
 package InformacionPlatos;
 
+import Modelo.Persistencia;
 import Modelo.Platos;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -36,6 +41,8 @@ public class ListaPlatos {
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
+    HashMap<String, Platos> categoriaPlato;
+
 
     /**
      * public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) { vbox =
@@ -64,14 +71,21 @@ public class ListaPlatos {
     public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
         VBox vbox = new VBox();
         ArrayList<String> lista1=new ArrayList<>();
+        HashMap<Integer,Platos> numPlt=new HashMap<Integer,Platos>();
+       
+        int cont=0;
+        
         for (Platos m : lista) {
             System.out.println(m.getNombre());
             HBox hbox = new HBox();
-            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+//            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
             System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
             lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
-            hbox.getChildren().addAll(nombre);
+            numPlt.put(cont, m);
+//            hbox.getChildren().addAll(nombre);
+            cont++;
             vbox.getChildren().add(hbox);
+           
         }
 
         //PARA PRESENTAR UNA LISTA DE OPCIONES
@@ -80,13 +94,16 @@ public class ListaPlatos {
         //vbox.getChildren().add(listaPlatos);
         BorderPane contenedor=new BorderPane();
         contenedor.setCenter(listaPlatos);
+       
         //contenedor.getChildren().add(listaPlatos);
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             //aqui se debe enlazar tu ventana Jimmy
-            PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
+            Integer opcion=listaPlatos.getSelectionModel().getSelectedIndex();
+            System.out.println("** "+ opcion);
+            PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage,numPlt,opcion); 
         });
         primaryStage.show();
     }

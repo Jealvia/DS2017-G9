@@ -1,4 +1,5 @@
-nombre;id;contraseña;rol
-julio;jealvia;julioespol;cliente
-jimmy;jimcelly;jimmyespol;asistente
-karol;karlopez;karlaespol;asistente
+nombre;id;contraseña;rol;restaurante
+julio;jealvia;julioespol;Asistente de Restaurante;A
+jimmy;jimcelly;jimmyespol;Asistente de Restaurante;B
+karol;karlopez;karlaespol;Asistente de Restaurante;C
+kakaroto;goku;gokuespol;Cliente;-

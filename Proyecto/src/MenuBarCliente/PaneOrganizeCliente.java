@@ -51,12 +51,12 @@ public class PaneOrganizeCliente {
         //Creando los items(menuItem) quu iran en el primer menu
         MenuItem opcion1 = new MenuItem("Estudiantil");
         System.out.println("**" + categoriaPlato.size());
-        for (Platos values : categoriaPlato.values()) {
-            if (values.getCategoria() == "estudiantil") {
-                lista.add(values);
-                System.out.println("*" + values.getNombre());
-            }
-        }
+//        for (Platos values : categoriaPlato.values()) {
+//            if (values.getCategoria() == "estudiantil") {
+//                lista.add(values);
+//                System.out.println("*" + values.getNombre());
+//            }
+//        }
         
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
@@ -67,6 +67,7 @@ public class PaneOrganizeCliente {
                     System.out.println("*" + values.getNombre());
                 }
             }
+            
             ListaPlatos lp = new ListaPlatos(lista, primaryStage);
             //lp.mostrarListaPltaos(lista,primaryStage);
 
@@ -75,12 +76,19 @@ public class PaneOrganizeCliente {
 
         //Separador
         menu.getItems().add(new SeparatorMenuItem());
-        menu.getItems().add(new MenuItem("Ejecutivo"));
+        MenuItem opcioneje = new MenuItem("Ejecutivo");
+        menu.getItems().add(opcioneje);
+        opcioneje.setOnAction((ActionEvent event) ->  {
+            for (Platos values : categoriaPlato.values()) {
+                if ("ejecutivo".equals(values.getCategoria())) {
+                    lista.add(values);
+                    System.out.println("*" + values.getNombre());
+                }
+            }
+            ListaPlatos lp = new ListaPlatos(lista, primaryStage);
         
-        //**********************************************************************
-        //aqui deberias de trabajar Julio 
-        //**********************************************************************
-        
+        });
+       
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
 

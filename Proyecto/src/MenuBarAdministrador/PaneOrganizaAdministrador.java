@@ -7,7 +7,7 @@ package MenuBarAdministrador;
  */
 
 
-import static MenuBarAsistente.PaneOrganizaAsistente.root2;
+//import static MenuBarAsistente.PaneOrganizaAsistente.root2;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
