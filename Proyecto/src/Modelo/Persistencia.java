@@ -19,9 +19,13 @@ import java.util.Map;
  *
  * @author Julio Alvia
  */
-public class Persistencia {
+public class Persistencia <E>{
 
-    public static HashMap<String, Usuario> leerUsuarios() {
+    /**
+     *
+     * @return
+     */
+    public static HashMap<String,Usuario> leerUsuarios() {
         HashMap<String, Usuario> temporal = new HashMap<>();
         String linea;
         
@@ -42,13 +46,14 @@ public class Persistencia {
                 String id = valores[1].trim();
                 String contrasena = valores[2].trim();
                 String rol = valores[3].trim();
-
+                String restaurante =valores[4].trim();
+                Restaurante rest=new Restaurante(restaurante);
                 switch (rol) {
-                    case "cliente":
-                        temporal.put(nombre, new Usuario(nombre, id, contrasena, rol));
+                    case "Cliente":
+                        temporal.put(id,  new Usuario(nombre, id, contrasena, rol));
                         break;
-                    case "asistente":
-                        temporal.put(nombre, new Usuario(nombre, id, contrasena, rol));
+                    case "Asistente de Restaurante":
+                        temporal.put(id,  new Usuario(nombre, id, contrasena, rol,rest));
                         break;
                 }
                 
