@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -32,7 +32,6 @@ import javafx.stage.Stage;
 public class ListaPlatos {
 
     Label nombre;
-    Rectangle rectangulo;
     static VBox vbox;
     HBox hbox;
     private Stage primaryStage;
@@ -41,48 +40,38 @@ public class ListaPlatos {
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
-    HashMap<String, Platos> categoriaPlato;
-
-
-    /**
-     * public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) { vbox =
-     * new VBox(); hbox = new HBox(); list = new ArrayList<String>();
-     *
-     * //******************************************************************
-     * contenedor = new BorderPane(); contenedor.setCenter(vbox);
-     *
-     * // Scene escena=new Scene(contenedor); // primaryStage.setScene(escena);
-     * // primaryStage.show(); // hbox.setOnMouseClicked((MouseEvent me)->{ //
-     * //aqui se debe enlazar tu ventana Jimmy //
-     * PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage); // }); }
-     */
-    
+    HashMap<String, Platos> categoriaPlato;    
     public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
-            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
-            list.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
-            //hbox.getChildren().addAll(nombre);
+            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
+            list.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
             vbox.getChildren().add(nombre);
             vbox.setAlignment(Pos.CENTER);
         }
     }
 
-    public ListaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
-        VBox vbox = new VBox();
+    public ListaPlatos() {
+        this.contenedor=new BorderPane();
+    }
+    public static BorderPane getContenedor() {
+        return contenedor;
+    }
+
+    public static void setContenedor(BorderPane contenedor) {
+        ListaPlatos.contenedor = contenedor;
+    }
+    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage){
         ArrayList<String> lista1=new ArrayList<>();
         HashMap<Integer,Platos> numPlt=new HashMap<Integer,Platos>();
-       
+        VBox vbox = new VBox(10);
         int cont=0;
-        
         for (Platos m : lista) {
             System.out.println(m.getNombre());
             HBox hbox = new HBox();
-//            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
-            System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
-            lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante().getNombre());
+            System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
+            lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
             numPlt.put(cont, m);
-//            hbox.getChildren().addAll(nombre);
             cont++;
             vbox.getChildren().add(hbox);
            
@@ -91,29 +80,25 @@ public class ListaPlatos {
         //PARA PRESENTAR UNA LISTA DE OPCIONES
         ListaPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
         listaPlatos = new ListView<String>(tiposPlatos);
-        //vbox.getChildren().add(listaPlatos);
-        BorderPane contenedor=new BorderPane();
-        contenedor.setCenter(listaPlatos);
-       
-        //contenedor.getChildren().add(listaPlatos);
-        Scene escena = new Scene(contenedor, 800, 400);
-        primaryStage.setScene(escena);
-        
+        listaPlatos.setPrefSize(50, 100);
+        vbox.setStyle("-fx-padding: 10;" +
+                        "-fx-border-style: solid inside;" +
+                        "-fx-border-width: 8;" +
+                        "-fx-border-insets: 5;" +
+                        "-fx-border-radius: 5;" +
+                        "-fx-border-color: DARKCYAN;");
+        vbox.getChildren().add(listaPlatos);
+        contenedor.setCenter(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
-            //aqui se debe enlazar tu ventana Jimmy
             Integer opcion=listaPlatos.getSelectionModel().getSelectedIndex();
-            System.out.println("** "+ opcion);
-            PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage,numPlt,opcion); 
+            PaneInformacionPlatos.pantallaInformacionPlatosCliente(primaryStage,numPlt,opcion); 
         });
+        Scene escena = new Scene(contenedor,800,400);
+        primaryStage.setScene(escena);
         primaryStage.show();
     }
+    
 
-    public static BorderPane getContenedor() {
-        return contenedor;
-    }
-
-    public void setContenedor(BorderPane contenedor) {
-        this.contenedor = contenedor;
-    }
+  
 
 }

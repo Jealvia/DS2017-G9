@@ -59,9 +59,9 @@ public class Busqueda {
                     lista.add(entry.getValue());
                 }
             }
-            ListaPlatos platos = new ListaPlatos(lista, primaryStage);
+            ListaPlatos lp = new ListaPlatos();
+            lp.ventanaListaPlatos(lista, primaryStage);
         });
-
     }
     public void pantallaBusquedad(Stage primaryStage){
         Scene escena = new Scene(root,800,400);

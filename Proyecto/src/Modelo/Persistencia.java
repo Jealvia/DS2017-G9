@@ -28,12 +28,9 @@ public class Persistencia <E>{
     public static HashMap<String,Usuario> leerUsuarios() {
         HashMap<String, Usuario> temporal = new HashMap<>();
         String linea;
-        
         try {
-            
             FileReader f = new FileReader("usuario.csv");
             BufferedReader br = new BufferedReader(f);
-            
             while (true) {
                 linea = br.readLine();
                 if (linea == null) {
@@ -55,16 +52,12 @@ public class Persistencia <E>{
                     case "Asistente de Restaurante":
                         temporal.put(id,  new Usuario(nombre, id, contrasena, rol,rest));
                         break;
-                }
-                
-                
+                }   
             }
         } catch (IOException e) {
         }
         return temporal;
     }
-
-    
     public static HashMap<String, Platos> leerPlatos()
     {
         HashMap<String, Platos> temporal = new HashMap<>();
@@ -102,7 +95,6 @@ public class Persistencia <E>{
         }
         return temporal;
     }
-
     public static HashMap<String, Restaurante> leerRestaurante()
     {
         HashMap<String, Restaurante> temporal = new HashMap<>();
@@ -128,18 +120,23 @@ public class Persistencia <E>{
         }
         return temporal;
     }
-    
     public static boolean writePlatos(HashMap<String, Platos> listaplatos){
         //public static void writeEventos(HashMap<String, Evento> eventos) {
         try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv")));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv",true)));
+         
+            
             for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
-                String linea=entry.getValue().getCategoria()+";"+entry.getValue().getNombre()+entry.getValue().getDescripcion()+";"+entry.getValue().getServido()+";"+entry.getValue().getTipo()+entry.getValue().getNombreRestaurante().getNombre();
-                pw.println(linea);
-            }
+                
+                String linea=entry.getValue().getCategoria()+";"+entry.getValue().getNombre()+";"+entry.getValue().getDescripcion()+";"+entry.getValue().getServido()+";"+entry.getValue().getTipo()+";"+entry.getValue().getObjRestaurante().getNombre()+";"+entry.getValue().getIngredientes();
 
-            pw.close();
-        
+                System.out.println(linea);
+                pw.write(linea+"\n");
+                
+            }
+           
+            System.out.println("GUARDADO CON EXITO");
+            pw.close(); 
         } catch (FileNotFoundException ex) {
             System.out.println("el archivo eventos.csv no existe");
         } catch (IOException ex) {
@@ -147,11 +144,21 @@ public class Persistencia <E>{
         }
             return true;
     }
-        
-    
-    
+    public static boolean LimpiarCSVPlatos(HashMap<String, Platos> listaplatos){
+        //public static void writeEventos(HashMap<String, Evento> eventos) {
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv",true)));
+            pw.write("");
+            System.out.println("ELIMINADOS CON EXITO");
+            pw.close(); 
+        } catch (FileNotFoundException ex) {
+            System.out.println("el archivo eventos.csv no existe");
+        } catch (IOException ex) {
+            System.out.println("se produjo error al escribir eventos.csv");
+        }
+            return true;
+    }
     public static boolean agregarAdministrador() {
-
         return true;
     }
 }

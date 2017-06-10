@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Usuario {
     private String nombre, id, contraseña, rol;
-    private Restaurante rest;
+   public static Restaurante rest;
 
     public Usuario(String nombre, String id, String contraseña, String rol, Restaurante rest) {
         this.nombre = nombre;
@@ -26,42 +26,29 @@ public class Usuario {
         this.contraseña = contraseña;
         this.rol = rol;
     }
-
-    public Usuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     public String getId() {
         return id;
     }
-
     public String getContraseña() {
         return contraseña;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public String getRol() {
         return rol;
     }
-
     public void setRol(String rol) {
         this.rol = rol;
     }
-
-    public Restaurante getRest() {
+    public  Restaurante getRest() {
         return rest;
     }
-
     public void setRest(Restaurante rest) {
         this.rest = rest;
-    }
-    
-    
+    }  
 }

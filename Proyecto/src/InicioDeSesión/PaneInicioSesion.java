@@ -37,7 +37,6 @@ public class PaneInicioSesion<E> {
 
     HashMap<String, Usuario> informUsuarios;
     ArrayList<Usuario> UserContra;
-
     public static BorderPane rootPrincipal;
     public static Stage primaryStage;
     private Button IngresarButton;
@@ -53,11 +52,7 @@ public class PaneInicioSesion<E> {
     public static Label UsuarioLabel;
     public static Label ContraseñaLabel;
     public static Label MensajeLabel;
-    public static Label RolesLabel;
-
-    //PARA PRESENTAR LISTA DE OPCIONES
-//    ObservableList<String> tiposRoles;
-//    ListView<String> listaRoles; 
+    public static Label RolesLabel; 
     //Choice box for location 
     ChoiceBox TiposRolesBox = new ChoiceBox();
 
@@ -88,30 +83,19 @@ public class PaneInicioSesion<E> {
 
         this.TiposRolesBox = new ChoiceBox();
         TiposRolesBox.getItems().addAll("Cliente", "Asistente de Restaurante", "Administrador");
-
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("INICIO DE SESION");
         primaryStage.setResizable(false);
-        //PARA PRESENTAR UNA LISTA DE OPCIONES
-//        this.tiposRoles = FXCollections.observableArrayList( 
-//        "Cliente", "Asistente de Restaurante", "Administrador"); 
-//        listaRoles = new ListView<String>(tiposRoles); 
-
     }
-
     public static BorderPane getRoot() {
         return rootPrincipal;
     }
-
     public void menuPrincipal(Stage primaryStage) {
         IngresarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
+                  
                     String a=(String) TiposRolesBox.getValue();
-                    //for (Usuario values : informUsuarios.values()) {
-                    //      lista.add(values);
-                    //    System.out.println("*" + values.getNombre());
-                    //}
                     //ESTA VALIDACION DEBE MEJORAR PORQUE CUALQUIER USUARIO PUEDE ENTRAR COMO ASISTENTE O ADMINITRADOR
                     if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Cliente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
@@ -135,8 +119,6 @@ public class PaneInicioSesion<E> {
                         MensajeLabel.setTextFill(Color.rgb(210, 39, 30));
                         System.out.println("ERROR DE IDENTIFICACION");
                     }
-//                primaryStage.close();
-//                System.exit(0);//importante para poder salir del Output
                 }
             }
         });

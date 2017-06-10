@@ -12,20 +12,13 @@ package Modelo;
 public class Asistente extends Usuario{
     Restaurante rest;
 
-    public Asistente() {
-    }
-
-    
-
-
+  
     public Restaurante getRest() {
         return rest;
     }
-
     public void setRest(Restaurante rest) {
         this.rest = rest;
     }
-    
     public Asistente(String nombre, String id, String contraseña, String rol,Restaurante rest) {
         super(nombre, id, contraseña, rol);
         this.rest=rest;

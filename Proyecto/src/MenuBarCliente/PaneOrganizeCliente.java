@@ -67,10 +67,8 @@ public class PaneOrganizeCliente {
                     System.out.println("*" + values.getNombre());
                 }
             }
-            
-            ListaPlatos lp = new ListaPlatos(lista, primaryStage);
-            //lp.mostrarListaPltaos(lista,primaryStage);
-
+            ListaPlatos lp = new ListaPlatos();
+            lp.ventanaListaPlatos(lista, primaryStage);
         });
         menu.getItems().add(opcion1);
 
@@ -85,7 +83,8 @@ public class PaneOrganizeCliente {
                     System.out.println("*" + values.getNombre());
                 }
             }
-            ListaPlatos lp = new ListaPlatos(lista, primaryStage);
+            ListaPlatos lp = new ListaPlatos();
+            lp.ventanaListaPlatos(lista, primaryStage);
         
         });
        
