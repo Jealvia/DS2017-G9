@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Usuario {
     private String nombre, id, contraseña, rol;
-   public static Restaurante rest;
+    public Restaurante rest;
 
     public Usuario(String nombre, String id, String contraseña, String rol, Restaurante rest) {
         this.nombre = nombre;
@@ -51,4 +51,7 @@ public class Usuario {
     public void setRest(Restaurante rest) {
         this.rest = rest;
     }  
+    public String getNombreRestaurante(){
+        return this.rest.getNombre();
+    }
 }

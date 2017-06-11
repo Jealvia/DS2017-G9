@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package InformacionPlatos;
+<<<<<<< HEAD
 
 import InicioDeSesión.PaneInicioSesion;
 import MenuBarAsistente.PaneOrganizaAsistente;
 import MenuBarCliente.PaneOrganizeCliente;
 import Modelo.Persistencia;
+=======
+//cambia
+//2
+>>>>>>> master
 import Modelo.Platos;
 import Modelo.Usuario;
 import com.sun.pisces.PiscesRenderer;
 import java.util.ArrayList;
 import java.util.HashMap;
+<<<<<<< HEAD
 import java.util.Iterator;
 import java.util.Map;
+=======
+>>>>>>> master
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,13 +33,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -49,9 +54,23 @@ public class ListaPlatos {
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
+<<<<<<< HEAD
     Button retornarButton;
     HashMap<String, Usuario> informUsuarios;
     
+=======
+    HashMap<String, Platos> categoriaPlato;    
+    
+    public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
+        for (Platos m : lista) {
+            System.out.println("**" + m.getNombre());
+            Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
+            list.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
+            vbox.getChildren().add(nombre);
+            vbox.setAlignment(Pos.CENTER);
+        }
+    }
+>>>>>>> master
 
     public ListaPlatos() {
         this.contenedor=new BorderPane();

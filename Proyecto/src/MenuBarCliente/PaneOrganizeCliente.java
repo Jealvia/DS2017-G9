@@ -9,8 +9,10 @@ package MenuBarCliente;
  *
  * @author jimmy
  */
-
+//CAMBIA
+//2
 import Busqueda.Busqueda;
+import Categoria.ListaCategorias;
 import InformacionPlatos.ListaPlatos;
 import InicioDeSesión.PaneInicioSesion;
 import Modelo.Persistencia;
@@ -49,18 +51,16 @@ public class PaneOrganizeCliente {
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
         Menu menu = new Menu("Listar Categorias de Platos");
         //Creando los items(menuItem) quu iran en el primer menu
-        MenuItem opcion1 = new MenuItem("Estudiantil");
+        MenuItem opcion1 = new MenuItem("Seleccione categoría");
         System.out.println("**" + categoriaPlato.size());
-//        for (Platos values : categoriaPlato.values()) {
-//            if (values.getCategoria() == "estudiantil") {
-//                lista.add(values);
-//                System.out.println("*" + values.getNombre());
-//            }
-//        }
-        
+        for (Platos values : categoriaPlato.values()) {
+               lista.add(values);
+      }
+
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
             //System.exit(0);
+<<<<<<< HEAD
             for (Platos values : categoriaPlato.values()) {
                 if ("estudiantil".equals(values.getCategoria())) {
                     lista.add(values);
@@ -88,20 +88,38 @@ public class PaneOrganizeCliente {
         
         });
        
+=======
+            ListaCategorias tmp=new ListaCategorias();
+            ArrayList<String> listacategorias=new ArrayList<>();
+            listacategorias=tmp.ListaCategorias(this.lista);
+            tmp.ventanaListaCategoria(listacategorias, primaryStage,"-");
+            
+        });
+        menu.getItems().add(opcion1);
+
+>>>>>>> master
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
 
         //Objeto Menu2
         Menu menu2 = new Menu("Buscar Platos");
         MenuItem opcion2 = new MenuItem("Lista Platos");
-        
-        
+
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
+<<<<<<< HEAD
             Busqueda busq = new Busqueda(categoriaPlato, primaryStage,id);
             @Override
             public void handle(ActionEvent event) {
               busq.pantallaBusquedad(primaryStage);
+=======
+            Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
+
+            @Override
+            public void handle(ActionEvent event) {
+                // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
+                busq.pantallaBusquedad(primaryStage);
+>>>>>>> master
             }
         });
         menu2.getItems().add(opcion2);

@@ -11,12 +11,15 @@ package Modelo;
  */
 public class Restaurante {
     private String nombre,descripcion,telefono;
+    
     public Restaurante(String nombre){
         this.nombre=nombre;
     }
+    
     public Restaurante(){
         
     }
+    
     public Restaurante(String nombre, String descripcion, String telefono) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -40,4 +43,5 @@ public class Restaurante {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
 }

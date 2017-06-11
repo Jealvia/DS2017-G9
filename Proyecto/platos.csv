@@ -1,4 +1,3 @@
-categoria;nombre;descripcion;servido;tipo;restaurante;ingredientes
 estudiantil;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
 ejecutivo;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
 estudiantil;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
@@ -10,5 +9,9 @@ ejecutivo;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,
 estudiantil;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
 ejecutivo;ceviche de conchas;bueno;frio;plato fuerte;B;conchas,tomate,cebolla,limon,pimienta
 estudiantil;ceviche de camaron;ok ok ok;frio;plato fuerte;B;camarones,cebolla,pimienta,tomate
+<<<<<<< HEAD
 estudiantil;Guatita;sdsdsdsdsdsdsds;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
 ejecutivo;seco de chivo;assasassdfeeeff;caliente;plato fuerte;B;carne de chivo,papa,condimentos,arroz
+=======
+estudiantil;Guatita;sdsdsdsdsdsdsds;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
+>>>>>>> master

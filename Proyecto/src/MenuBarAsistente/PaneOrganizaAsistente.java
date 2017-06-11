@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package MenuBarAsistente;
-
+//esta cambia
 import AgregarPlatillo.PaneAgregarPlatillo;
-import Busqueda.Busqueda;
+import Categoria.ListaCategorias;
 import InformacionPlatos.ListaPlatos;
+import InformacionPlatos.PaneInformacionPlatos;
 import InicioDeSesión.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
@@ -28,12 +29,22 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
+//CAMBIA
+//2
 public class PaneOrganizaAsistente {
+<<<<<<< HEAD
     private Group root;
     private ArrayList<Platos> lista;
     private HashMap<String, Platos> categoriaPlato;
     private Stage primaryStage;
 
+=======
+    Group root;
+    ArrayList<Platos> lista;
+    HashMap<String, Platos> categoriaPlato;
+    Stage primaryStage;
+    
+>>>>>>> master
     public PaneOrganizaAsistente() {
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
@@ -66,7 +77,6 @@ public class PaneOrganizaAsistente {
         
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
-
         //Objeto Menu2
         Menu menu2 = new Menu("Lista de platos");
         MenuItem opcion2 = new MenuItem("Lista del restaurante");
@@ -74,8 +84,7 @@ public class PaneOrganizaAsistente {
         //Mostrar lista de platos del restaurante
         opcion2.setOnAction((ActionEvent event) -> {
             for (Platos values : categoriaPlato.values()) {
-                if (restaurante.equals(values.getObjRestaurante().getNombre())) {
-                    
+                if (restaurante.equals(values.getRestaurante().getNombre())) {
                     lista.add(values);
                 }
             }
@@ -88,17 +97,20 @@ public class PaneOrganizaAsistente {
         menuBar.getMenus().add(menu2);
         
         //Agrega menu lista por categoria
-        Menu menucat=new Menu("Lista por categorias");
-        MenuItem opcionestudiantil = new MenuItem("Estudiantil");
+        Menu menucat=new Menu("Categorias de Platos");
+        MenuItem opciones = new MenuItem("Seleccione categoría");
         //Modificar boton aqui
         
-        opcionestudiantil.setOnAction((ActionEvent event) -> {
+        opciones.setOnAction((ActionEvent event) -> {
+            ArrayList<Platos> listaplatos = new ArrayList<>();
             for (Platos values : categoriaPlato.values()) {
-                if ("estudiantil".equals(values.getCategoria()) && restaurante.equals(values.getObjRestaurante().getNombre())) {
-                    
-                    lista.add(values);
+                if (values.getRestaurante().getNombre().equals(restaurante)) {
+                    System.out.println(values.getRestaurante().getNombre());
+                    System.out.println(restaurante);
+                    listaplatos.add(values);
                 }
             }
+<<<<<<< HEAD
             ListaPlatos lp = new ListaPlatos();
             lp.ventanaListaPlatos(lista, primaryStage,id);
             
@@ -118,7 +130,14 @@ public class PaneOrganizaAsistente {
             ListaPlatos lp = new ListaPlatos();
             lp.ventanaListaPlatos(lista, primaryStage,id);
             
+=======
+            ListaCategorias tmp=new ListaCategorias();
+            ArrayList<String> listacategorias=new ArrayList<>();
+            listacategorias=tmp.ListaCategorias(listaplatos);
+            tmp.ventanaListaCategoria(listacategorias, primaryStage,restaurante);
+>>>>>>> master
         });
+        menucat.getItems().add(opciones);
         menuBar.getMenus().add(menucat);
         
         //Objeto Menu3

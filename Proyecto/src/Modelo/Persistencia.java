@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Categoria.Categoria;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -45,9 +46,10 @@ public class Persistencia <E>{
                 String rol = valores[3].trim();
                 String restaurante =valores[4].trim();
                 Restaurante rest=new Restaurante(restaurante);
+                System.out.println(restaurante);
                 switch (rol) {
                     case "Cliente":
-                        temporal.put(id,  new Usuario(nombre, id, contrasena, rol));
+                        temporal.put(id,  new Usuario(nombre, id, contrasena, rol,rest));
                         break;
                     case "Asistente de Restaurante":
                         temporal.put(id,  new Usuario(nombre, id, contrasena, rol,rest));
@@ -73,7 +75,8 @@ public class Persistencia <E>{
                 }
                 String valores[];
                 valores = linea.split(";");
-                String categoria = valores[0].trim();
+                String cat = valores[0].trim();
+                Categoria categoria=new Categoria(cat);
                 String nombre = valores[1].trim();
                 String descripcion = valores[2].trim();
                 String servido = valores[3].trim();
@@ -81,15 +84,7 @@ public class Persistencia <E>{
                 String restaurante = valores[5].trim();
                 String ingredientes = valores[6].trim();
                 Restaurante rest=new Restaurante(restaurante);
-                switch (categoria) {
-                    case "estudiantil":
-                        temporal.put(categoria+i, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
-                        break;
-                    case "ejecutivo":
-                        temporal.put(categoria+i, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
-                        break;
-                }
-                i++;
+                temporal.put(nombre, new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingredientes));
             }
         } catch (IOException e) {
         }
