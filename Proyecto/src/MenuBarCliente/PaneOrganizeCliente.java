@@ -30,10 +30,10 @@ import javafx.scene.control.SeparatorMenuItem;
 
 public class PaneOrganizeCliente {
 
-    Group root;
-    ArrayList<Platos> lista;
-    HashMap<String, Platos> categoriaPlato;
-    Stage primaryStage;
+    private Group root;
+    private ArrayList<Platos> lista;
+    private HashMap<String, Platos> categoriaPlato;
+    private Stage primaryStage;
 
     public PaneOrganizeCliente() {
         this.primaryStage = primaryStage;
@@ -43,11 +43,11 @@ public class PaneOrganizeCliente {
 
     }
 
-    public void menuCliente(Stage primaryStage) {
+    public void menuCliente(Stage primaryStage,String id) {
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
-        Menu menu = new Menu("Categorias de Platos");
+        Menu menu = new Menu("Listar Categorias de Platos");
         //Creando los items(menuItem) quu iran en el primer menu
         MenuItem opcion1 = new MenuItem("Estudiantil");
         System.out.println("**" + categoriaPlato.size());
@@ -68,7 +68,7 @@ public class PaneOrganizeCliente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage);
+            lp.ventanaListaPlatos(lista, primaryStage,id);
         });
         menu.getItems().add(opcion1);
 
@@ -84,7 +84,7 @@ public class PaneOrganizeCliente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage);
+            lp.ventanaListaPlatos(lista, primaryStage,id);
         
         });
        
@@ -98,10 +98,9 @@ public class PaneOrganizeCliente {
         
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
-            Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
+            Busqueda busq = new Busqueda(categoriaPlato, primaryStage,id);
             @Override
             public void handle(ActionEvent event) {
-              // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
               busq.pantallaBusquedad(primaryStage);
             }
         });
@@ -136,11 +135,11 @@ public class PaneOrganizeCliente {
         return root;
     }
 
-    public static void pantallaCliente(Stage primaryStage) {
+    public void pantallaCliente(Stage primaryStage,String id) {
         PaneOrganizeCliente root4 = new PaneOrganizeCliente();
         Scene scene = new Scene(root4.getRoot(), 400, 250, Color.ORANGERED);
         primaryStage.setScene(scene);
-        root4.menuCliente(primaryStage);
+        root4.menuCliente(primaryStage,id);
         primaryStage.show();
     }
 

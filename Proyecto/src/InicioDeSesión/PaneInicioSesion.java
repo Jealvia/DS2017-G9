@@ -1,8 +1,4 @@
 package InicioDeSesión;
-
-
-
-
 import MenuBarAdministrador.PaneOrganizaAdministrador;
 import MenuBarCliente.PaneOrganizeCliente;
 import MenuBarAsistente.PaneOrganizaAsistente;
@@ -35,10 +31,10 @@ import javafx.stage.Stage;
  */
 public class PaneInicioSesion<E> {
 
-    HashMap<String, Usuario> informUsuarios;
-    ArrayList<Usuario> UserContra;
-    public static BorderPane rootPrincipal;
-    public static Stage primaryStage;
+    private HashMap<String, Usuario> informUsuarios;
+    private ArrayList<Usuario> UserContra;
+    private  BorderPane rootPrincipal;
+    private  Stage primaryStage;
     private Button IngresarButton;
     private Button SalirButton;
     private Image imgLoadFondo;
@@ -46,18 +42,18 @@ public class PaneInicioSesion<E> {
     private Image imgLoadLogin;
     private ImageView imgLogin;
     private Persistencia pers;
-    public static TextField ingresoUsuario;
-    public static TextField ingresoContraseña;
-    public PasswordField ingreso_Contraseña;
-    public static Label UsuarioLabel;
-    public static Label ContraseñaLabel;
-    public static Label MensajeLabel;
-    public static Label RolesLabel; 
+    private TextField ingresoUsuario;
+    private PasswordField ingreso_Contraseña;
+    private  Label UsuarioLabel;
+    private  Label ContraseñaLabel;
+    private  Label MensajeLabel;
+    private  Label RolesLabel; 
     //Choice box for location 
-    ChoiceBox TiposRolesBox = new ChoiceBox();
+    private ChoiceBox TiposRolesBox ;
+    
 
     public PaneInicioSesion(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+        this.TiposRolesBox = new ChoiceBox();
         this.imgLoadFondo = new Image("/imagenes/ESPOL-2-GRIS.png");
         this.imgFondo = new ImageView(imgLoadFondo);
         this.imgFondo.setFitHeight(400);
@@ -67,10 +63,10 @@ public class PaneInicioSesion<E> {
         this.imgLogin.setFitHeight(100);
         this.imgLogin.setFitWidth(100);
         this.rootPrincipal = new BorderPane();
-        this.ingresoUsuario = new TextField();
+        this.ingresoUsuario = new TextField("Ingresar Usuario");
+       
         this.ingreso_Contraseña = new PasswordField();
-        ingreso_Contraseña.setPromptText("Your password");
-        this.ingresoContraseña = new TextField();
+        this.ingreso_Contraseña.setPromptText("Your password");
         this.UsuarioLabel = new Label("Usuario: ");
         this.ContraseñaLabel = new Label("Contraseña: ");
         this.MensajeLabel = new Label();
@@ -80,19 +76,26 @@ public class PaneInicioSesion<E> {
         this.rootPrincipal.getChildren().add(imgFondo);
         this.informUsuarios = Persistencia.leerUsuarios();
         this.UserContra = new ArrayList<>();
-
         this.TiposRolesBox = new ChoiceBox();
-        TiposRolesBox.getItems().addAll("Cliente", "Asistente de Restaurante", "Administrador");
+        this.TiposRolesBox.getItems().addAll("Cliente", "Asistente de Restaurante", "Administrador");
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("INICIO DE SESION");
         primaryStage.setResizable(false);
     }
-    public static BorderPane getRoot() {
+
+ 
+    public  BorderPane getRoot() {
         return rootPrincipal;
     }
-    public void menuPrincipal(Stage primaryStage) {
+
+    
+    
+    public  void menuPrincipal(Stage primaryStage) {
+        
         IngresarButton.setOnAction(new EventHandler<ActionEvent>() {
+            
             public void handle(ActionEvent event) {
+                
                 for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
                   
                     String a=(String) TiposRolesBox.getValue();
@@ -101,17 +104,17 @@ public class PaneInicioSesion<E> {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                         System.out.println("INGRESO AL SISTEMA");
-                        PaneOrganizeCliente.pantallaCliente(primaryStage);
+                        
+                        PaneOrganizeCliente poc=new PaneOrganizeCliente();
+                        poc.pantallaCliente(primaryStage,ingresoUsuario.getText());
 
-//                    }else{
-                        //                      PaneOrganizaAdministrador.pantallaAdministrador(primaryStage);    
-                        //                }
                     } 
                     else if(entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente de Restaurante".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                         System.out.println("Asistente");
-                        PaneOrganizaAsistente.pantallaAsistente(primaryStage,entry.getValue().getRest().getNombre());
+                        PaneOrganizaAsistente poa=new PaneOrganizaAsistente();
+                        poa.pantallaAsistente(primaryStage,entry.getValue().getRest().getNombre(),ingresoUsuario.getText());
 
                     }
                     else {
@@ -142,6 +145,7 @@ public class PaneInicioSesion<E> {
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: Blue;");
         // Add the scene to the Stage
+        
         rootPrincipal.setCenter(root1);
     }
 

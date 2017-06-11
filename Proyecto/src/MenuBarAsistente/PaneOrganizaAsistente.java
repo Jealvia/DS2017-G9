@@ -29,20 +29,19 @@ import javafx.stage.Stage;
  * @author jimmy
  */
 public class PaneOrganizaAsistente {
-    Group root;
-    ArrayList<Platos> lista;
-    HashMap<String, Platos> categoriaPlato;
-    Stage primaryStage;
+    private Group root;
+    private ArrayList<Platos> lista;
+    private HashMap<String, Platos> categoriaPlato;
+    private Stage primaryStage;
 
     public PaneOrganizaAsistente() {
-        this.primaryStage = primaryStage;
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
         this.categoriaPlato = Persistencia.leerPlatos();
 
     }
       // metodo que me obtiene el root1
-    public void menuAsistente(Stage primaryStage,String restaurante){
+    public void menuAsistente(Stage primaryStage,String restaurante,String id){
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
@@ -56,11 +55,9 @@ public class PaneOrganizaAsistente {
             PaneAgregarPlatillo pap=new PaneAgregarPlatillo(primaryStage);
             for (Platos values : categoriaPlato.values()) {
                 if (restaurante.equals(values.getObjRestaurante().getNombre())) {
-                   pap.pantallaAgregarPlatosAsistente(primaryStage,values.getObjRestaurante());
+                   pap.pantallaAgregarPlatosAsistente(primaryStage,values.getObjRestaurante(),id);
                 }
-            }
-            
-            
+            }   
         });
         menu.getItems().add(opcion1);
 
@@ -83,7 +80,7 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage);
+            lp.ventanaListaPlatos(lista, primaryStage,id);
             
         });
         menu2.getItems().add(opcion2);
@@ -103,7 +100,7 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage);
+            lp.ventanaListaPlatos(lista, primaryStage,id);
             
         });
         menucat.getItems().add(opcionestudiantil);
@@ -119,7 +116,7 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage);
+            lp.ventanaListaPlatos(lista, primaryStage,id);
             
         });
         menuBar.getMenus().add(menucat);
@@ -144,23 +141,17 @@ public class PaneOrganizaAsistente {
         menuBar.getMenus().add(menu3);
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
         root.getChildren().add(menuBar);
-    
-    
     }
-    
-    
-    
-    
-    
+   
     public Group getRoot() {
         return root;
     }
 
-    public static void pantallaAsistente(Stage primaryStage,String restaurante) {
+    public void pantallaAsistente(Stage primaryStage,String restaurante,String id) {
         PaneOrganizaAsistente root4 = new PaneOrganizaAsistente();
         Scene scene = new Scene(root4.getRoot(), 500, 200, Color.CADETBLUE);
         primaryStage.setScene(scene);
-        root4.menuAsistente(primaryStage,restaurante);
+        root4.menuAsistente(primaryStage,restaurante,id);
         primaryStage.show();
     }
 }
