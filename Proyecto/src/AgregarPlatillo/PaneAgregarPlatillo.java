@@ -4,16 +4,14 @@
  * and open the template in the editor.
  */
 package AgregarPlatillo;
-
+//cambia
+//2
 import MenuBarAsistente.PaneOrganizaAsistente;
-import MenuBarCliente.PaneOrganizeCliente;
+import Categoria.Categoria;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import Modelo.Restaurante;
-import Modelo.Usuario;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -130,7 +128,8 @@ public class PaneAgregarPlatillo {
         AgregarButton.setOnAction(new EventHandler<ActionEvent>() {
             
             public void handle(ActionEvent event) {
-                Platos pt=new Platos(NombreText.getText(),DescripcionText.getText(), CategoriaText.getText().toLowerCase(), TipoText.getText(), ServidoText.getText(),restaurante,IngredientesText.getText());
+                Categoria categoria=new Categoria(CategoriaText.getText().toLowerCase());
+                Platos pt=new Platos(NombreText.getText(),DescripcionText.getText(),categoria , TipoText.getText(), ServidoText.getText(),restaurante,IngredientesText.getText());
                 categoriaPlato.put(CategoriaText.getText(), pt);
                 Persistencia.writePlatos(categoriaPlato);
             }

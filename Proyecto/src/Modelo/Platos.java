@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Modelo;
-
+//CAMBIA
+//2
+import Categoria.Categoria;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,10 +23,11 @@ import java.util.Map;
  * @author Julio Alvia
  */
 public class Platos <E>{
-    private String nombre,descripcion,categoria,tipo,servido,ingredientes;
+    private String nombre,descripcion,tipo,servido,ingredientes;
+    Categoria categoria;
     private Restaurante restaurante;
 
-    public Platos(String nombre, String descripcion, String categoria, String tipo, String servido, Restaurante restaurante,String ingredientes) {
+    public Platos(String nombre, String descripcion, Categoria categoria, String tipo, String servido, Restaurante restaurante,String ingredientes) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -33,6 +36,23 @@ public class Platos <E>{
         this.restaurante = restaurante;
         this.ingredientes=ingredientes;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+    
     public String getIngredientes() {
         return ingredientes;
     }
@@ -53,12 +73,7 @@ public class Platos <E>{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public String getCategoria() {
-        return categoria;
-    }
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+    
     public String getTipo() {
         return tipo;
     }
@@ -81,7 +96,7 @@ public class Platos <E>{
         ArrayList<Platos> lista = new ArrayList<>();
         int i = 0;
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
-            if (entry.getKey() == categoria) {
+            if (entry.getValue().getCategoria().getNombre().equals(categoria)) {
                 lista.addAll((Collection<? extends Platos>) entry.getValue());
             }
         }
@@ -92,7 +107,7 @@ public class Platos <E>{
         ArrayList<E> lista = new ArrayList<>();
         int i = 0;
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
-            if (entry.getValue().getObjRestaurante().getNombre() == restaurante) {
+            if (entry.getValue().getObjRestaurante().getNombre().equals(restaurante)) {
                 lista.addAll((Collection<? extends E>) entry.getValue());
             }
         }
@@ -119,7 +134,7 @@ public class Platos <E>{
         return true;
     }
     //el primer valor que tiene que recibir debe ser un identificador(nombe)
-    public boolean modificarPlatillo(String identificador,String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingrediente,HashMap<String, Platos> listPlatos){
+    public boolean modificarPlatillo(String identificador,Categoria categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingrediente,HashMap<String, Platos> listPlatos){
         Restaurante rest=new Restaurante(restaurante);
         Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingrediente);
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {

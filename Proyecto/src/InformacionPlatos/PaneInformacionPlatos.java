@@ -5,11 +5,11 @@
  */
 package InformacionPlatos;
 
-
-import InicioDeSesión.PaneInicioSesion;
+//CAMBIA
+//2
+import MenuBarAsistente.PaneOrganizaAsistente;
 import MenuBarCliente.PaneOrganizeCliente;
 import Modelo.Platos;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import javafx.event.ActionEvent;
@@ -52,6 +52,10 @@ public class PaneInformacionPlatos {
     public  Button RetornarButton;
     public  Button SalirButton;
     public  Button ModificarButton;
+
+    
+    
+    
     public PaneInformacionPlatos(Stage primaryStage) {
         imgLoadFondo4=new Image("/imagenes/fondo4.jpg");
         imgFondo4=new ImageView(imgLoadFondo4);
@@ -107,6 +111,7 @@ public class PaneInformacionPlatos {
         HBox PaneHorizontalBotones=new HBox(300,RetornarButton,SalirButton);
         PaneHorizontal.setAlignment(Pos.CENTER);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
+        
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 System.out.println("SALIO DEL SISTEMA");
@@ -114,12 +119,13 @@ public class PaneInformacionPlatos {
                 System.exit(0);//importante para poder salir del Output
             }
         });
-        RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                PaneOrganizeCliente root = new PaneOrganizeCliente();
-                root.pantallaCliente(primaryStage);
-            }
+        
+        RetornarButton.setOnAction((ActionEvent event) -> {
+            PaneOrganizeCliente root = new PaneOrganizeCliente();
+            root.pantallaCliente(primaryStage);
+//                
         });
+        
         Iterator it = numPlt.keySet().iterator();
             while(it.hasNext()){
                 Integer key = (Integer) it.next();
@@ -129,7 +135,7 @@ public class PaneInformacionPlatos {
                     IngredientesText.setText(numPlt.get(opcion).getIngredientes());
                     RestauranteText.setText(numPlt.get(opcion).getObjRestaurante().getNombre());
                     DescripcionText.setText(numPlt.get(opcion).getDescripcion());
-                    CategoriaText.setText(numPlt.get(opcion).getCategoria());
+                    CategoriaText.setText(numPlt.get(opcion).getCategoria().getNombre());
                     imgPlatos4.setImage(new Image("/imagenes/pt"+key+".jpg"));
                     //Para que no se pueda editar la informacion en los textfielts
                     NombreText.setEditable(false);

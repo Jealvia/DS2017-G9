@@ -4,25 +4,21 @@
  * and open the template in the editor.
  */
 package InformacionPlatos;
-
-import Modelo.Persistencia;
+//cambia
+//2
 import Modelo.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -41,6 +37,7 @@ public class ListaPlatos {
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
     HashMap<String, Platos> categoriaPlato;    
+    
     public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
