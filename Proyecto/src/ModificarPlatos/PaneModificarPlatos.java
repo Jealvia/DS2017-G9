@@ -158,9 +158,9 @@ public class PaneModificarPlatos {
                     public void handle(ActionEvent event) {
                         Categoria categoria = new Categoria(CategoriaText.getText().toLowerCase());
 
-                        Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), categoria, TipoText.getText(), ServidoText.getText(), restaurante, IngredientesText.getText());
+                        Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), categoria, "plato fuerte", "frio", restaurante, IngredientesText.getText());
 
-                        categoriaPlato.put(CategoriaText.getText(), pt);
+                        categoriaPlato.put(NombreText.getText(), pt);
                         Persistencia.writePlatos(categoriaPlato);
                     }
                 });
