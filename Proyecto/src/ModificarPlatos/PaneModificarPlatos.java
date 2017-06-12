@@ -10,6 +10,7 @@ import static AgregarPlatillo.PaneAgregarPlatillo.TipoText;
 import Categoria.Categoria;
 
 import InicioDeSesión.PaneInicioSesion;
+import MenuBarAsistente.PaneOrganizaAsistente;
 
 import MenuBarCliente.PaneOrganizeCliente;
 import Modelo.Persistencia;
@@ -129,8 +130,8 @@ public class PaneModificarPlatos {
         });
         RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                PaneOrganizeCliente root = new PaneOrganizeCliente();
-                root.pantallaCliente(primaryStage);
+                PaneOrganizaAsistente root = new PaneOrganizaAsistente();
+                root.pantallaAsistente(primaryStage,restaurante.getNombre());
             }
         });
         

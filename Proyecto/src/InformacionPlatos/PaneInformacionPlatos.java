@@ -7,6 +7,7 @@ package InformacionPlatos;
 
 //CAMBIA
 //2
+import MenuBarAsistente.PaneOrganizaAsistente;
 import MenuBarCliente.PaneOrganizeCliente;
 import Modelo.Platos;
 import java.util.HashMap;
@@ -120,8 +121,9 @@ public class PaneInformacionPlatos {
         });
         
         RetornarButton.setOnAction((ActionEvent event) -> {
-            PaneOrganizeCliente root = new PaneOrganizeCliente();
-            root.pantallaCliente(primaryStage);
+            PaneOrganizaAsistente root = new PaneOrganizaAsistente();
+            //Cambio de enlace de resaturante.getNombre()
+            root.pantallaAsistente(primaryStage,numPlt.get(opcion).getObjRestaurante().getNombre());
 //                
         });
         
