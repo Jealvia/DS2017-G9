@@ -12,6 +12,7 @@ import InformacionPlatos.PaneInformacionPlatos;
 import InicioDeSesión.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
+import ModificarPlatos.ListaModificarPlatos;
 import ModificarPlatos.PaneModificarPlatos;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,9 +55,7 @@ public class PaneOrganizaAsistente {
         //Creando los items(menuItem) quu iran en el primer menu
         MenuItem opcion1 = new MenuItem("Nuevo Platillo");
         
-        //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
-            //Karol aqui te toca modificar
             PaneAgregarPlatillo pap=new PaneAgregarPlatillo(primaryStage);
             for (Platos values : categoriaPlato.values()) {
                 if (restaurante.equals(values.getObjRestaurante().getNombre())) {
@@ -92,11 +91,16 @@ public class PaneOrganizaAsistente {
         //Modificar platos
         
         opcionModificarPlato.setOnAction((ActionEvent event) -> {
-            
-            PaneModificarPlatos pap=new PaneModificarPlatos(primaryStage);
+            ListaModificarPlatos pap =new ListaModificarPlatos();
+            //PaneModificarPlatos pap=new PaneModificarPlatos(primaryStage);
+            for (Platos values : categoriaPlato.values()) {
+                if (restaurante.equals(values.getRestaurante().getNombre())) {
+                    lista.add(values);
+                }
+            }
             for (Platos values : categoriaPlato.values()) {
                 if (restaurante.equals(values.getObjRestaurante().getNombre())) {
-//                   pap.pantallaModificarPlatos(primaryStage,values.getObjRestaurante());
+                   pap.ventanaListaPlatos(lista,primaryStage);
                 }
             }
         });

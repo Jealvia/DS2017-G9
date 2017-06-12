@@ -7,7 +7,6 @@ package InformacionPlatos;
 
 //CAMBIA
 //2
-import MenuBarAsistente.PaneOrganizaAsistente;
 import MenuBarCliente.PaneOrganizeCliente;
 import Modelo.Platos;
 import java.util.HashMap;

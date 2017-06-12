@@ -52,7 +52,6 @@ public class ListaCategorias {
             System.out.println("hola");
             catego.add(m.getCategoria());
         }
-        int tam=catego.size();
         ArrayList<String> listacategorias=new ArrayList<>();
         Iterator<Categoria> it1 = catego.iterator();
         while (it1.hasNext()){

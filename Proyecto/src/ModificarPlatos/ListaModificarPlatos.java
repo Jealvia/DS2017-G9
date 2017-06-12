@@ -37,6 +37,7 @@ public class ListaModificarPlatos {
     static ListView<String> listaPlatos;
     HashMap<String, Platos> categoriaPlato;    
     
+    
     public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
