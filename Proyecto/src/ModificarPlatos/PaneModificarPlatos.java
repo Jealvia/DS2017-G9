@@ -5,8 +5,7 @@
  */
 package ModificarPlatos;
 
-import static AgregarPlatillo.PaneAgregarPlatillo.ServidoText;
-import static AgregarPlatillo.PaneAgregarPlatillo.TipoText;
+
 import Categoria.Categoria;
 
 import InicioDeSesión.PaneInicioSesion;
@@ -51,11 +50,15 @@ public class PaneModificarPlatos {
     public Label CategoriaLabel;
     public Label IngredienteLabel;
     public Label DescripcionLabel;
+    public Label TipoLabel;
+    public Label ServidoLabel;
     public static TextField NombreText;
     public static TextField RestauranteText;
     public static TextField CategoriaText;
     public static TextField IngredientesText;
     public static TextField DescripcionText;
+    public static TextField TipoText;
+    public static TextField ServidoText;
     public Button RetornarButton;
     public Button SalirButton;
     public Button ModificarButton;
@@ -79,6 +82,8 @@ public class PaneModificarPlatos {
         this.CategoriaText = new TextField();
         this.IngredientesText = new TextField();
         this.DescripcionText = new TextField();
+        this.TipoText=new TextField();
+        this.ServidoText=new TextField();
 
         this.RetornarButton = new Button("Retornar");
         this.SalirButton = new Button("Salir");
@@ -89,6 +94,8 @@ public class PaneModificarPlatos {
         this.CategoriaLabel = new Label("Categoria: ");
         this.IngredienteLabel = new Label("Ingredientes: ");
         this.DescripcionLabel = new Label("Descripcion: ");
+        this.TipoLabel=new Label("Descripcion: ");
+        this.ServidoLabel=new Label("Descripcion: ");
         Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
 
         RestauranteLabel.setTextFill(Color.rgb(21, 117, 84));
@@ -96,12 +103,16 @@ public class PaneModificarPlatos {
         IngredienteLabel.setTextFill(Color.rgb(21, 117, 84));
         DescripcionLabel.setTextFill(Color.rgb(21, 117, 84));
         NombreLabel.setTextFill(Color.rgb(21, 117, 84));
+        TipoLabel.setTextFill(Color.rgb(21, 117, 84));
+        ServidoLabel.setTextFill(Color.rgb(21, 117, 84));
 
         NombreLabel.setFont(theFont);
         RestauranteLabel.setFont(theFont);
         CategoriaLabel.setFont(theFont);
         IngredienteLabel.setFont(theFont);
         DescripcionLabel.setFont(theFont);
+        TipoLabel.setFont(theFont);
+        ServidoLabel.setFont(theFont);
 
         this.root4 = new BorderPane();
         this.root4.getChildren().add(imgFondo4);
@@ -145,6 +156,8 @@ public class PaneModificarPlatos {
                 RestauranteText.setText(numPlt.get(opcion).getObjRestaurante().getNombre());
                 DescripcionText.setText(numPlt.get(opcion).getDescripcion());
                 CategoriaText.setText(numPlt.get(opcion).getCategoria().getNombre());
+                TipoText.setText(numPlt.get(opcion).getTipo());
+                ServidoText.setText(numPlt.get(opcion).getServido());
                 imgPlatos4.setImage(new Image("/imagenes/pt" + key + ".jpg"));
                 //Para que se pueda editar la informacion en los textfielts
                 NombreText.setEditable(true);
@@ -152,13 +165,16 @@ public class PaneModificarPlatos {
                 RestauranteText.setEditable(true);
                 DescripcionText.setEditable(true);
                 CategoriaText.setEditable(true);
+                TipoText.setEditable(true);
+                ServidoText.setEditable(true);
+                
 
                 ModificarButton.setOnAction(new EventHandler<ActionEvent>() {
 
                     public void handle(ActionEvent event) {
                         Categoria categoria = new Categoria(CategoriaText.getText().toLowerCase());
 
-                        Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), categoria, "plato fuerte", "frio", restaurante, IngredientesText.getText());
+                        Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), categoria, TipoText.getText(), ServidoText.getText(), restaurante, IngredientesText.getText());
 
                         categoriaPlato.put(NombreText.getText(), pt);
                         Persistencia.writePlatos(categoriaPlato);
@@ -167,7 +183,7 @@ public class PaneModificarPlatos {
             }
         }
         VBox PaneOjetos = new VBox(5, NombreLabel, NombreText, RestauranteLabel, RestauranteText, CategoriaLabel, CategoriaText,
-                 IngredienteLabel, IngredientesText, DescripcionLabel, PaneHorizontal, DescripcionText, PaneHorizontalBotones);
+                 IngredienteLabel, IngredientesText, TipoLabel, TipoText, ServidoLabel, ServidoText, DescripcionLabel, PaneHorizontal, DescripcionText, PaneHorizontalBotones);
         PaneOjetos.setAlignment(Pos.CENTER_LEFT);
         PaneOjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"

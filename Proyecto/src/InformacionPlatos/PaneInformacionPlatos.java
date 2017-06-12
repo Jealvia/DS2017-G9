@@ -44,11 +44,13 @@ public class PaneInformacionPlatos {
     public  Label CategoriaLabel;
     public Label IngredienteLabel;
     public Label DescripcionLabel;
+    
     public static   TextField NombreText;
     public static  TextField RestauranteText;
     public static  TextField CategoriaText;
     public static  TextField IngredientesText;
     public static TextField DescripcionText;
+    
     public  Button RetornarButton;
     public  Button SalirButton;
     public  Button ModificarButton;
@@ -71,7 +73,7 @@ public class PaneInformacionPlatos {
         this.RestauranteText=new TextField();
         this.CategoriaText=new TextField();
         this.IngredientesText=new TextField();
-        this.DescripcionText=new TextField();
+        
         
         this.RetornarButton=new Button("Retornar");
         this.SalirButton=new Button("Salir");
@@ -81,6 +83,7 @@ public class PaneInformacionPlatos {
         this.CategoriaLabel=new Label("Categoria: ");
         this.IngredienteLabel=new Label("Ingredientes: ");
         this.DescripcionLabel=new Label("Descripcion: ");
+        
         Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
         
         RestauranteLabel.setTextFill(Color.rgb(21, 117, 84));
@@ -89,11 +92,13 @@ public class PaneInformacionPlatos {
         DescripcionLabel.setTextFill(Color.rgb(21, 117, 84));
         NombreLabel.setTextFill(Color.rgb(21, 117, 84));
         
+        
         NombreLabel.setFont(theFont);
         RestauranteLabel.setFont(theFont);
         CategoriaLabel.setFont(theFont);
         IngredienteLabel.setFont(theFont);
         DescripcionLabel.setFont(theFont);
+        
         
         this.root4=new BorderPane();
         this.root4.getChildren().add(imgFondo4);
@@ -137,6 +142,7 @@ public class PaneInformacionPlatos {
                     RestauranteText.setText(numPlt.get(opcion).getObjRestaurante().getNombre());
                     DescripcionText.setText(numPlt.get(opcion).getDescripcion());
                     CategoriaText.setText(numPlt.get(opcion).getCategoria().getNombre());
+                    
                     imgPlatos4.setImage(new Image("/imagenes/pt"+key+".jpg"));
                     //Para que no se pueda editar la informacion en los textfielts
                     NombreText.setEditable(false);
