@@ -37,7 +37,7 @@ public class Busqueda {
 
     }
 
-    public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage,String id) {
+    public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage) {
         busqueda = new Label("BUSQUEDA");
         buscar_nombre = new Button("Buscar");
         busqueda_nombre = new Label("Nombre");
@@ -60,7 +60,7 @@ public class Busqueda {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage,id);
+            lp.ventanaListaPlatos(lista, primaryStage);
         });
     }
     public void pantallaBusquedad(Stage primaryStage){

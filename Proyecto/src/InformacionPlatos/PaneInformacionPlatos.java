@@ -5,25 +5,13 @@
  */
 package InformacionPlatos;
 
-<<<<<<< HEAD
-
-import InicioDeSesión.PaneInicioSesion;
-=======
 //CAMBIA
 //2
->>>>>>> master
 import MenuBarAsistente.PaneOrganizaAsistente;
 import MenuBarCliente.PaneOrganizeCliente;
-import Modelo.Persistencia;
 import Modelo.Platos;
-<<<<<<< HEAD
-import Modelo.Usuario;
-import java.util.ArrayList;
-=======
->>>>>>> master
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -64,14 +52,10 @@ public class PaneInformacionPlatos {
     public  Button RetornarButton;
     public  Button SalirButton;
     public  Button ModificarButton;
-<<<<<<< HEAD
-     HashMap<String, Usuario> informUsuarios;
-=======
 
     
     
     
->>>>>>> master
     public PaneInformacionPlatos(Stage primaryStage) {
         imgLoadFondo4=new Image("/imagenes/fondo4.jpg");
         imgFondo4=new ImageView(imgLoadFondo4);
@@ -113,7 +97,6 @@ public class PaneInformacionPlatos {
         
         this.root4=new BorderPane();
         this.root4.getChildren().add(imgFondo4);
-        this.informUsuarios = Persistencia.leerUsuarios();
         
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("Informacion Platos");
@@ -123,16 +106,12 @@ public class PaneInformacionPlatos {
     public static BorderPane getRoot(){
         return root4;
     }
-    public void DiseñoVentanaPlatos(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion,String id){
+    public void DiseñoVentanaPlatos(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion){
         HBox PaneHorizontal=new HBox(20,imgPlatos4,RetornarButton);
         HBox PaneHorizontalBotones=new HBox(300,RetornarButton,SalirButton);
         PaneHorizontal.setAlignment(Pos.CENTER);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
-<<<<<<< HEAD
-       
-=======
         
->>>>>>> master
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 System.out.println("SALIO DEL SISTEMA");
@@ -140,29 +119,11 @@ public class PaneInformacionPlatos {
                 System.exit(0);//importante para poder salir del Output
             }
         });
-<<<<<<< HEAD
-        RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.out.println(id);
-                for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
-                    
-                    if(entry.getValue().getRol().equals("Cliente")&& id.equals(entry.getKey())){
-                        PaneOrganizeCliente root2 = new PaneOrganizeCliente();
-                        root2.pantallaCliente(primaryStage,id);
-                    }else if (entry.getValue().getRol().equals("Asistente de Restaurante")&& id.equals(entry.getKey())){
-                        PaneOrganizaAsistente root1 =new PaneOrganizaAsistente();
-                        root1.pantallaAsistente(primaryStage,entry.getValue().getRest().getNombre(),id);
-                    }
-                    
-                }
-            }
-=======
         
         RetornarButton.setOnAction((ActionEvent event) -> {
             PaneOrganizeCliente root = new PaneOrganizeCliente();
             root.pantallaCliente(primaryStage);
 //                
->>>>>>> master
         });
         
         Iterator it = numPlt.keySet().iterator();
@@ -195,11 +156,11 @@ public class PaneInformacionPlatos {
                         "-fx-border-color: Orange;");       
         root4.setCenter(PaneOjetos);
     }
-    public static void pantallaInformacionPlatosCliente(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion,String id){
+    public static void pantallaInformacionPlatosCliente(Stage primaryStage,HashMap<Integer,Platos> numPlt,Integer opcion){
         PaneInformacionPlatos root4=new PaneInformacionPlatos(primaryStage);       
         Scene scene=new Scene(root4.getRoot(),500,600);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaPlatos(primaryStage,numPlt,opcion,id);
+        root4.DiseñoVentanaPlatos(primaryStage,numPlt,opcion);
         primaryStage.show();
     }
   

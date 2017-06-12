@@ -39,22 +39,23 @@ public class PaneAgregarPlatillo {
     private ImageView imgFondo4;
     private Image imgLoadPlatos4;
     private ImageView imgPlatos4;
-    private Label NombreLabel;
-    private  Label CategoriaLabel;
-    private Label IngredienteLabel;
-    private Label DescripcionLabel;
-    private Label TipoLabel;
-    private Label ServidoLabel;
-    private    TextField NombreText;
-    private TextField CategoriaText;
-    private TextField IngredientesText;
-    private TextField DescripcionText;
-    private  TextField TipoText;
-    private TextField ServidoText;
-    private Button RetornarButton;
-    private  Button SalirButton;
-    private Button ModificarButton;
-    private Button AgregarButton;
+    public  Label NombreLabel;
+    public  Label CategoriaLabel;
+    public Label IngredienteLabel;
+    public Label DescripcionLabel;
+    public Label TipoLabel;
+    public Label ServidoLabel;
+    public static   TextField NombreText;
+    public static  TextField CategoriaText;
+    public static  TextField IngredientesText;
+    public static TextField DescripcionText;
+    public static  TextField TipoText;
+    public static TextField ServidoText;
+    public  Button RetornarButton;
+    public  Button SalirButton;
+    public  Button ModificarButton;
+    public  Button AgregarButton;
+    
     public PaneAgregarPlatillo(Stage primaryStage) {
         imgLoadFondo4=new Image("/imagenes/fondo5.jpg");
         imgFondo4=new ImageView(imgLoadFondo4);
@@ -108,7 +109,8 @@ public class PaneAgregarPlatillo {
     public static BorderPane getRoot(){
         return root4;
     }
-    public void DiseñoVentanaAgregarPlatos(Stage primaryStage,Restaurante restaurante,String id){
+    
+    public void DiseñoVentanaAgregarPlatos(Stage primaryStage,Restaurante restaurante){
         HashMap<String,Platos> categoriaPlato=new HashMap<String,Platos> ();
         HBox PaneHorizontalBotones=new HBox(100,AgregarButton,RetornarButton,SalirButton);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
@@ -121,12 +123,9 @@ public class PaneAgregarPlatillo {
         });
         RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-            PaneOrganizaAsistente root1 =new PaneOrganizaAsistente();
-            root1.pantallaAsistente(primaryStage,restaurante.getNombre(),id);
-     
-            }          
-                
-            
+                PaneOrganizaAsistente root = new PaneOrganizaAsistente();
+                root.pantallaAsistente(primaryStage,restaurante.getNombre());
+            }
         });
         AgregarButton.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -148,11 +147,11 @@ public class PaneAgregarPlatillo {
                         "-fx-border-color: Orange;");       
         root4.setCenter(PaneOjetos);
     }
-    public  void pantallaAgregarPlatosAsistente(Stage primaryStage,Restaurante restaurante,String id){
+    public  void pantallaAgregarPlatosAsistente(Stage primaryStage,Restaurante restaurante){
         PaneAgregarPlatillo root4=new PaneAgregarPlatillo(primaryStage);       
         Scene scene=new Scene(root4.getRoot(),500,700);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaAgregarPlatos(primaryStage,restaurante,id);
+        root4.DiseñoVentanaAgregarPlatos(primaryStage,restaurante);
         primaryStage.show();
     }
   

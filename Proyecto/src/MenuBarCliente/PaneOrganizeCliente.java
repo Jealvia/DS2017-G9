@@ -32,10 +32,10 @@ import javafx.scene.control.SeparatorMenuItem;
 
 public class PaneOrganizeCliente {
 
-    private Group root;
-    private ArrayList<Platos> lista;
-    private HashMap<String, Platos> categoriaPlato;
-    private Stage primaryStage;
+    Group root;
+    ArrayList<Platos> lista;
+    HashMap<String, Platos> categoriaPlato;
+    Stage primaryStage;
 
     public PaneOrganizeCliente() {
         this.primaryStage = primaryStage;
@@ -45,11 +45,11 @@ public class PaneOrganizeCliente {
 
     }
 
-    public void menuCliente(Stage primaryStage,String id) {
+    public void menuCliente(Stage primaryStage) {
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
-        Menu menu = new Menu("Listar Categorias de Platos");
+        Menu menu = new Menu("Categorias de Platos");
         //Creando los items(menuItem) quu iran en el primer menu
         MenuItem opcion1 = new MenuItem("Seleccione categoría");
         System.out.println("**" + categoriaPlato.size());
@@ -60,35 +60,6 @@ public class PaneOrganizeCliente {
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
             //System.exit(0);
-<<<<<<< HEAD
-            for (Platos values : categoriaPlato.values()) {
-                if ("estudiantil".equals(values.getCategoria())) {
-                    lista.add(values);
-                    System.out.println("*" + values.getNombre());
-                }
-            }
-            ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage,id);
-        });
-        menu.getItems().add(opcion1);
-
-        //Separador
-        menu.getItems().add(new SeparatorMenuItem());
-        MenuItem opcioneje = new MenuItem("Ejecutivo");
-        menu.getItems().add(opcioneje);
-        opcioneje.setOnAction((ActionEvent event) ->  {
-            for (Platos values : categoriaPlato.values()) {
-                if ("ejecutivo".equals(values.getCategoria())) {
-                    lista.add(values);
-                    System.out.println("*" + values.getNombre());
-                }
-            }
-            ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage,id);
-        
-        });
-       
-=======
             ListaCategorias tmp=new ListaCategorias();
             ArrayList<String> listacategorias=new ArrayList<>();
             listacategorias=tmp.ListaCategorias(this.lista);
@@ -97,7 +68,6 @@ public class PaneOrganizeCliente {
         });
         menu.getItems().add(opcion1);
 
->>>>>>> master
         //Agregando el objeto menu al menuBar
         menuBar.getMenus().add(menu);
 
@@ -107,19 +77,12 @@ public class PaneOrganizeCliente {
 
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
-<<<<<<< HEAD
-            Busqueda busq = new Busqueda(categoriaPlato, primaryStage,id);
-            @Override
-            public void handle(ActionEvent event) {
-              busq.pantallaBusquedad(primaryStage);
-=======
             Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
 
             @Override
             public void handle(ActionEvent event) {
                 // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
                 busq.pantallaBusquedad(primaryStage);
->>>>>>> master
             }
         });
         menu2.getItems().add(opcion2);
@@ -153,11 +116,11 @@ public class PaneOrganizeCliente {
         return root;
     }
 
-    public void pantallaCliente(Stage primaryStage,String id) {
+    public static void pantallaCliente(Stage primaryStage) {
         PaneOrganizeCliente root4 = new PaneOrganizeCliente();
         Scene scene = new Scene(root4.getRoot(), 400, 250, Color.ORANGERED);
         primaryStage.setScene(scene);
-        root4.menuCliente(primaryStage,id);
+        root4.menuCliente(primaryStage);
         primaryStage.show();
     }
 
