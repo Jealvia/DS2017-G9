@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package MenuBarAsistente;
-//esta cambia
+//esta cambia sdfghyujkjhgfdsdfghjhgfdsdfghj
 import AgregarPlatillo.PaneAgregarPlatillo;
 import Categoria.ListaCategorias;
 import InformacionPlatos.ListaPlatos;
