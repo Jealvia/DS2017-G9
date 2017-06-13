@@ -37,7 +37,7 @@ public class Busqueda {
 
     }
 
-    public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage,String id) {
+    public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage, String id) {
         busqueda = new Label("BUSQUEDA");
         buscar_nombre = new Button("Buscar");
         busqueda_nombre = new Label("Nombre");
@@ -47,7 +47,7 @@ public class Busqueda {
         root = new BorderPane();
         root.setTop(busqueda);
         root.setCenter(centro);
-         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
+        //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("BUSQUEDAD DE PLATOS");
         primaryStage.setResizable(false);
         //Busca por nombre o descripcion y luego llama al metodo para mostrar la lista de platos para su 
@@ -60,11 +60,12 @@ public class Busqueda {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage,id);
+            lp.ventanaListaPlatos(lista, primaryStage, id);
         });
     }
-    public void pantallaBusquedad(Stage primaryStage){
-        Scene escena = new Scene(root,800,400);
+
+    public void pantallaBusquedad(Stage primaryStage) {
+        Scene escena = new Scene(root, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }

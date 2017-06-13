@@ -6,6 +6,7 @@
 package Modelo;
 //CAMBIA
 //2
+
 import Categoria.Categoria;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -22,19 +23,20 @@ import java.util.Map;
  *
  * @author Julio Alvia
  */
-public class Platos <E>{
-    private String nombre,descripcion,tipo,servido,ingredientes;
+public class Platos<E> {
+
+    private String nombre, descripcion, tipo, servido, ingredientes;
     Categoria categoria;
     private Restaurante restaurante;
 
-    public Platos(String nombre, String descripcion, Categoria categoria, String tipo, String servido, Restaurante restaurante,String ingredientes) {
+    public Platos(String nombre, String descripcion, Categoria categoria, String tipo, String servido, Restaurante restaurante, String ingredientes) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.tipo = tipo;
         this.servido = servido;
         this.restaurante = restaurante;
-        this.ingredientes=ingredientes;
+        this.ingredientes = ingredientes;
     }
 
     public Categoria getCategoria() {
@@ -52,46 +54,58 @@ public class Platos <E>{
     public void setRestaurante(Restaurante restaurante) {
         this.restaurante = restaurante;
     }
-    
+
     public String getIngredientes() {
         return ingredientes;
     }
+
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
     }
-    public Platos(){
+
+    public Platos() {
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getDescripcion() {
         return descripcion;
     }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
     public String getTipo() {
         return tipo;
     }
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
     public String getServido() {
         return servido;
     }
+
     public void setServido(String servido) {
         this.servido = servido;
     }
+
     public Restaurante getObjRestaurante() {
         return restaurante;
     }
+
     public void setNombreRestaurante(Restaurante nombreRestaurante) {
         this.restaurante = nombreRestaurante;
-    } 
+    }
+
     public ArrayList<Platos> listarPlatos(HashMap<String, Platos> listPlatos, String categoria) {
         ArrayList<Platos> lista = new ArrayList<>();
         int i = 0;
@@ -102,6 +116,7 @@ public class Platos <E>{
         }
         return lista;
     }
+
     //lista de platos que solo pertenecen a un restaurante
     public ArrayList<E> listarPlatosAsistente(HashMap<String, Platos> listPlatos, String restaurante) {
         ArrayList<E> lista = new ArrayList<>();
@@ -113,14 +128,15 @@ public class Platos <E>{
         }
         return lista;
     }
+
     //Solo sirve para agregar platillo
-    public boolean agregarPlatillo(String categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingredientes) {
+    public boolean agregarPlatillo(String categoria, String nombre, String descripcion, String servido, String tipo, String restaurante, String ingredientes) {
         //Julio: agregar informacion al CSV
-        
-        String info=categoria+";"+nombre+";"+descripcion+";"+servido+";"+tipo+";"+restaurante+";"+ingredientes;
+
+        String info = categoria + ";" + nombre + ";" + descripcion + ";" + servido + ";" + tipo + ";" + restaurante + ";" + ingredientes;
         String ruta = "C:\\Users\\jimmy\\Documents\\proyectoDS\\DS2017-G9\\Proyecto\\platos.csv";
         try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(ruta)),true);
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(ruta)), true);
             pw.println(info);
             System.out.println("");
             pw.close();
@@ -129,30 +145,23 @@ public class Platos <E>{
         } catch (IOException ex) {
             System.out.println("se produjo error al escribir platos.csv");
         }
-        
-       
+
         return true;
     }
+
     //el primer valor que tiene que recibir debe ser un identificador(nombe)
-    public boolean modificarPlatillo(String identificador,Categoria categoria,String nombre,String descripcion,String servido,String tipo,String restaurante,String ingrediente,HashMap<String, Platos> listPlatos){
-        Restaurante rest=new Restaurante(restaurante);
-        Platos temp=new Platos(nombre,descripcion,categoria,tipo,servido,rest,ingrediente);
+    public boolean modificarPlatillo(String identificador, Categoria categoria, String nombre, String descripcion, String servido, String tipo, String restaurante, String ingrediente, HashMap<String, Platos> listPlatos) {
+        Restaurante rest = new Restaurante(restaurante);
+        Platos temp = new Platos(nombre, descripcion, categoria, tipo, servido, rest, ingrediente);
         for (Map.Entry<String, Platos> entry : listPlatos.entrySet()) {
-            if(entry.getValue().getNombre()==identificador){
-                if(entry.getValue().getObjRestaurante().getNombre()==restaurante)
+            if (entry.getValue().getNombre() == identificador) {
+                if (entry.getValue().getObjRestaurante().getNombre() == restaurante) {
                     entry.setValue(temp);
+                }
             }
         }
         Persistencia.writePlatos(listPlatos);
         return true;
     }
-    
-    
- 
 
-    
-
-    
-    
-    
 }

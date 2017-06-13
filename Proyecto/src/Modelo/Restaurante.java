@@ -10,38 +10,45 @@ package Modelo;
  * @author Julio Alvia
  */
 public class Restaurante {
-    private String nombre,descripcion,telefono;
-    
-    public Restaurante(String nombre){
-        this.nombre=nombre;
+
+    private String nombre, descripcion, telefono;
+
+    public Restaurante(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public Restaurante(){
-        
+
+    public Restaurante() {
+
     }
-    
+
     public Restaurante(String nombre, String descripcion, String telefono) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.telefono = telefono;
     }
-    public  String getNombre() {
+
+    public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getDescripcion() {
         return descripcion;
     }
+
     public void setDescripcion(String descripcion) {
         this.nombre = descripcion;
     }
+
     public String getTelefono() {
         return telefono;
     }
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
 }

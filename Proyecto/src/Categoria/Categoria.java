@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Julio Alvia
  */
 public class Categoria {
-    
+
     private String nombre;
 
     public Categoria(String nombre) {
@@ -29,16 +29,16 @@ public class Categoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     @Override
     public boolean equals(Object o) {
-  if (o instanceof Categoria) {
-    Categoria p = (Categoria)o;
-    return this.nombre.equals(p.nombre);
-  } else {
-    return false;
-  }
-}
+        if (o instanceof Categoria) {
+            Categoria p = (Categoria) o;
+            return this.nombre.equals(p.nombre);
+        } else {
+            return false;
+        }
+    }
 
     @Override
     public int hashCode() {

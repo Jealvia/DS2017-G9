@@ -20,12 +20,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 /**
  *
  * @author FAUSTO LOPEZ
  */
 public class ListaModificarPlatos {
-    
+
     Label nombre;
     static VBox vbox;
     HBox hbox;
@@ -35,8 +36,8 @@ public class ListaModificarPlatos {
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
-    HashMap<String, Platos> categoriaPlato;    
-    
+    HashMap<String, Platos> categoriaPlato;
+
     public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
@@ -48,8 +49,9 @@ public class ListaModificarPlatos {
     }
 
     public ListaModificarPlatos() {
-        this.contenedor=new BorderPane();
+        this.contenedor = new BorderPane();
     }
+
     public static BorderPane getContenedor() {
         return contenedor;
     }
@@ -57,11 +59,12 @@ public class ListaModificarPlatos {
     public static void setContenedor(BorderPane contenedor) {
         ListaModificarPlatos.contenedor = contenedor;
     }
-    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage,String id){
-        ArrayList<String> lista1=new ArrayList<>();
-        HashMap<Integer,Platos> numPlt=new HashMap<Integer,Platos>();
+
+    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage, String id) {
+        ArrayList<String> lista1 = new ArrayList<>();
+        HashMap<Integer, Platos> numPlt = new HashMap<Integer, Platos>();
         VBox vbox = new VBox(10);
-        int cont=0;
+        int cont = 0;
         for (Platos m : lista) {
             System.out.println(m.getNombre());
             HBox hbox = new HBox();
@@ -70,33 +73,29 @@ public class ListaModificarPlatos {
             numPlt.put(cont, m);
             cont++;
             vbox.getChildren().add(hbox);
-           
+
         }
 
         //PARA PRESENTAR UNA LISTA DE OPCIONES
         ListaModificarPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
         listaPlatos = new ListView<String>(tiposPlatos);
         listaPlatos.setPrefSize(50, 100);
-        vbox.setStyle("-fx-padding: 10;" +
-                        "-fx-border-style: solid inside;" +
-                        "-fx-border-width: 8;" +
-                        "-fx-border-insets: 5;" +
-                        "-fx-border-radius: 5;" +
-                        "-fx-border-color: DARKCYAN;");
+        vbox.setStyle("-fx-padding: 10;"
+                + "-fx-border-style: solid inside;"
+                + "-fx-border-width: 8;"
+                + "-fx-border-insets: 5;"
+                + "-fx-border-radius: 5;"
+                + "-fx-border-color: DARKCYAN;");
         vbox.getChildren().add(listaPlatos);
         contenedor.setCenter(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
-            Integer opcion=listaPlatos.getSelectionModel().getSelectedIndex();
+            Integer opcion = listaPlatos.getSelectionModel().getSelectedIndex();
             Restaurante restaurante = new Restaurante();
-            PaneModificarPlatos.pantallaModificarPlatos(primaryStage,numPlt,opcion,restaurante,id); 
+            PaneModificarPlatos.pantallaModificarPlatos(primaryStage, numPlt, opcion, restaurante, id);
         });
-        Scene escena = new Scene(contenedor,800,400);
+        Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }
-    
-
-  
 
 }
-
