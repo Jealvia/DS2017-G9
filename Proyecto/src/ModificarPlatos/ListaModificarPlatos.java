@@ -37,7 +37,6 @@ public class ListaModificarPlatos {
     static ListView<String> listaPlatos;
     HashMap<String, Platos> categoriaPlato;    
     
-    
     public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
@@ -58,7 +57,7 @@ public class ListaModificarPlatos {
     public static void setContenedor(BorderPane contenedor) {
         ListaModificarPlatos.contenedor = contenedor;
     }
-    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage){
+    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage,String id){
         ArrayList<String> lista1=new ArrayList<>();
         HashMap<Integer,Platos> numPlt=new HashMap<Integer,Platos>();
         VBox vbox = new VBox(10);
@@ -89,7 +88,7 @@ public class ListaModificarPlatos {
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             Integer opcion=listaPlatos.getSelectionModel().getSelectedIndex();
             Restaurante restaurante = new Restaurante();
-            PaneModificarPlatos.pantallaModificarPlatos(primaryStage,numPlt,opcion,restaurante); 
+            PaneModificarPlatos.pantallaModificarPlatos(primaryStage,numPlt,opcion,restaurante,id); 
         });
         Scene escena = new Scene(contenedor,800,400);
         primaryStage.setScene(escena);

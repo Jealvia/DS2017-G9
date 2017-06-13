@@ -58,7 +58,7 @@ public class ListaPlatos {
     public static void setContenedor(BorderPane contenedor) {
         ListaPlatos.contenedor = contenedor;
     }
-    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage){
+    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage,String id){
         ArrayList<String> lista1=new ArrayList<>();
         HashMap<Integer,Platos> numPlt=new HashMap<Integer,Platos>();
         VBox vbox = new VBox(10);
@@ -88,7 +88,7 @@ public class ListaPlatos {
         contenedor.setCenter(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             Integer opcion=listaPlatos.getSelectionModel().getSelectedIndex();
-            PaneInformacionPlatos.pantallaInformacionPlatosCliente(primaryStage,numPlt,opcion); 
+            PaneInformacionPlatos.pantallaInformacionPlatosCliente(primaryStage,numPlt,opcion,id); 
         });
         Scene escena = new Scene(contenedor,800,400);
         primaryStage.setScene(escena);

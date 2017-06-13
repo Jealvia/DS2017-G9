@@ -52,6 +52,7 @@ public class ListaCategorias {
             System.out.println("hola");
             catego.add(m.getCategoria());
         }
+        int tam=catego.size();
         ArrayList<String> listacategorias=new ArrayList<>();
         Iterator<Categoria> it1 = catego.iterator();
         while (it1.hasNext()){
@@ -73,7 +74,7 @@ public class ListaCategorias {
         ListaCategorias.contenedor = contenedor;
     }
     
-    public void ventanaListaCategoria(ArrayList<String> lista, Stage primaryStage,String restaurante){
+    public void ventanaListaCategoria(ArrayList<String> lista, Stage primaryStage,String restaurante,String id){
         VBox vbox = new VBox(10);
         for(String m:lista){
             System.out.println(m);
@@ -96,7 +97,7 @@ public class ListaCategorias {
             ArrayList<Platos> listapt=new ArrayList<>();
             listapt=ListaCategorias.listaPresentar(opcion,restaurante);
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(listapt, primaryStage);
+            lp.ventanaListaPlatos(listapt, primaryStage,id);
         });
         
         Scene escena = new Scene(contenedor,800,400);

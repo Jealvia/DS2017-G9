@@ -102,7 +102,7 @@ public class PaneInicioSesion<E> {
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                         System.out.println("INGRESO AL SISTEMA");
                         
-                        PaneOrganizeCliente.pantallaCliente(primaryStage);
+                        PaneOrganizeCliente.pantallaCliente(primaryStage,ingresoUsuario.getText());
                     } 
                     else if(entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente de Restaurante".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
@@ -110,7 +110,7 @@ public class PaneInicioSesion<E> {
                         System.out.println("Asistente");
                         System.out.println(entry.getValue().getRest().getNombre());
                         
-                        PaneOrganizaAsistente.pantallaAsistente(primaryStage,entry.getValue().getRest().getNombre());
+                        PaneOrganizaAsistente.pantallaAsistente(primaryStage,entry.getValue().getRest().getNombre(),ingresoUsuario.getText());
 
                     }
                     else {
