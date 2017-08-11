@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AlmuerzoBuilder;
+package SegundaParte.AlmuerzoBuilder;
 
 /**
  *
  * @author FAUSTO LOPEZ
  */
-public class LunchDirector {
+public class EstudiantilBuilder {
     
 }
