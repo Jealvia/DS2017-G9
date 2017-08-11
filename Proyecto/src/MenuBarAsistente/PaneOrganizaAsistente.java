@@ -13,7 +13,6 @@ import InformacionPlatos.PaneInformacionPlatos;
 import InicioDeSesión.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
-import ModificarPlatos.PaneModificarPlatos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
@@ -95,7 +94,8 @@ public class PaneOrganizaAsistente {
 
         opcionModificarPlato.setOnAction((ActionEvent event) -> {
 
-            PaneModificarPlatos pap = new PaneModificarPlatos(primaryStage);
+            PaneInformacionPlatos pap = new PaneInformacionPlatos(primaryStage);
+
             for (Platos values : categoriaPlato.values()) {
                 if (restaurante.equals(values.getObjRestaurante().getNombre())) {
 //                   pap.pantallaModificarPlatos(primaryStage,values.getObjRestaurante());

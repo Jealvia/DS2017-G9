@@ -1,12 +1,13 @@
-estudiantil;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
-ejecutivo;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
-estudiantil;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
-ejecutivo;helado;helado de varios sabores;frio;postre;A;helado
-estudiantil;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
-ejecutivo;frutas;frutas de varios sabores;frio;postre;C;fruta
-estudiantil;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
-ejecutivo;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,queso
-estudiantil;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
-ejecutivo;ceviche de conchas;bueno;frio;plato fuerte;B;conchas,tomate,cebolla,limon,pimienta
-estudiantil;ceviche de camaron;ok ok ok;frio;plato fuerte;B;camarones,cebolla,pimienta,tomate
-estudiantil;Guatita;sdsdsdsdsdsdsds;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
+comida costa;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
+comida costa;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
+comida costa;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
+postre;helado;helado de varios sabores;frio;postre;A;helado
+postre;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
+postre;frutas;frutas de varios sabores;frio;postre;C;fruta
+comida sierra;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
+comida sierra;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,queso
+comida rapida;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
+plato del mar;ceviche de conchas;bueno;frio;plato fuerte;B;conchas,tomate,cebolla,limon,pimienta
+plato del mar;ceviche de camaron;ok ok ok;frio;plato fuerte;B;camarones,cebolla,pimienta,tomate
+comida sierra;Guatita;sdsdsdsdsdsdsds;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
+comida rapida;pizza;tamaÃ±o mediano;caliente;aperitivo;B;queso,jamon,harina

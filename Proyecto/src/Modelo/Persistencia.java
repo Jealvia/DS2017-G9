@@ -83,6 +83,7 @@ public class Persistencia<E> {
                 String tipo = valores[4].trim();
                 String restaurante = valores[5].trim();
                 String ingredientes = valores[6].trim();
+                
                 Restaurante rest = new Restaurante(restaurante);
                 temporal.put(nombre, new Platos(nombre, descripcion, categoria, tipo, servido, rest, ingredientes));
             }
@@ -123,7 +124,7 @@ public class Persistencia<E> {
 
             for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
 
-                String linea = entry.getValue().getCategoria() + ";" + entry.getValue().getNombre() + ";" + entry.getValue().getDescripcion() + ";" + entry.getValue().getServido() + ";" + entry.getValue().getTipo() + ";" + entry.getValue().getObjRestaurante().getNombre() + ";" + entry.getValue().getIngredientes();
+                String linea = entry.getKey() + ";" + entry.getValue().getNombre() + ";" + entry.getValue().getDescripcion() + ";" + entry.getValue().getServido() + ";" + entry.getValue().getTipo() + ";" + entry.getValue().getObjRestaurante().getNombre() + ";" + entry.getValue().getIngredientes();
 
                 System.out.println(linea);
                 pw.write(linea + "\n");
