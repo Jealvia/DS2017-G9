@@ -5,10 +5,34 @@
  */
 package SegundaParte.AlmuerzoBuilder;
 
+import SegundaParte.Almuerzo;
+
 /**
  *
  * @author FAUSTO LOPEZ
  */
 public class LunchDirector {
+    
+    private LunchBuilder builder;
+    
+    public LunchDirector(LunchBuilder builder){
+        
+        this.builder = builder;
+        
+    }
+    
+    public void buildAlmuerzo(){
+        
+        builder.buildLunch();
+        builder.buildDrink();
+        builder.buildDessert();
+        builder.buildPrice();
+    }
+    
+    public Almuerzo getLunch(){
+        
+        return builder.getLunch();
+        
+    }
     
 }
