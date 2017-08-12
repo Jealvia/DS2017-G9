@@ -48,7 +48,7 @@ public class PaneOrganizaAsistente {
     }
     // metodo que me obtiene el root1
 
-    public void menuAsistente(Stage primaryStage, String restaurante, String id) {
+    public void menuAsistente(Stage primaryStage, String restaurante) {
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
@@ -62,7 +62,10 @@ public class PaneOrganizaAsistente {
             PaneAgregarPlatillo pap = new PaneAgregarPlatillo(primaryStage);
             for (Platos values : categoriaPlato.values()) {
                 if (restaurante.equals(values.getObjRestaurante().getNombre())) {
-                    pap.pantallaAgregarPlatosAsistente(primaryStage, values.getObjRestaurante(), id);
+//                    pap.pantallaAgregarPlatosAsistente(primaryStage, values.getObjRestaurante());
+                    ArrayList<Object> list=new ArrayList<>();
+                    list.add(values.getObjRestaurante());
+                    pap.ConstruirPane(primaryStage, list);
                 }
             }
 
@@ -87,7 +90,8 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.listaPlatos(lista, primaryStage, id);
+            lp.listaPlatos(lista, primaryStage);
+            lp.pantallaListaPlatos(primaryStage);
 
         });
         //Modificar platos
@@ -123,8 +127,9 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaCategorias tmp = new ListaCategorias();
-            tmp.ListaCategorias(listaplatos,primaryStage, restaurante, id);
-            tmp.pantallaListaCategoria(primaryStage);
+            tmp.ListaCategorias(listaplatos,primaryStage, restaurante);
+            ArrayList<Object> list=new ArrayList<>();
+            tmp.ConstruirPane(primaryStage,list);
           
         });
         menucat.getItems().add(opciones);
@@ -158,11 +163,11 @@ public class PaneOrganizaAsistente {
         return root;
     }
 
-    public static void pantallaAsistente(Stage primaryStage, String restaurante, String id) {
+    public static void pantallaAsistente(Stage primaryStage, String restaurante) {
         PaneOrganizaAsistente root4 = new PaneOrganizaAsistente();
         Scene scene = new Scene(root4.getRoot(), 500, 200, Color.CADETBLUE);
         primaryStage.setScene(scene);
-        root4.menuAsistente(primaryStage, restaurante, id);
+        root4.menuAsistente(primaryStage, restaurante);
         primaryStage.show();
     }
 

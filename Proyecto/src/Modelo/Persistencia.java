@@ -51,7 +51,7 @@ public class Persistencia<E> {
                     case "Cliente":
                         temporal.put(id, new Usuario(nombre, id, contrasena, rol, rest));
                         break;
-                    case "Asistente de Restaurante":
+                    case "Asistente":
                         temporal.put(id, new Usuario(nombre, id, contrasena, rol, rest));
                         break;
                 }

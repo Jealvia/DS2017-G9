@@ -7,10 +7,10 @@ package DecoratorPanes;
 //cambia
 //2
 
-import DecoratorPanes.PaneDecorator;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import Modelo.Restaurante;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneAgregarPlatillo extends PaneSimple{
+public class PaneAgregarPlatillo extends PaneInterfaceBase{
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -111,7 +111,7 @@ public class PaneAgregarPlatillo extends PaneSimple{
         return root4;
     }
 
-    public void DiseñoVentanaAgregarPlatos(Stage primaryStage, Restaurante restaurante, String id) {
+    public void DiseñoVentanaAgregarPlatos(Stage primaryStage, Restaurante restaurante) {
         HashMap<String, Platos> categoriaPlato = new HashMap<String, Platos>();
         HBox PaneHorizontalBotones = new HBox(100, AgregarButton, RetornarButton, SalirButton);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
@@ -125,7 +125,7 @@ public class PaneAgregarPlatillo extends PaneSimple{
         RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 PaneOrganizaAsistente root = new PaneOrganizaAsistente();
-                root.pantallaAsistente(primaryStage, restaurante.getNombre(), id);
+                root.pantallaAsistente(primaryStage, restaurante.getNombre());
             }
         });
         AgregarButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -148,17 +148,23 @@ public class PaneAgregarPlatillo extends PaneSimple{
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
-    public void pantallaAgregarPlatosAsistente(Stage primaryStage, Restaurante restaurante, String id) {
+//    public void pantallaAgregarPlatosAsistente(Stage primaryStage, Restaurante restaurante) {
+//        PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
+//        Scene scene = new Scene(root4.getRoot(), 500, 700);
+//        primaryStage.setScene(scene);
+//        root4.DiseñoVentanaAgregarPlatos(primaryStage, restaurante);
+//        primaryStage.show();
+//    }
+
+    @Override
+    public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
         Scene scene = new Scene(root4.getRoot(), 500, 700);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaAgregarPlatos(primaryStage, restaurante, id);
+        root4.DiseñoVentanaAgregarPlatos(primaryStage, (Restaurante) lista.get(0));
         primaryStage.show();
     }
 
-    @Override
-    public void ConstruirPane(Stage primaryStage) {
-        System.out.println("Construyendo pane Agregar platillo de asistente");
-    }
+
 
 }

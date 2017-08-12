@@ -37,7 +37,7 @@ import javafx.util.Callback;
  *
  * @author Julio Alvia
  */
-public class ListaCategorias extends PaneSimple{
+public class ListaCategorias extends PaneInterfaceBase {
     private BorderPane contenedor;
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
@@ -58,7 +58,7 @@ public class ListaCategorias extends PaneSimple{
         this.contenedor = contenedor;
     }
 
-    public void ListaCategorias(ArrayList<Platos> lista, Stage primaryStage, String restaurante, String id) {
+    public void ListaCategorias(ArrayList<Platos> lista, Stage primaryStage, String restaurante) {
         Set<Categoria> catego = new HashSet<>();
         for (Platos m : lista) {
             catego.add(m.getCategoria());
@@ -90,7 +90,7 @@ public class ListaCategorias extends PaneSimple{
             ArrayList<Platos> listapt = new ArrayList<>();
             listapt = ListaCategorias.listaPresentar(opcion, restaurante);
             ListaPlatos lp = new ListaPlatos();
-            lp.listaPlatos(listapt,primaryStage,id);
+            lp.listaPlatos(listapt,primaryStage);
             lp.pantallaListaPlatos(primaryStage);
         });
         
@@ -115,16 +115,19 @@ public class ListaCategorias extends PaneSimple{
         return lista;
     }
     //Muestra una ventana con las categotias pertenecientes al administrador
-    public void pantallaListaCategoria(Stage primaryStage) {
+//    public void pantallaListaCategoria(Stage primaryStage) {
+//        Scene escena = new Scene(contenedor, 800, 400);
+//        primaryStage.setScene(escena);
+//        primaryStage.show();
+//    }
+    @Override
+    public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }
 
-    @Override
-    public void ConstruirPane(Stage primaryStage) {
-        System.out.println("Construyendo Pane lista Categoria");
-    }
+
 
   
 

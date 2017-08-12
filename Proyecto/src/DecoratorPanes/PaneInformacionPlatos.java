@@ -11,6 +11,7 @@ package DecoratorPanes;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import Modelo.Usuario;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -35,7 +36,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneInformacionPlatos extends PaneSimple{
+public class PaneInformacionPlatos extends PaneInterfaceBase{
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -55,9 +56,8 @@ public class PaneInformacionPlatos extends PaneSimple{
     public Button RetornarButton;
     public Button SalirButton;
     public Button ModificarButton;
-    HashMap<String, Usuario> informUsuarios;
 
-    public PaneInformacionPlatos(Stage primaryStage) {
+    public PaneInformacionPlatos(Stage primaryStage){
         imgLoadFondo4 = new Image("/imagenes/fondo4.jpg");
         imgFondo4 = new ImageView(imgLoadFondo4);
 
@@ -74,8 +74,8 @@ public class PaneInformacionPlatos extends PaneSimple{
         this.IngredientesText = new TextField();
         this.DescripcionText = new TextField();
 
-        this.RetornarButton = new Button("Retornar");
-        this.SalirButton = new Button("Salir");
+        this.RetornarButton = new Button("Retornar a inicio de sesion");
+        this.SalirButton = new Button("Salir del sistema");
 
         this.NombreLabel = new Label("Nombre: ");
         this.RestauranteLabel = new Label("Restaurante: ");
@@ -98,7 +98,7 @@ public class PaneInformacionPlatos extends PaneSimple{
 
         this.root4 = new BorderPane();
         this.root4.getChildren().add(imgFondo4);
-        this.informUsuarios = Persistencia.leerUsuarios();
+
 
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("Informacion Platos");
@@ -109,40 +109,27 @@ public class PaneInformacionPlatos extends PaneSimple{
         return root4;
     }
 
-    public void DiseñoVentanaPlatos(Stage primaryStage, HashMap<Integer, Platos> numPlt, Integer opcion, String id) {
-        HBox PaneHorizontal = new HBox(20, imgPlatos4, RetornarButton);
-        HBox PaneHorizontalBotones = new HBox(300, RetornarButton, SalirButton);
+    public void DiseñoVentanaPlatos(Stage primaryStage, HashMap<Integer, Platos> numPlt, Integer opcion) {
+        HBox PaneHorizontal = new HBox(50, imgPlatos4, RetornarButton);
+        HBox PaneHorizontalBotones = new HBox(100, RetornarButton, SalirButton);
         PaneHorizontal.setAlignment(Pos.CENTER);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
-
+        
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println(id);
-                for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
-
-                    if (entry.getValue().getRol().equals("Cliente") && id.equals(entry.getKey())) {
-                        PaneOrganizeCliente root2 = new PaneOrganizeCliente();
-                        root2.pantallaCliente(primaryStage, id);
-                    } else if (entry.getValue().getRol().equals("Asistente de Restaurante") && id.equals(entry.getKey())) {
-                        PaneOrganizaAsistente root1 = new PaneOrganizaAsistente();
-                        root1.pantallaAsistente(primaryStage, entry.getValue().getRest().getNombre(), id);
-                    }
-
-                }
+                System.out.println("SALIO DEL SISTEMA");
+                primaryStage.close();
+                System.exit(0);//importante para poder salir del Output
             }
         });
 
         RetornarButton.setOnAction((ActionEvent event) -> {
-            for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
-                if (entry.getValue().getRol().equals("Cliente") && id.equals(entry.getKey())) {
-                    PaneOrganizeCliente root2 = new PaneOrganizeCliente();
-                    root2.pantallaCliente(primaryStage, id);
-                } else if (entry.getValue().getRol().equals("Asistente de Restaurante") && id.equals(entry.getKey())) {
-                    PaneOrganizaAsistente root1 = new PaneOrganizaAsistente();
-                    root1.pantallaAsistente(primaryStage, entry.getValue().getRest().getNombre(), id);
-                }
-            }
-
+            PaneInicioSesion root = new PaneInicioSesion(primaryStage);
+            root.menuPrincipal(primaryStage);
+            Scene scene = new Scene(root.getRoot(), 300, 400);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+              
         });
 
         Iterator it = numPlt.keySet().iterator();
@@ -176,18 +163,23 @@ public class PaneInformacionPlatos extends PaneSimple{
         root4.setCenter(PaneOjetos);
     }
 
-    public static void pantallaInformacionPlatosCliente(Stage primaryStage, HashMap<Integer, Platos> numPlt, Integer opcion, String id) {
+//    public static void pantallaInformacionPlatosCliente(Stage primaryStage, HashMap<Integer, Platos> numPlt, Integer opcion) {
+//        PaneInformacionPlatos root4 = new PaneInformacionPlatos(primaryStage);
+//        Scene scene = new Scene(root4.getRoot(), 500, 600);
+//        primaryStage.setScene(scene);
+//        root4.DiseñoVentanaPlatos(primaryStage, numPlt, opcion);
+//        primaryStage.show();
+//    }
+
+    @Override
+    public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneInformacionPlatos root4 = new PaneInformacionPlatos(primaryStage);
         Scene scene = new Scene(root4.getRoot(), 500, 600);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaPlatos(primaryStage, numPlt, opcion, id);
+        root4.DiseñoVentanaPlatos(primaryStage, (HashMap<Integer, Platos>) lista.get(0),(Integer)lista.get(1));
         primaryStage.show();
     }
 
-    @Override
-    public void ConstruirPane(Stage primaryStage) {
-        System.out.println("Construyendo informacion platos de cliente");
-    }
 
 
 

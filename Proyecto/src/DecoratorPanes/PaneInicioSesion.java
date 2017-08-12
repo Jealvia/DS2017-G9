@@ -75,7 +75,7 @@ public class PaneInicioSesion<E> {
         this.UserContra = new ArrayList<>();
 
         this.TiposRolesBox = new ChoiceBox();
-        TiposRolesBox.getItems().addAll("Cliente", "Asistente de Restaurante", "Administrador");
+        TiposRolesBox.getItems().addAll("Cliente", "Asistente", "Administrador");
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("INICIO DE SESION");
         primaryStage.setResizable(false);
@@ -89,32 +89,29 @@ public class PaneInicioSesion<E> {
         IngresarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
-                    System.out.println("Asistente");
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue().getNombre());
-                    System.out.println(entry.getValue().getNombreRestaurante());
                     String a = (String) TiposRolesBox.getValue();
                     //ESTA VALIDACION DEBE MEJORAR PORQUE CUALQUIER USUARIO PUEDE ENTRAR COMO ASISTENTE O ADMINITRADOR
                     if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Cliente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                         System.out.println("INGRESO AL SISTEMA");
-
-                        PaneOrganizeCliente.pantallaCliente(primaryStage, ingresoUsuario.getText());
-                    } else if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente de Restaurante".equals(entry.getValue().getRol()))) {
+                        PaneOrganizeCliente.pantallaCliente(primaryStage);
+                    } else if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
-                        System.out.println("Asistente");
-                        System.out.println(entry.getValue().getRest().getNombre());
+                        System.out.println("INGRESO AL SISTEMA");
 
-                        PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest().getNombre(), ingresoUsuario.getText());
+                        PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest().getNombre());
 
                     } else {
-                        MensajeLabel.setText("Your password is incorrect!");
+                        MensajeLabel.setText("Identification Error!");
                         MensajeLabel.setTextFill(Color.rgb(210, 39, 30));
                         System.out.println("ERROR DE IDENTIFICACION");
                     }
+                    
+                    
                 }
+                
             }
         });
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {

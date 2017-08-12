@@ -5,28 +5,25 @@
  */
 package DecoratorPanes;
 
-
-
 /**
  *
  * @author jimmy
  */
-public abstract class PaneDecorator implements PanE{
-    PanE pane;
-
-    public PaneDecorator() {
-    }
-
-    public PaneDecorator(PanE pane) {
+public abstract class PaneDecorator {
+    
+    Pane_Interface<Object> pane;
+    public PaneDecorator(Pane_Interface pane) {
         this.pane = pane;
     }
 
-    public PanE getPane() {
+    public Pane_Interface<Object> getPane() {
         return pane;
     }
 
-    public void setPane(PanE pane) {
+    public void setPane(Pane_Interface<Object> pane) {
         this.pane = pane;
     }
-   
+
+    
+    
 }

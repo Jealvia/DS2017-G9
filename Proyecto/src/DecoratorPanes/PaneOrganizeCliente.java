@@ -11,10 +11,7 @@ package DecoratorPanes;
  */
 //CAMBIA
 //2
-import DecoratorPanes.Busqueda;
-import DecoratorPanes.ListaCategorias;
-import DecoratorPanes.ListaPlatos;
-import DecoratorPanes.PaneInicioSesion;
+
 import Modelo.Persistencia;
 import Modelo.Platos;
 import java.util.ArrayList;
@@ -45,8 +42,7 @@ public class PaneOrganizeCliente {
 
     }
 
-    public void menuCliente(Stage primaryStage, String id) {
-        
+    public void menuCliente(Stage primaryStage) {
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
@@ -60,10 +56,10 @@ public class PaneOrganizeCliente {
 
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
-            //System.exit(0);
             ListaCategorias tmp = new ListaCategorias();
-            tmp.ListaCategorias(this.lista, primaryStage, "-", id);
-            tmp.pantallaListaCategoria(primaryStage);
+            tmp.ListaCategorias(this.lista, primaryStage, "-");
+            ArrayList<Object> list=new ArrayList<>();
+            tmp.ConstruirPane(primaryStage,list);
 
         });
         menu.getItems().add(opcion1);
@@ -77,12 +73,13 @@ public class PaneOrganizeCliente {
 
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
-            Busqueda busq = new Busqueda(categoriaPlato, primaryStage, id);
+            Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
 
             @Override
             public void handle(ActionEvent event) {
                 // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
-                busq.pantallaBusquedad(primaryStage);
+                ArrayList<Object> list=new ArrayList<>();
+                busq.ConstruirPane(primaryStage,list);
             }
         });
         menu2.getItems().add(opcion2);
@@ -116,11 +113,11 @@ public class PaneOrganizeCliente {
         return root;
     }
 
-    public static void pantallaCliente(Stage primaryStage, String id) {
+    public static void pantallaCliente(Stage primaryStage) {
         PaneOrganizeCliente root4 = new PaneOrganizeCliente();
         Scene scene = new Scene(root4.getRoot(), 400, 250, Color.ORANGERED);
         primaryStage.setScene(scene);
-        root4.menuCliente(primaryStage, id);
+        root4.menuCliente(primaryStage);
         primaryStage.show();
     }
 
