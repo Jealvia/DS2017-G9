@@ -11,4 +11,9 @@ package SegundaParte;
  */
 public class Carnet {
     
+    private String numeroMatricula;
+    private String contraseña;
+    private double saldo;
+    
+    
 }

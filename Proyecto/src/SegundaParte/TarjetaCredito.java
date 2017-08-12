@@ -5,10 +5,17 @@
  */
 package SegundaParte;
 
+import java.util.Date;
+
 /**
  *
  * @author Julio Alvia
  */
 public class TarjetaCredito {
+
+    private String numeros;
+    private String CVC;
+    private Date fechaExpiracion;
+    
     
 }

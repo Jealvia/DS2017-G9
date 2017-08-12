@@ -9,7 +9,17 @@ package SegundaParte;
  *
  * @author Julio Alvia
  */
-public class Asistente extends Usuario{
+public class Asistente {
+    
+    private String nombre;
     private String identificacion;
     private String contraseña;
+
+    public Asistente(String nombre, String identificacion, String contraseña) {
+        this.nombre = nombre;
+        this.identificacion = identificacion;
+        this.contraseña = contraseña;
+    }
+    
+    
 }

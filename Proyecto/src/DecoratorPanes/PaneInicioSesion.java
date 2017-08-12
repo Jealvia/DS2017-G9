@@ -2,7 +2,7 @@ package DecoratorPanes;
 
 
 import Modelo.Persistencia;
-import SegundaParte.Usuario;
+import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

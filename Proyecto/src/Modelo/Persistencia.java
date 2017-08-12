@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import SegundaParte.Usuario;
 import DecoratorPanes.Categoria;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -10,7 +10,7 @@ package DecoratorPanes;
 
 import Modelo.Persistencia;
 import Modelo.Platos;
-import SegundaParte.Usuario;
+import Modelo.Usuario;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

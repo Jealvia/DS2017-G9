@@ -11,7 +11,6 @@ package SegundaParte;
  */
 public class Usuario {
 
-    private String nombre;
     
     
     
