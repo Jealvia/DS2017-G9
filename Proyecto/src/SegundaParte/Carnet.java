@@ -3,20 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- 
 package SegundaParte;
- 
 
- 
 /**
  *
  * @author Julio Alvia
  */
- 
-public interface IRestaurante {
- 
-    public void agregarDetalles();
-    public boolean setOnline();
+public class Carnet {
+    
+    private String numeroMatricula;
+    private String contraseña;
+    private double saldo;
+    
     
 }
- 

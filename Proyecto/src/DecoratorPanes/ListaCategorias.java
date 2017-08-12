@@ -127,6 +127,7 @@ public class ListaCategorias extends PaneInterfaceBase {
         primaryStage.show();
     }
 
+<<<<<<< HEAD
 
 
   
@@ -138,4 +139,11 @@ public class ListaCategorias extends PaneInterfaceBase {
         
 
 
+=======
+    @Override
+    public void ConstruirPane(Stage primaryStage) {
+        System.out.println("Construyendo Pane lista Categoria");
+    }
+    
+>>>>>>> master
 }
