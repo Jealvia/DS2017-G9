@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InformacionPlatos;
+package DecoratorPanes;
 
 //CAMBIA
 //2
-import MenuBarAsistente.PaneOrganizaAsistente;
-import MenuBarCliente.PaneOrganizeCliente;
+
 import Modelo.Persistencia;
 import Modelo.Platos;
 import Modelo.Usuario;
@@ -36,7 +35,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneInformacionPlatos {
+public class PaneInformacionPlatos extends PaneSimple{
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -184,5 +183,12 @@ public class PaneInformacionPlatos {
         root4.DiseñoVentanaPlatos(primaryStage, numPlt, opcion, id);
         primaryStage.show();
     }
+
+    @Override
+    public void ConstruirPane(Stage primaryStage) {
+        System.out.println("Construyendo informacion platos de cliente");
+    }
+
+
 
 }

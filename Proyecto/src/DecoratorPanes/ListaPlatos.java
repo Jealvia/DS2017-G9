@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InformacionPlatos;
+package DecoratorPanes;
 //cambia
 //2
 
@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class ListaPlatos {
+public class ListaPlatos extends PaneSimple  {
 
     Label nombre;
     static VBox vbox;
@@ -39,7 +39,7 @@ public class ListaPlatos {
     static ListView<String> listaPlatos;
     HashMap<String, Platos> categoriaPlato;
 
-    public static void mostrarListaPltaos(ArrayList<Platos> lista, Stage primaryStage) {
+    public static void mostrarListaPltaos(ArrayList<Platos> lista) {
         for (Platos m : lista) {
             System.out.println("**" + m.getNombre());
             Label nombre = new Label("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
@@ -61,7 +61,7 @@ public class ListaPlatos {
         ListaPlatos.contenedor = contenedor;
     }
 
-    public void ventanaListaPlatos(ArrayList<Platos> lista, Stage primaryStage, String id) {
+    public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage, String id) {
         ArrayList<String> lista1 = new ArrayList<>();
         HashMap<Integer, Platos> numPlt = new HashMap<Integer, Platos>();
         VBox vbox = new VBox(10);
@@ -93,9 +93,18 @@ public class ListaPlatos {
             Integer opcion = listaPlatos.getSelectionModel().getSelectedIndex();
             PaneInformacionPlatos.pantallaInformacionPlatosCliente(primaryStage, numPlt, opcion, id);
         });
+       
+    }
+    public void pantallaListaPlatos(Stage primaryStage) {
+       
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
+        
     }
 
+    @Override
+    public void ConstruirPane(Stage primaryStage) {
+        System.out.println("Construyendo pane lista platos");
+    }
 }

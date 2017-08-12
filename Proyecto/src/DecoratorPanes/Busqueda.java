@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Busqueda;
+package DecoratorPanes;
 
-import InformacionPlatos.ListaPlatos;
 import Modelo.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,20 +23,15 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class Busqueda {
-
+public class Busqueda extends PaneSimple {
     private BorderPane root;
     private TextField text_nombre;
     private Label busqueda_nombre, busqueda;
     private Button buscar_nombre;
     private HBox organizar;
     private VBox centro;
-
-    public Busqueda() {
-
-    }
-
     public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage, String id) {
+    
         busqueda = new Label("BUSQUEDA");
         buscar_nombre = new Button("Buscar");
         busqueda_nombre = new Label("Nombre");
@@ -60,14 +54,27 @@ public class Busqueda {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage, id);
+            lp.listaPlatos(lista, primaryStage, id);
+            lp.pantallaListaPlatos(primaryStage);
         });
     }
 
     public void pantallaBusquedad(Stage primaryStage) {
+       
         Scene escena = new Scene(root, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
+        
     }
 
+    @Override
+    public void ConstruirPane(Stage primaryStage) {
+        System.out.println("Construyendo Pane Busquedad");
+    }
+
+
+   
+
+  
+    
 }

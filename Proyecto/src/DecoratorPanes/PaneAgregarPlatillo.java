@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AgregarPlatillo;
+package DecoratorPanes;
 //cambia
 //2
 
-import MenuBarAsistente.PaneOrganizaAsistente;
-import Categoria.Categoria;
+import DecoratorPanes.PaneDecorator;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import Modelo.Restaurante;
@@ -34,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneAgregarPlatillo {
+public class PaneAgregarPlatillo extends PaneSimple{
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -57,6 +56,7 @@ public class PaneAgregarPlatillo {
     public Button SalirButton;
     public Button ModificarButton;
     public Button AgregarButton;
+    
 
     public PaneAgregarPlatillo(Stage primaryStage) {
         imgLoadFondo4 = new Image("/imagenes/fondo5.jpg");
@@ -148,13 +148,17 @@ public class PaneAgregarPlatillo {
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
-
     public void pantallaAgregarPlatosAsistente(Stage primaryStage, Restaurante restaurante, String id) {
         PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
         Scene scene = new Scene(root4.getRoot(), 500, 700);
         primaryStage.setScene(scene);
         root4.DiseñoVentanaAgregarPlatos(primaryStage, restaurante, id);
         primaryStage.show();
+    }
+
+    @Override
+    public void ConstruirPane(Stage primaryStage) {
+        System.out.println("Construyendo pane Agregar platillo de asistente");
     }
 
 }

@@ -1,6 +1,6 @@
 package Modelo;
 
-import InicioDeSesión.PaneInicioSesion;
+import DecoratorPanes.PaneInicioSesion;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

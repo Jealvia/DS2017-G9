@@ -7,7 +7,7 @@ package Modelo;
 //CAMBIA
 //2
 
-import Categoria.Categoria;
+import DecoratorPanes.Categoria;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;

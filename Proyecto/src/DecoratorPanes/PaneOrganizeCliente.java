@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MenuBarCliente;
+package DecoratorPanes;
 
 /**
  *
@@ -11,10 +11,10 @@ package MenuBarCliente;
  */
 //CAMBIA
 //2
-import Busqueda.Busqueda;
-import Categoria.ListaCategorias;
-import InformacionPlatos.ListaPlatos;
-import InicioDeSesión.PaneInicioSesion;
+import DecoratorPanes.Busqueda;
+import DecoratorPanes.ListaCategorias;
+import DecoratorPanes.ListaPlatos;
+import DecoratorPanes.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import java.util.ArrayList;
@@ -46,6 +46,7 @@ public class PaneOrganizeCliente {
     }
 
     public void menuCliente(Stage primaryStage, String id) {
+        
         //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
@@ -61,9 +62,8 @@ public class PaneOrganizeCliente {
         opcion1.setOnAction((ActionEvent event) -> {
             //System.exit(0);
             ListaCategorias tmp = new ListaCategorias();
-            ArrayList<String> listacategorias = new ArrayList<>();
-            listacategorias = tmp.ListaCategorias(this.lista);
-            tmp.ventanaListaCategoria(listacategorias, primaryStage, "-", id);
+            tmp.ListaCategorias(this.lista, primaryStage, "-", id);
+            tmp.pantallaListaCategoria(primaryStage);
 
         });
         menu.getItems().add(opcion1);

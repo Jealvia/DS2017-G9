@@ -1,7 +1,6 @@
-package InicioDeSesión;
+package DecoratorPanes;
 
-import MenuBarCliente.PaneOrganizeCliente;
-import MenuBarAsistente.PaneOrganizaAsistente;
+
 import Modelo.Persistencia;
 import Modelo.Usuario;
 import java.util.ArrayList;

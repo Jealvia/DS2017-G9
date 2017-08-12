@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MenuBarAsistente;
+package DecoratorPanes;
 //esta cambia
 
-import AgregarPlatillo.PaneAgregarPlatillo;
-import Categoria.ListaCategorias;
-import InformacionPlatos.ListaPlatos;
-import InformacionPlatos.PaneInformacionPlatos;
-import InicioDeSesión.PaneInicioSesion;
+import DecoratorPanes.PaneAgregarPlatillo;
+import DecoratorPanes.ListaCategorias;
+import DecoratorPanes.ListaPlatos;
+import DecoratorPanes.PaneInformacionPlatos;
+import DecoratorPanes.PaneInicioSesion;
 import Modelo.Persistencia;
 import Modelo.Platos;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaPlatos lp = new ListaPlatos();
-            lp.ventanaListaPlatos(lista, primaryStage, id);
+            lp.listaPlatos(lista, primaryStage, id);
 
         });
         //Modificar platos
@@ -123,9 +123,9 @@ public class PaneOrganizaAsistente {
                 }
             }
             ListaCategorias tmp = new ListaCategorias();
-            ArrayList<String> listacategorias = new ArrayList<>();
-            listacategorias = tmp.ListaCategorias(listaplatos);
-            tmp.ventanaListaCategoria(listacategorias, primaryStage, restaurante, id);
+            tmp.ListaCategorias(listaplatos,primaryStage, restaurante, id);
+            tmp.pantallaListaCategoria(primaryStage);
+          
         });
         menucat.getItems().add(opciones);
         menucat.getItems().add(opcionModificarPlatoCat);
@@ -165,4 +165,7 @@ public class PaneOrganizaAsistente {
         root4.menuAsistente(primaryStage, restaurante, id);
         primaryStage.show();
     }
+
+  
+    
 }
