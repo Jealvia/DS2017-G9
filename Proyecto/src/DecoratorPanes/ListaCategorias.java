@@ -125,14 +125,5 @@ public class ListaCategorias extends PaneSimple{
     public void ConstruirPane(Stage primaryStage) {
         System.out.println("Construyendo Pane lista Categoria");
     }
-
-  
-
- 
-
-  
-
-        
-
-
+    
 }

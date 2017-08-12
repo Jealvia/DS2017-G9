@@ -22,6 +22,12 @@ package SegundaParte;
  
 public class Bebida extends Platos{
  
+    public Bebida(String nombre, String descripcion, String ingredientes, String tipo, String servido, Categoria categoria) {
+        super(nombre, descripcion, ingredientes, tipo, servido, categoria);
+    }
+ 
+    
+ 
     
  
 }

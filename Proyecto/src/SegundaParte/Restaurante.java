@@ -21,13 +21,9 @@ package SegundaParte;
  */
  
 public class Restaurante implements IRestaurante{
- 
     
- 
     private String nombre;
- 
     private String descripcion;
- 
     private String telefono;
  
     
