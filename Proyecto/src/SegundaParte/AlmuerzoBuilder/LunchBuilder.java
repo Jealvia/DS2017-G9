@@ -20,9 +20,12 @@ public abstract class LunchBuilder {
     }
     
     public abstract void buildLunch();
-    public abstract void buildDrink();
-    public abstract void buildDessert();
+    
+    public abstract void buildSegundo();
+    public abstract void buildSopa();
+    
     public abstract void buildPrice();
     
+    public abstract void buildExtras();
     
 }
