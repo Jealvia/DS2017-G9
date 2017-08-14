@@ -5,7 +5,10 @@
  */
 package Modelo;
 
-import DecoratorPanes.Categoria;
+import SegundaParte.Categoria;
+import SegundaParte.Platos;
+import SegundaParte.Restaurante;
+import SegundaParte.Usuario;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;

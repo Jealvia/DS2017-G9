@@ -9,9 +9,9 @@ package DecoratorPanes;
  *
  * @author Julio Alvia
  */
-import DecoratorPanes.Categoria;
+import SegundaParte.Categoria;
 import Modelo.Persistencia;
-import Modelo.Platos;
+import SegundaParte.Platos;
 import static java.awt.PageAttributes.MediaType.E;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -114,36 +114,10 @@ public class ListaCategorias extends PaneInterfaceBase {
         }
         return lista;
     }
-    //Muestra una ventana con las categotias pertenecientes al administrador
-//    public void pantallaListaCategoria(Stage primaryStage) {
-//        Scene escena = new Scene(contenedor, 800, 400);
-//        primaryStage.setScene(escena);
-//        primaryStage.show();
-//    }
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }
-
-<<<<<<< HEAD
-
-
-  
-
- 
-
-  
-
-        
-
-
-=======
-    @Override
-    public void ConstruirPane(Stage primaryStage) {
-        System.out.println("Construyendo Pane lista Categoria");
-    }
-    
->>>>>>> master
 }

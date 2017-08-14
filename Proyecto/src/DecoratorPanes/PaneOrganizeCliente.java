@@ -13,7 +13,7 @@ package DecoratorPanes;
 //2
 
 import Modelo.Persistencia;
-import Modelo.Platos;
+import SegundaParte.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.Scene;

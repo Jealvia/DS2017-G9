@@ -9,8 +9,8 @@ package DecoratorPanes;
 //2
 
 import Modelo.Persistencia;
-import Modelo.Platos;
-import Modelo.Usuario;
+import SegundaParte.Platos;
+import SegundaParte.Usuario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

@@ -7,7 +7,7 @@ package DecoratorPanes;
 //cambia
 //2
 
-import Modelo.Platos;
+import SegundaParte.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.collections.FXCollections;

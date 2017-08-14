@@ -12,7 +12,7 @@ import DecoratorPanes.ListaPlatos;
 import DecoratorPanes.PaneInformacionPlatos;
 import DecoratorPanes.PaneInicioSesion;
 import Modelo.Persistencia;
-import Modelo.Platos;
+import SegundaParte.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;

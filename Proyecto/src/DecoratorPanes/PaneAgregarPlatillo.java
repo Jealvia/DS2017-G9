@@ -8,8 +8,9 @@ package DecoratorPanes;
 //2
 
 import Modelo.Persistencia;
-import Modelo.Platos;
-import Modelo.Restaurante;
+import SegundaParte.Categoria;
+import SegundaParte.Platos;
+import SegundaParte.Restaurante;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;

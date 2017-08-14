@@ -5,7 +5,7 @@
  */
 package DecoratorPanes;
 
-import Modelo.Platos;
+import SegundaParte.Platos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,14 +58,6 @@ public class Busqueda extends PaneInterfaceBase{
             lp.pantallaListaPlatos(primaryStage);
         });
     }
-
-//    public void pantallaBusquedad(Stage primaryStage) {
-//       
-//        Scene escena = new Scene(root, 800, 400);
-//        primaryStage.setScene(escena);
-//        primaryStage.show();
-//        
-//    }
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         Scene escena = new Scene(root, 800, 400);
