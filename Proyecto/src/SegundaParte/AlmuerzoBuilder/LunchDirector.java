@@ -24,9 +24,10 @@ public class LunchDirector {
     public void buildAlmuerzo(){
         
         builder.buildLunch();
-        builder.buildDrink();
-        builder.buildDessert();
+        builder.buildSopa();;
+        builder.buildSegundo();
         builder.buildPrice();
+        builder.buildExtras();
     }
     
     public Almuerzo getLunch(){
