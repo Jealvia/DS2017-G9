@@ -139,7 +139,7 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
                 System.out.println("Clave: " + key + " -> Valor: " + numPlt.get(opcion).getNombre());
                 NombreText.setText(numPlt.get(opcion).getNombre());
                 IngredientesText.setText(numPlt.get(opcion).getIngredientes());
-                RestauranteText.setText(numPlt.get(opcion).getObjRestaurante().getNombre());
+                RestauranteText.setText(numPlt.get(opcion).getNombreRestaurante());
                 DescripcionText.setText(numPlt.get(opcion).getDescripcion());
                 CategoriaText.setText(numPlt.get(opcion).getCategoria().getNombre());
                 imgPlatos4.setImage(new Image("/imagenes/pt" + key + ".jpg"));

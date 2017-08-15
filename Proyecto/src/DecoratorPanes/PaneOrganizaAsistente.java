@@ -6,15 +6,9 @@
 package DecoratorPanes;
 //esta cambia
 
-import DecoratorPanes.PaneAgregarPlatillo;
-import DecoratorPanes.ListaCategorias;
-import DecoratorPanes.ListaPlatos;
-import DecoratorPanes.PaneInformacionPlatos;
-import DecoratorPanes.PaneInicioSesion;
 import Modelo.Persistencia;
 import SegundaParte.Platos;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -36,14 +30,12 @@ public class PaneOrganizaAsistente {
 
     Group root;
     ArrayList<Platos> lista;
-    HashMap<String, Platos> categoriaPlato;
-    Stage primaryStage;
-
+    ArrayList<Platos> listaPlatos;
+    
     public PaneOrganizaAsistente() {
-        this.primaryStage = primaryStage;
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
-        this.categoriaPlato = Persistencia.leerPlatos();
+        this.listaPlatos = Persistencia.leerPlatos();
 
     }
     // metodo que me obtiene el root1
@@ -60,11 +52,11 @@ public class PaneOrganizaAsistente {
         opcion1.setOnAction((ActionEvent event) -> {
             //Karol aqui te toca modificar
             PaneAgregarPlatillo pap = new PaneAgregarPlatillo(primaryStage);
-            for (Platos values : categoriaPlato.values()) {
-                if (restaurante.equals(values.getObjRestaurante().getNombre())) {
+            for (int i=0;i<listaPlatos.size();i++) {
+                if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
 //                    pap.pantallaAgregarPlatosAsistente(primaryStage, values.getObjRestaurante());
                     ArrayList<Object> list=new ArrayList<>();
-                    list.add(values.getObjRestaurante());
+                    list.add(listaPlatos.get(i).getNombreRestaurante());
                     pap.ConstruirPane(primaryStage, list);
                 }
             }
@@ -81,12 +73,11 @@ public class PaneOrganizaAsistente {
         Menu menu2 = new Menu("Lista de platos");
         MenuItem opcion2 = new MenuItem("Lista del restaurante");
         MenuItem opcionModificarPlato = new MenuItem("Modificar Plato");
-        System.out.println(restaurante);
         //Mostrar lista de platos del restaurante
         opcion2.setOnAction((ActionEvent event) -> {
-            for (Platos values : categoriaPlato.values()) {
-                if (restaurante.equals(values.getRestaurante().getNombre())) {
-                    lista.add(values);
+            for (int i=0;i<listaPlatos.size();i++) {
+                if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
+                    lista.add(listaPlatos.get(i));
                 }
             }
             ListaPlatos lp = new ListaPlatos();
@@ -100,8 +91,8 @@ public class PaneOrganizaAsistente {
 
             PaneInformacionPlatos pap = new PaneInformacionPlatos(primaryStage);
 
-            for (Platos values : categoriaPlato.values()) {
-                if (restaurante.equals(values.getObjRestaurante().getNombre())) {
+            for (int i=0;i<listaPlatos.size();i++) {
+                if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
 //                   pap.pantallaModificarPlatos(primaryStage,values.getObjRestaurante());
                 }
             }
@@ -118,16 +109,16 @@ public class PaneOrganizaAsistente {
         //Modificar boton aqui
 
         opciones.setOnAction((ActionEvent event) -> {
-            ArrayList<Platos> listaplatos = new ArrayList<>();
-            for (Platos values : categoriaPlato.values()) {
-                if (values.getRestaurante().getNombre().equals(restaurante)) {
-                    System.out.println(values.getRestaurante().getNombre());
+            ArrayList<Platos> listplatos = new ArrayList<>();
+            for (int i=0;i<listaPlatos.size();i++) {
+                if (listaPlatos.get(i).getNombreRestaurante().equals(restaurante)) {
+                    System.out.println(listaPlatos.get(i).getNombreRestaurante());
                     System.out.println(restaurante);
-                    listaplatos.add(values);
+                    listplatos.add(listaPlatos.get(i));
                 }
             }
             ListaCategorias tmp = new ListaCategorias();
-            tmp.ListaCategorias(listaplatos,primaryStage, restaurante);
+            tmp.ListaCategorias(listplatos,primaryStage, restaurante);
             ArrayList<Object> list=new ArrayList<>();
             tmp.ConstruirPane(primaryStage,list);
           

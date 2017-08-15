@@ -1,29 +1,13 @@
-<<<<<<< HEAD
-comida costa;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
-comida costa;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
-comida costa;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
-postre;helado;helado de varios sabores;frio;postre;A;helado
-postre;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
-postre;frutas;frutas de varios sabores;frio;postre;C;fruta
-comida sierra;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
-comida sierra;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,queso
-comida rapida;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
-plato del mar;ceviche de conchas;bueno;frio;plato fuerte;B;conchas,tomate,cebolla,limon,pimienta
-plato del mar;ceviche de camaron;ok ok ok;frio;plato fuerte;B;camarones,cebolla,pimienta,tomate
-comida sierra;Guatita;sdsdsdsdsdsdsds;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
-comida rapida;pizza;tamaÃ±o mediano;caliente;aperitivo;B;queso,jamon,harina
-=======
 ejecutivo;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
-estudiantil;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;B;arroz,carne,especias
+estudiantil;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;NuevaMalicia;arroz,carne,especias
 ejecutivo;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
 estudiantil;helado;helado de varios sabores;frio;postre;A;helado
-ejecutivo;torta helada;torta helada de varios sabores;frio;postre;B;torta,helado
+ejecutivo;torta helada;torta helada de varios sabores;frio;postre;NuevaMalicia;torta,helado
 estudiantil;frutas;frutas de varios sabores;frio;postre;C;fruta
 ejecutivo;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
-estudiantil;patacones con queso;patacones que llevan queso;frio;aperitivo;B;verde,queso
+estudiantil;patacones con queso;patacones que llevan queso;frio;aperitivo;NuevaMalicia;verde,queso
 ejecutivo;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
-estudiantil;ceviche de conchas;bueno;frio;plato fuerte;B;conchas,tomate,cebolla,limon,pimienta
-ejecutivo;ceviche de camaron;ok ok ok;frio;plato fuerte;B;camarones,cebolla,pimienta,tomate
-estudiantil;Guatita;buena;frio;plato fuerte;B;mondongo,mani,arroz,sal,aceite
-ejecutivo;pizza;mediano;caliente;aperitivo;B;queso,jamon,harina
->>>>>>> master
+estudiantil;ceviche de conchas;bueno;frio;plato fuerte;NuevaMalicia;conchas,tomate,cebolla,limon,pimienta
+ejecutivo;ceviche de camaron;ok ok ok;frio;plato fuerte;NuevaMalicia;camarones,cebolla,pimienta,tomate
+estudiantil;Guatita;buena;frio;plato fuerte;NuevaMalicia;mondongo,mani,arroz,sal,aceite
+ejecutivo;pizza;mediano;caliente;aperitivo;NuevaMalicia;queso,jamon,harina

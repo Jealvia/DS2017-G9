@@ -101,7 +101,7 @@ public class PaneInicioSesion<E> {
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
                         System.out.println("INGRESO AL SISTEMA");
 
-                        PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest().getNombre());
+                        PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest());
 
                     } else {
                         MensajeLabel.setText("Identification Error!");

@@ -15,8 +15,8 @@ package SegundaParte;
  
 public class Segundo extends Platos{
  
-    public Segundo(String nombre, String descripcion, String ingredientes, String tipo, String servido, Categoria categoria) {
-        super(nombre, descripcion, ingredientes, tipo, servido, categoria);
+    public Segundo(String nombre, String descripcion, String ingredientes, String tipo, String servido, Categoria categoria,String restaurante) {
+        super(nombre, descripcion, ingredientes, tipo, servido, categoria,restaurante);
     }
  
     

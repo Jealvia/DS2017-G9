@@ -112,8 +112,8 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
         return root4;
     }
 
-    public void DiseñoVentanaAgregarPlatos(Stage primaryStage, Restaurante restaurante) {
-        HashMap<String, Platos> categoriaPlato = new HashMap<String, Platos>();
+    public void DiseñoVentanaAgregarPlatos(Stage primaryStage, String restaurante) {
+        ArrayList<Platos> listaPlatos = new ArrayList<>();
         HBox PaneHorizontalBotones = new HBox(100, AgregarButton, RetornarButton, SalirButton);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -126,16 +126,16 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
         RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 PaneOrganizaAsistente root = new PaneOrganizaAsistente();
-                root.pantallaAsistente(primaryStage, restaurante.getNombre());
+                root.pantallaAsistente(primaryStage, restaurante);
             }
         });
         AgregarButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
                 Categoria categoria = new Categoria(CategoriaText.getText().toLowerCase());
-                Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), categoria, TipoText.getText(), ServidoText.getText(), restaurante, IngredientesText.getText());
-                categoriaPlato.put(CategoriaText.getText(), pt);
-                Persistencia.writePlatos(categoriaPlato);
+                Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(),IngredientesText.getText(), TipoText.getText(), ServidoText.getText(),categoria,restaurante);
+                listaPlatos.add(pt);
+                Persistencia.writePlatos(listaPlatos);
             }
         });
         VBox PaneOjetos = new VBox(5, NombreLabel, NombreText, CategoriaLabel, CategoriaText,
@@ -162,7 +162,7 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
         PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
         Scene scene = new Scene(root4.getRoot(), 500, 700);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaAgregarPlatos(primaryStage, (Restaurante) lista.get(0));
+        root4.DiseñoVentanaAgregarPlatos(primaryStage, (String) lista.get(0));
         primaryStage.show();
     }
 

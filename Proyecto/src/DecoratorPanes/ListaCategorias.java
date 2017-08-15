@@ -12,26 +12,19 @@ package DecoratorPanes;
 import SegundaParte.Categoria;
 import Modelo.Persistencia;
 import SegundaParte.Platos;
-import static java.awt.PageAttributes.MediaType.E;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import static javafx.scene.input.KeyCode.E;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 /**
  *
@@ -59,13 +52,13 @@ public class ListaCategorias extends PaneInterfaceBase {
     }
 
     public void ListaCategorias(ArrayList<Platos> lista, Stage primaryStage, String restaurante) {
-        Set<Categoria> catego = new HashSet<>();
+        Set<Categoria> categoria = new HashSet<>();
         for (Platos m : lista) {
-            catego.add(m.getCategoria());
+            categoria.add(m.getCategoria());
         }
-        int tam = catego.size();
+        int tam = categoria.size();
         ArrayList<String> listacategorias = new ArrayList<>();
-        Iterator<Categoria> it1 = catego.iterator();
+        Iterator<Categoria> it1 = categoria.iterator();
         while (it1.hasNext()) {
             Categoria temp = new Categoria();
             temp = it1.next();
@@ -96,19 +89,18 @@ public class ListaCategorias extends PaneInterfaceBase {
         
     }
     public static ArrayList<Platos> listaPresentar(String categorias, String restaurante) {
-        HashMap<String, Platos> categoriaPlato = new HashMap<>();
-        categoriaPlato = Persistencia.leerPlatos();
+        ArrayList<Platos> listPlatos = Persistencia.leerPlatos();
         ArrayList<Platos> lista = new ArrayList<>();
         if ("-".equals(restaurante)) {
-            for (Platos plato : categoriaPlato.values()) {
-                if (plato.getCategoria().getNombre().equals(categorias)) {
-                    lista.add(plato);
+            for (int i=0;i<listPlatos.size();i++) {
+                if (listPlatos.get(i).getCategoria().getNombre().equals(categorias)) {
+                    lista.add(listPlatos.get(i));
                 }
             }
         } else {
-            for (Platos plato : categoriaPlato.values()) {
-                if (plato.getCategoria().getNombre().equals(categorias) && plato.getRestaurante().getNombre().equals(restaurante)) {
-                    lista.add(plato);
+            for (int i=0;i<listPlatos.size();i++) {
+                if (listPlatos.get(i).getCategoria().getNombre().equals(categorias) && listPlatos.get(i).getNombreRestaurante().equals(restaurante)) {
+                    lista.add(listPlatos.get(i));
                 }
             }
         }

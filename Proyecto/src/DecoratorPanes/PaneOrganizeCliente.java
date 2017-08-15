@@ -13,7 +13,11 @@ package DecoratorPanes;
 //2
 
 import Modelo.Persistencia;
+import SegundaParte.IRestaurante;
+import SegundaParte.NuevaMalicia;
 import SegundaParte.Platos;
+import SegundaParte.Restaurante;
+import SegundaParte.RestauranteOnline;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.Scene;
@@ -25,39 +29,36 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 
 public class PaneOrganizeCliente {
 
     Group root;
     ArrayList<Platos> lista;
-    HashMap<String, Platos> categoriaPlato;
+    ArrayList<Platos> listaPlatos;
     Stage primaryStage;
 
     public PaneOrganizeCliente() {
         this.primaryStage = primaryStage;
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
-        this.categoriaPlato = Persistencia.leerPlatos();
+        this.listaPlatos = Persistencia.leerPlatos();
 
     }
 
     public void menuCliente(Stage primaryStage) {
-        //Crear una instancia de MenuBar que contrendra los menus
+       //Crear una instancia de MenuBar que contrendra los menus
         MenuBar menuBar = new MenuBar();
         //Objeto Menu que contiene uno o mas items, u otros menus para hacer submenus
         Menu menu = new Menu("Categorias de Platos");
         //Creando los items(menuItem) quu iran en el primer menu
         MenuItem opcion1 = new MenuItem("Seleccione categoría");
-        System.out.println("**" + categoriaPlato.size());
-        for (Platos values : categoriaPlato.values()) {
-            lista.add(values);
-        }
+        System.out.println("**" + listaPlatos.size());
+       
 
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
             ListaCategorias tmp = new ListaCategorias();
-            tmp.ListaCategorias(this.lista, primaryStage, "-");
+            tmp.ListaCategorias(this.listaPlatos, primaryStage, "-");
             ArrayList<Object> list=new ArrayList<>();
             tmp.ConstruirPane(primaryStage,list);
 
@@ -70,11 +71,9 @@ public class PaneOrganizeCliente {
         //Objeto Menu2
         Menu menu2 = new Menu("Buscar Platos");
         MenuItem opcion2 = new MenuItem("Lista Platos");
-
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
-            Busqueda busq = new Busqueda(categoriaPlato, primaryStage);
-
+            Busqueda busq = new Busqueda(primaryStage,listaPlatos);
             @Override
             public void handle(ActionEvent event) {
                 // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);

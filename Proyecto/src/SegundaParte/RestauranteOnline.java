@@ -5,6 +5,8 @@
  */
 package SegundaParte;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Julio Alvia
@@ -16,13 +18,9 @@ public class RestauranteOnline extends RestauranteDecorator {
     }
 
     @Override
-    public void agregarDetalles() {
-        //Se le agregan detalles adicionales en caso de que se requiera lo que sea
-    }
-
-    @Override
     public boolean setOnline() {
         return true;
     }
+
     
 }

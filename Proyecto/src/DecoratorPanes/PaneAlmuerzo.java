@@ -16,13 +16,13 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneOrganizaAdministrador {
+public class PaneAlmuerzo {
 
     public static BorderPane root3;
     private Image imgLoadFondo3;
     private ImageView imgFondo3;
 
-    public PaneOrganizaAdministrador(Stage primaryStage) {
+    public PaneAlmuerzo(Stage primaryStage) {
         imgLoadFondo3 = new Image("/imagenes/fondo3.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(500);
@@ -37,7 +37,7 @@ public class PaneOrganizaAdministrador {
     }
 
     public static void pantallaAdministrador(Stage primaryStage) {
-        PaneOrganizaAdministrador root3 = new PaneOrganizaAdministrador(primaryStage);
+        PaneAlmuerzo root3 = new PaneAlmuerzo(primaryStage);
         Scene scene = new Scene(root3.getRoot(), 800, 500);
         primaryStage.setScene(scene);
         primaryStage.show();

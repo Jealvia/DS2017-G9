@@ -7,7 +7,9 @@
 package SegundaParte;
  
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
  
@@ -22,13 +24,19 @@ public abstract class Restaurante implements IRestaurante{
     private String descripcion;
     private String telefono;
     private ArrayList<Platos> listaPlatos;
-    private File archivoPlatos;
-    private File archivoAsistentes;
+    private FileWriter archivoPlatos;
+    private FileWriter archivoAsistentes;
     private boolean compraOnline;
-    private ArrayList<Asistente> listaAsistentes;
+    private ArrayList<Asistente> listaAsistentes;   
+
+    public Restaurante(String nombre, String descripcion, String telefono, boolean compraOnline) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.telefono = telefono;
+        this.compraOnline = compraOnline;
+        
+    }
     
-    public abstract void llenarListaPlatos();
-    public abstract void llenarListaAsistentes();
     
     public String getNombre() {
         return nombre;
@@ -62,11 +70,11 @@ public abstract class Restaurante implements IRestaurante{
         this.listaPlatos = listaPlatos;
     }
 
-    public File getArchivoPlatos() {
+    public FileWriter getArchivoPlatos() {
         return archivoPlatos;
     }
 
-    public void setArchivoPlatos(File archivoPlatos) {
+    public void setArchivoPlatos(FileWriter archivoPlatos) {
         this.archivoPlatos = archivoPlatos;
     }
 
@@ -86,11 +94,11 @@ public abstract class Restaurante implements IRestaurante{
         this.listaAsistentes = listaAsistentes;
     }
 
-    public File getArchivoAsistentes() {
+    public FileWriter getArchivoAsistentes() {
         return archivoAsistentes;
     }
 
-    public void setArchivoAsistentes(File archivoAsistentes) {
+    public void setArchivoAsistentes(FileWriter archivoAsistentes) {
         this.archivoAsistentes = archivoAsistentes;
     }
     

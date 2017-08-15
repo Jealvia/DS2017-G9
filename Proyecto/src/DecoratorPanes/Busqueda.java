@@ -6,10 +6,12 @@
 package DecoratorPanes;
 
 import SegundaParte.Platos;
+import SegundaParte.Restaurante;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,8 +32,7 @@ public class Busqueda extends PaneInterfaceBase{
     private Button buscar_nombre;
     private HBox organizar;
     private VBox centro;
-    public Busqueda(HashMap<String, Platos> listaplatos, Stage primaryStage) {
-    
+    public Busqueda( Stage primaryStage,ArrayList<Platos> listaPlatos) {
         busqueda = new Label("BUSQUEDA");
         buscar_nombre = new Button("Buscar");
         busqueda_nombre = new Label("Nombre");
@@ -46,16 +47,13 @@ public class Busqueda extends PaneInterfaceBase{
         primaryStage.setResizable(false);
         //Busca por nombre o descripcion y luego llama al metodo para mostrar la lista de platos para su 
         //posterior selección.
-        buscar_nombre.setOnAction((ActionEvent e) -> {
-            ArrayList<Platos> lista = new ArrayList<>();
-            for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
-                if (entry.getValue().getNombre().contains(text_nombre.getText()) || entry.getValue().getDescripcion().contains(text_nombre.getText())) {
-                    lista.add(entry.getValue());
-                }
+        buscar_nombre.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                ListaPlatos lp = new ListaPlatos();
+                lp.listaPlatos(listaPlatos, primaryStage);
+                lp.pantallaListaPlatos(primaryStage);
             }
-            ListaPlatos lp = new ListaPlatos();
-            lp.listaPlatos(lista, primaryStage);
-            lp.pantallaListaPlatos(primaryStage);
         });
     }
     @Override

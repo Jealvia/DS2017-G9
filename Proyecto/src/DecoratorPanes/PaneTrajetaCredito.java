@@ -3,22 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- 
-package SegundaParte;
- 
-import java.util.ArrayList;
+package DecoratorPanes;
 
-
- 
 /**
  *
- * @author Julio Alvia
+ * @author jimmy
  */
- 
-public interface IRestaurante {
- 
-    public boolean setOnline();
- 
+public class PaneTrajetaCredito {
     
 }
- 

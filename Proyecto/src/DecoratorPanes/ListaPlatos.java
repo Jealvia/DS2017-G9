@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -61,8 +60,8 @@ public class ListaPlatos  {
         for (Platos m : lista) {
             System.out.println(m.getNombre());
             HBox hbox = new HBox();
-            System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
-            lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getObjRestaurante().getNombre());
+            System.out.println("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante());
+            lista1.add("Nombre: " + m.getNombre() + "\n" + "Restaurante: " + m.getNombreRestaurante());
             numPlt.put(cont, m);
             cont++;
             vbox.getChildren().add(hbox);

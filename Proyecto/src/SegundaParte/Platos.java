@@ -23,14 +23,16 @@ public class Platos {
     private String servido;
     private Categoria categoria;
     private File[] imagen;
+    private String nombreRestaurante;
     
-    public Platos(String nombre, String descripcion, String ingredientes, String tipo, String servido, Categoria categoria) {
+    public Platos(String nombre, String descripcion, String ingredientes, String tipo, String servido, Categoria categoria,String nombreRestaurante) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ingredientes = ingredientes;
         this.tipo = tipo;
         this.servido = servido;
         this.categoria = categoria;
+        this.nombreRestaurante=nombreRestaurante;
     }
     
     public String getNombre() {
@@ -57,7 +59,7 @@ public class Platos {
         this.ingredientes = ingredientes;
     }
 
-    public String isServido() {
+    public String getServido() {
         return servido;
     }
 
@@ -71,6 +73,22 @@ public class Platos {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNombreRestaurante() {
+        return nombreRestaurante;
+    }
+
+    public void setNombreRestaurante(String nombreRestaurante) {
+        this.nombreRestaurante = nombreRestaurante;
     }
     
     

@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,14 +49,13 @@ public class Persistencia<E> {
                 String contrasena = valores[2].trim();
                 String rol = valores[3].trim();
                 String restaurante = valores[4].trim();
-                Restaurante rest = new Restaurante(restaurante);
                 System.out.println(restaurante);
                 switch (rol) {
                     case "Cliente":
-                        temporal.put(id, new Usuario(nombre, id, contrasena, rol, rest));
+                        temporal.put(id, new Usuario(nombre, id, contrasena, rol, restaurante));
                         break;
                     case "Asistente":
-                        temporal.put(id, new Usuario(nombre, id, contrasena, rol, rest));
+                        temporal.put(id, new Usuario(nombre, id, contrasena, rol, restaurante));
                         break;
                 }
             }
@@ -64,8 +64,8 @@ public class Persistencia<E> {
         return temporal;
     }
 
-    public static HashMap<String, Platos> leerPlatos() {
-        HashMap<String, Platos> temporal = new HashMap<>();
+    public static ArrayList<Platos> leerPlatos() {
+        ArrayList<Platos> temporal = new ArrayList<>();
         String linea;
         try {
             FileReader f = new FileReader("platos.csv");
@@ -87,16 +87,16 @@ public class Persistencia<E> {
                 String restaurante = valores[5].trim();
                 String ingredientes = valores[6].trim();
                 
-                Restaurante rest = new Restaurante(restaurante);
-                temporal.put(nombre, new Platos(nombre, descripcion, categoria, tipo, servido, rest, ingredientes));
+//                Restaurante rest = new Restaurante(restaurante);
+                temporal.add(new Platos(nombre, descripcion, ingredientes, tipo, servido,categoria,restaurante));
             }
         } catch (IOException e) {
         }
         return temporal;
     }
 
-    public static HashMap<String, Restaurante> leerRestaurante() {
-        HashMap<String, Restaurante> temporal = new HashMap<>();
+    public static HashMap<String, ArrayList<String>> leerRestaurante() {
+        HashMap<String, ArrayList<String>> temporal = new HashMap<>();
         String linea;
         try {
             FileReader f = new FileReader("restaurante.csv");
@@ -112,7 +112,12 @@ public class Persistencia<E> {
                 String descripcion = valores[1].trim();
                 String telefono = valores[2].trim();
                 String asistente = valores[3].trim();
-                temporal.put(nombre, new Restaurante(nombre, descripcion, telefono));
+                ArrayList<String> datosRestaurante=new ArrayList<>();
+                datosRestaurante.add(nombre);
+                datosRestaurante.add(descripcion);
+                datosRestaurante.add(telefono);
+                datosRestaurante.add(asistente);
+                temporal.put(nombre,datosRestaurante);
             }
 
         } catch (IOException e) {
@@ -120,14 +125,13 @@ public class Persistencia<E> {
         return temporal;
     }
 
-    public static boolean writePlatos(HashMap<String, Platos> listaplatos) {
+    public static boolean writePlatos(ArrayList<Platos> listaplatos) {
         //public static void writeEventos(HashMap<String, Evento> eventos) {
         try {
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("platos.csv", true)));
 
-            for (Map.Entry<String, Platos> entry : listaplatos.entrySet()) {
-
-                String linea = entry.getKey() + ";" + entry.getValue().getNombre() + ";" + entry.getValue().getDescripcion() + ";" + entry.getValue().getServido() + ";" + entry.getValue().getTipo() + ";" + entry.getValue().getObjRestaurante().getNombre() + ";" + entry.getValue().getIngredientes();
+            for (int i=0;i<listaplatos.size();i++) {
+                String linea = listaplatos.get(i).getCategoria() + ";" + listaplatos.get(i).getNombre() + ";" + listaplatos.get(i).getDescripcion() + ";" +listaplatos.get(i).getServido() + ";" +listaplatos.get(i).getTipo() + ";" + listaplatos.get(i).getNombreRestaurante() + ";" + listaplatos.get(i).getIngredientes();
 
                 System.out.println(linea);
                 pw.write(linea + "\n");
