@@ -85,10 +85,24 @@ public class PaneOrganizeCliente {
         //Agregando el objeto menu2 al menuBar
         menuBar.getMenus().add(menu2);
         //Objeto Menu3
-        Menu menu3 = new Menu("Cerrar Sesion");
-        MenuItem opcion3 = new MenuItem("Regresar a Login");
-
+        Menu menu3 = new Menu("Pedidos de Almuerzos");
+        MenuItem opcion3 = new MenuItem("Almuerzo");
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                PaneAlmuerzoEjecutivo almuerzoEjecutivo=new PaneAlmuerzoEjecutivo(primaryStage);
+                almuerzoEjecutivo.pantallaAdministrador(primaryStage);
+            }
+            
+        });
+        menu3.getItems().add(opcion3);
+        //Agregando el menu3 al menuBar
+        menuBar.getMenus().add(menu3);
+        //Objeto Menu4
+        Menu menu4 = new Menu("Cerrar Sesion");
+        MenuItem opcion4 = new MenuItem("Regresar a Login");
+
+        opcion4.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
@@ -99,9 +113,9 @@ public class PaneOrganizeCliente {
                 primaryStage.show();
             }
         });
-        menu3.getItems().add(opcion3);
+        menu4.getItems().add(opcion4);
         //Agregando el menu3 al menuBar
-        menuBar.getMenus().add(menu3);
+        menuBar.getMenus().add(menu4);
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
         root.getChildren().add(menuBar);
 
