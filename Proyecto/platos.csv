@@ -1,13 +1,17 @@
-ejecutivo;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;plato fuerte;A;arroz,pollo,especias
-estudiantil;seco de carne;arroz acompañado de un seco de carne xD;caliente;plato fuerte;NuevaMalicia;arroz,carne,especias
-ejecutivo;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;plato fuerte;C;arroz,carne,menestra
+ejecutivo;seco de pollo;arroz acompañado de un seco de pollo xD;caliente;segundo;A;arroz,pollo,especias
+estudiantil;seco de carne;arroz acompañado de un seco de carne xD;caliente;segundo;NuevaMalicia;arroz,carne,especias
+ejecutivo;arroz con menestra;arroz acompañado de menestra y carne xD;caliente;segundo;C;arroz,carne,menestra
 estudiantil;helado;helado de varios sabores;frio;postre;A;helado
 ejecutivo;torta helada;torta helada de varios sabores;frio;postre;NuevaMalicia;torta,helado
 estudiantil;frutas;frutas de varios sabores;frio;postre;C;fruta
-ejecutivo;empanada;empanada de queso pollo o carne;caliente;aperitivo;A;masa,queso,carne o pollo
-estudiantil;patacones con queso;patacones que llevan queso;frio;aperitivo;NuevaMalicia;verde,queso
-ejecutivo;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;aperitivo;C;esparragos,jamon
-estudiantil;ceviche de conchas;bueno;frio;plato fuerte;NuevaMalicia;conchas,tomate,cebolla,limon,pimienta
-ejecutivo;ceviche de camaron;ok ok ok;frio;plato fuerte;NuevaMalicia;camarones,cebolla,pimienta,tomate
-estudiantil;Guatita;buena;frio;plato fuerte;NuevaMalicia;mondongo,mani,arroz,sal,aceite
-ejecutivo;pizza;mediano;caliente;aperitivo;NuevaMalicia;queso,jamon,harina
+ejecutivo;empanada;empanada de queso pollo o carne;caliente;postre;A;masa,queso,carne o pollo
+estudiantil;patacones con queso;patacones que llevan queso;frio;postre;NuevaMalicia;verde,queso
+ejecutivo;croquetas de esparragos trigueros y jamon;ceoquetas de esparragos;caliente;postre;C;esparragos,jamon
+estudiantil;ceviche de conchas;bueno;frio;sopa;NuevaMalicia;conchas,tomate,cebolla,limon,pimienta
+ejecutivo;ceviche de camaron;ok ok ok;frio;sopa;NuevaMalicia;camarones,cebolla,pimienta,tomate
+estudiantil;Guatita;buena;frio;segundo;NuevaMalicia;mondongo,mani,arroz,sal,aceite
+ejecutivo;pizza;mediano;caliente;postre;NuevaMalicia;queso,jamon,harina
+estudiantil;sopa de pollo;pollo en caldo;caliente;sopa;NuevaMalicia;pollo,agua,varias hierbas
+ejecutivo;sopa de carne;carne en caldo;caliente;sopa;NuevaMalicia;carne,agua,varias hierbas
+ejecutivo;jugo de naranja;jugo;frio;jugo;NuevaMalicia;naranja,agua,azucar
+estudiantil;jugo de tamarindo;jugo;frio;jugo;NuevaMalicia;tamarindo,agua,azucar
