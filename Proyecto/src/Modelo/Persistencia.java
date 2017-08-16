@@ -23,6 +23,7 @@ import java.util.Map;
 /**
  *
  * @author Julio Alvia
+ * @param <E>
  */
 public class Persistencia<E> {
 
@@ -30,6 +31,7 @@ public class Persistencia<E> {
      *
      * @return
      */
+    
     public static HashMap<String, Usuario> leerUsuarios() {
         HashMap<String, Usuario> temporal = new HashMap<>();
         String linea;
