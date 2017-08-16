@@ -1,11 +1,10 @@
-package DecoratorPanes;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//import static MenuBarAsistente.PaneOrganizaAsistente.root2;
+package DecoratorPanes;
+
 import SegundaParte.Platos;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -26,15 +25,13 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneAlmuerzoEjecutivo {
+public class PaneAlmuerzoEstudiantil {
     private Label titulo;
     private Label categoria;
     private Label segundo;
     private Label sopa;
-    private Label postre;
-    private Label bebida;
     private Button aceptar;
-    public static BorderPane root3;
+    public static BorderPane root4;
     private Image imgLoadFondo3;
     private ImageView imgFondo3;
     private ChoiceBox segundos;
@@ -45,17 +42,15 @@ public class PaneAlmuerzoEjecutivo {
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
   
-    public PaneAlmuerzoEjecutivo(Stage primaryStage,ArrayList<Platos> listaPlatos) {
+    public PaneAlmuerzoEstudiantil(Stage primaryStage,ArrayList<Platos> listaPlatos) {
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
-        root3 = new BorderPane();
+        root4 = new BorderPane();
         titulo=new Label("COMPRA ONLINE");
-        categoria=new Label("Ejecutivo");
-        postre=new Label("Postres");
-        bebida=new Label("Bebidas");
-        segundo=new Label("Sgundos");
-        sopa=new Label("Sopas");
-        imgLoadFondo3 = new Image("/imagenes/fondo10.jpg");
+        categoria=new Label("Estudiantil");
+        segundo=new Label("segundo");
+        sopa=new Label("sopa");
+        imgLoadFondo3 = new Image("/imagenes/fondo7.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(600);
         imgFondo3.setFitWidth(1100);
@@ -63,14 +58,10 @@ public class PaneAlmuerzoEjecutivo {
         segundos.setPrefWidth(5000);
         sopas= new ChoiceBox();
         sopas.setPrefWidth(5000);
-        postres= new ChoiceBox();
-        postres.setPrefWidth(5000);
-        bebidas= new ChoiceBox();
-        bebidas.setPrefWidth(5000);
         aceptar=new Button("Aceptar");
         aceptar.setAlignment(Pos.TOP_CENTER);
         llenarChoiceBox(listaPlatos);
-        PanePlatosChoiceBox=new HBox(100,segundos,sopas,postres,bebidas);
+        PanePlatosChoiceBox=new HBox(100,segundos,sopas);
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
         PaneBotonChoiceBox=new VBox(100,PanePlatosChoiceBox,aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
@@ -82,13 +73,13 @@ public class PaneAlmuerzoEjecutivo {
                 + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: yellow;");
-        root3.getChildren().addAll(imgFondo3);
-        root3.setCenter(PaneObjetos);
+        root4.getChildren().addAll(imgFondo3);
+        root4.setCenter(PaneObjetos);
     }
 
     // metodo que me obtiene el root1
     public BorderPane getRoot() {
-        return root3;
+        return root4;
     }
     public void llenarChoiceBox(ArrayList<Platos> listaPlatos){
         for(int i=0;i<listaPlatos.size();i++){
@@ -99,11 +90,8 @@ public class PaneAlmuerzoEjecutivo {
                 case "sopa":
                     sopas.getItems().add(listaPlatos.get(i).getNombre());
                     break;
-                case "jugo":
-                    bebidas.getItems().add(listaPlatos.get(i).getNombre());
-                    break;
                 default:
-                    postres.getItems().add(listaPlatos.get(i).getNombre());
+                    System.out.println("error");
                     break;
             }
         }
@@ -117,12 +105,11 @@ public class PaneAlmuerzoEjecutivo {
         
         });
     }
-    public  void pantallaAlmuerzoEjecutivo(Stage primaryStage,ArrayList<Platos> listaPlatos) {
-        PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage,listaPlatos);
-        Scene scene = new Scene(root3.getRoot(), 1100, 400);
+    public  void pantallaAlmuerzoEstudiantil(Stage primaryStage,ArrayList<Platos> listaPlatos) {
+        PaneAlmuerzoEstudiantil root4 = new PaneAlmuerzoEstudiantil(primaryStage,listaPlatos);
+        Scene scene = new Scene(root4.getRoot(), 1100, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
     
-
 }

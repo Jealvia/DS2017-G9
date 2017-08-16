@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class ListaPlatos  {
+public class PaneListaPlatos  {
 
     Label nombre;
     static VBox vbox;
@@ -39,7 +39,7 @@ public class ListaPlatos  {
     HashMap<String, Platos> categoriaPlato;
 
 
-    public ListaPlatos() {
+    public PaneListaPlatos() {
         this.contenedor = new BorderPane();
     }
 
@@ -48,7 +48,7 @@ public class ListaPlatos  {
     }
 
     public static void setContenedor(BorderPane contenedor) {
-        ListaPlatos.contenedor = contenedor;
+        PaneListaPlatos.contenedor = contenedor;
     }
 
     public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
@@ -69,7 +69,7 @@ public class ListaPlatos  {
         }
 
         //PARA PRESENTAR UNA LISTA DE OPCIONES
-        ListaPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
+        PaneListaPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
         listaPlatos = new ListView<String>(tiposPlatos);
         listaPlatos.setPrefSize(50, 100);
         vbox.setStyle("-fx-padding: 10;"

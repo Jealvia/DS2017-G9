@@ -30,16 +30,16 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class ListaCategorias extends PaneInterfaceBase {
+public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
     private BorderPane contenedor;
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
-    public HashMap<String, Platos> categoriaPlato;
+    
 
    
 
-    public ListaCategorias() {
+    public PaneCategorias_ListaPlatos() {
         this.contenedor = new BorderPane();
     }
 
@@ -66,7 +66,7 @@ public class ListaCategorias extends PaneInterfaceBase {
         }
         VBox vbox = new VBox(10);
         //PARA PRESENTAR UNA LISTA DE OPCIONES
-        ListaCategorias.tiposPlatos = FXCollections.observableArrayList(listacategorias);
+        tiposPlatos = FXCollections.observableArrayList(listacategorias);
         listaPlatos = new ListView<String>(tiposPlatos);
         listaPlatos.setPrefSize(50, 100);
         vbox.setStyle("-fx-padding: 10;"
@@ -81,8 +81,8 @@ public class ListaCategorias extends PaneInterfaceBase {
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             String opcion = listaPlatos.getSelectionModel().getSelectedItem();
             ArrayList<Platos> listapt = new ArrayList<>();
-            listapt = ListaCategorias.listaPresentar(opcion, restaurante);
-            ListaPlatos lp = new ListaPlatos();
+            listapt = PaneCategorias_ListaPlatos.listaPresentar(opcion, restaurante);
+            PaneListaPlatos lp = new PaneListaPlatos();
             lp.listaPlatos(listapt,primaryStage);
             lp.pantallaListaPlatos(primaryStage);
         });

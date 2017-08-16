@@ -57,7 +57,7 @@ public class PaneOrganizeCliente {
 
         //Si es estudiantil devuelve el arreglo solo estudiantil
         opcion1.setOnAction((ActionEvent event) -> {
-            ListaCategorias tmp = new ListaCategorias();
+            PaneCategorias_ListaPlatos tmp = new PaneCategorias_ListaPlatos();
             tmp.ListaCategorias(this.listaPlatos, primaryStage, "-");
             ArrayList<Object> list=new ArrayList<>();
             tmp.ConstruirPane(primaryStage,list);
@@ -73,7 +73,7 @@ public class PaneOrganizeCliente {
         MenuItem opcion2 = new MenuItem("Lista Platos");
         //Se encarga de la busqueda 
         opcion2.setOnAction(new EventHandler<ActionEvent>() {
-            Busqueda busq = new Busqueda(primaryStage,listaPlatos);
+            PaneBusqueda busq = new PaneBusqueda(primaryStage,listaPlatos);
             @Override
             public void handle(ActionEvent event) {
                 // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
@@ -90,8 +90,10 @@ public class PaneOrganizeCliente {
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                PaneAlmuerzoEjecutivo almuerzoEjecutivo=new PaneAlmuerzoEjecutivo(primaryStage);
-                almuerzoEjecutivo.pantallaAdministrador(primaryStage);
+                PanaCategoria_CompraOnline compraOnline=new PanaCategoria_CompraOnline();
+                compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
+                compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
+                
             }
             
         });

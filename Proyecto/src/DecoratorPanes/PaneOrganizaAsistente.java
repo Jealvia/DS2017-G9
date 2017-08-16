@@ -80,7 +80,7 @@ public class PaneOrganizaAsistente {
                     lista.add(listaPlatos.get(i));
                 }
             }
-            ListaPlatos lp = new ListaPlatos();
+            PaneListaPlatos lp = new PaneListaPlatos();
             lp.listaPlatos(lista, primaryStage);
             lp.pantallaListaPlatos(primaryStage);
 
@@ -117,7 +117,7 @@ public class PaneOrganizaAsistente {
                     listplatos.add(listaPlatos.get(i));
                 }
             }
-            ListaCategorias tmp = new ListaCategorias();
+            PaneCategorias_ListaPlatos tmp = new PaneCategorias_ListaPlatos();
             tmp.ListaCategorias(listplatos,primaryStage, restaurante);
             ArrayList<Object> list=new ArrayList<>();
             tmp.ConstruirPane(primaryStage,list);
