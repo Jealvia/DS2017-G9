@@ -34,11 +34,11 @@ public class PaneFormasDePago {
     public static BorderPane root5;
     private Image imgLoadFondo3;
     private ImageView imgFondo3;
-    private TextArea txtUsuario;
+    private TextField txtUsuario;
     private PasswordField ingreso_Contraseña;
-    private TextArea txtCVC;
-    private TextArea txtNumero;
-    private TextArea txtFechaExpiracion;
+    private TextField txtCVC;
+    private TextField txtNumero;
+    private TextField txtFechaExpiracion;
     private VBox PaneObjetos1;
     private VBox PaneObjetos;
     private VBox PaneObjetos2;
@@ -49,23 +49,38 @@ public class PaneFormasDePago {
         root5 = new BorderPane();
         LabeltarjetaCredito = new Label("Tarjeta de Credito");
         LabelCarnetInteligente = new Label("Carnet Inteligente");
-        labelTitulo = new Label("PAGO");
+        labelTitulo = new Label("******PAGOS******");
         LabelNumero = new Label("Numero:");
         LabelCVC = new Label("CVC:");
         labelFechaExpiracion = new Label("Fecha de expiracion: ");
-        txtNumero = new TextArea();
-        txtCVC = new TextArea();
-        txtFechaExpiracion = new TextArea();
-        txtUsuario = new TextArea();
+        LabelUsuario=new Label("Usuario:" );
+        LabelContraseña=new Label("Contraseña: ");
+        txtNumero = new TextField();
+        txtCVC = new TextField();
+        txtFechaExpiracion = new TextField();
+        txtUsuario = new TextField();
         ingreso_Contraseña = new PasswordField();
         ingreso_Contraseña.setPromptText("Your password");
         imgLoadFondo3 = new Image("/imagenes/fondo9.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
-        imgFondo3.setFitHeight(600);
-        imgFondo3.setFitWidth(1100);
-        pagarPorTarjeta = new Button("Pagar con tarjeta");
-        pagarPorCarnet = new Button("Pagar con Carnet ");
-        PaneObjetos1 = new VBox(1, LabeltarjetaCredito,LabelNumero,txtNumero,LabelCVC,txtCVC,labelFechaExpiracion,txtFechaExpiracion);
+        imgFondo3.setFitHeight(520);
+        imgFondo3.setFitWidth(500);
+        pagarPorTarjeta = new Button("Pagar");
+        pagarPorCarnet = new Button("Pagar");
+        PaneObjetos1 = new VBox(1, LabeltarjetaCredito,LabelNumero,txtNumero,LabelCVC,txtCVC,labelFechaExpiracion,txtFechaExpiracion,pagarPorTarjeta);
+        PaneObjetos2=new VBox(1,LabelCarnetInteligente,LabelUsuario,txtUsuario,LabelContraseña,ingreso_Contraseña,pagarPorCarnet);
+        root5.getChildren().addAll(imgFondo3);
+        
+       
+        
+    }
+
+    // metodo que me obtiene el root1
+    public BorderPane getRoot() {
+        return root5;
+    }
+    public void diseñoVentanaFormasDePago(){
+        
         PaneObjetos1.setAlignment(Pos.CENTER_LEFT);
         PaneObjetos1.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -73,19 +88,20 @@ public class PaneFormasDePago {
                 + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: yellow;");
-//        PaneObjetos2=new VBox(10,LabelCarnetInteligente,LabelUsuario,txtUsuario,LabelContraseña,ingreso_Contraseña);
-//        PaneObjetos2.setAlignment(Pos.CENTER_RIGHT);
-        PaneObjetos = new VBox(50, labelTitulo, PaneObjetos1);
+        
+        PaneObjetos2.setAlignment(Pos.CENTER_LEFT);
+        PaneObjetos2.setStyle("-fx-padding: 10;"
+        + "-fx-border-style: solid inside;"
+        + "-fx-border-width: 8;"
+        + "-fx-border-insets: 5;"
+        + "-fx-border-radius: 5;"
+        + "-fx-border-color: blue;");
+        
+        PaneObjetos = new VBox(50, labelTitulo, PaneObjetos2,PaneObjetos1);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
-        root5.getChildren().addAll(imgFondo3);
+       
         root5.setCenter(PaneObjetos);
     }
-
-    // metodo que me obtiene el root1
-    public BorderPane getRoot() {
-        return root5;
-    }
-
     public void eventoBotonPagarPorTarjeta() {
         pagarPorTarjeta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -106,8 +122,9 @@ public class PaneFormasDePago {
 
     public void pantallaFormasDePago(Stage primaryStage) {
         PaneFormasDePago root = new PaneFormasDePago(primaryStage);
-        Scene scene = new Scene(root.getRoot(), 500, 800);
+        Scene scene = new Scene(root.getRoot(), 500, 520);
         primaryStage.setScene(scene);
+        diseñoVentanaFormasDePago();
         primaryStage.show();
     }
 }

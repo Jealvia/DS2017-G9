@@ -29,7 +29,6 @@ public class PaneInicioSesion<E> {
     private ImageView imgLogin;
     private Persistencia pers;
     public static TextField ingresoUsuario;
-    public static TextField ingresoContraseña;
     public PasswordField ingreso_Contraseña;
     public static Label UsuarioLabel;
     public static Label ContraseñaLabel;
@@ -52,7 +51,6 @@ public class PaneInicioSesion<E> {
         this.ingresoUsuario = new TextField();
         this.ingreso_Contraseña = new PasswordField();
         ingreso_Contraseña.setPromptText("Your password");
-        this.ingresoContraseña = new TextField();
         this.UsuarioLabel = new Label("Usuario: ");
         this.ContraseñaLabel = new Label("Contraseña: ");
         this.MensajeLabel = new Label();

@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -38,17 +40,24 @@ public class PaneAlmuerzoEjecutivo {
     private HBox PanePlatosChoiceBox;
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
-
+    private HBox PanePlatosLabels;
     public PaneAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root3 = new BorderPane();
         titulo = new Label("COMPRA ONLINE");
+        Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
+        titulo.setFont(theFont);
+        Font theFont1 = Font.font("Helvetica", FontWeight.EXTRA_BOLD, 12);
         categoria = new Label("Ejecutivo");
         postre = new Label("Postres");
         bebida = new Label("Bebidas");
-        segundo = new Label("Sgundos");
+        segundo = new Label("Segundos");
         sopa = new Label("Sopas");
+        segundo.setFont(theFont1);
+        sopa.setFont(theFont1);
+        postre.setFont(theFont1);
+        bebida.setFont(theFont1);
         imgLoadFondo3 = new Image("/imagenes/fondo10.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(600);
@@ -66,9 +75,11 @@ public class PaneAlmuerzoEjecutivo {
         llenarChoiceBox(listaPlatos);
         PanePlatosChoiceBox = new HBox(100, segundos, sopas, postres, bebidas);
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
-        PaneBotonChoiceBox = new VBox(100, PanePlatosChoiceBox, aceptar);
+        PaneBotonChoiceBox = new VBox(50, PanePlatosChoiceBox, aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
-        PaneObjetos = new VBox(50, titulo, categoria, PaneBotonChoiceBox);
+        PanePlatosLabels=new HBox(250,segundo,sopa,postre,bebida);
+        PanePlatosLabels.setAlignment(Pos.CENTER_LEFT);
+        PaneObjetos = new VBox(1, titulo, categoria,PanePlatosLabels,PaneBotonChoiceBox);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
         PaneObjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -76,6 +87,8 @@ public class PaneAlmuerzoEjecutivo {
                 + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: yellow;");
+        
+       
         root3.getChildren().addAll(imgFondo3);
         root3.setCenter(PaneObjetos);
     }
@@ -115,7 +128,7 @@ public class PaneAlmuerzoEjecutivo {
 
     public void pantallaAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage, listaPlatos);
-        Scene scene = new Scene(root3.getRoot(), 1100, 400);
+        Scene scene = new Scene(root3.getRoot(), 1100, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

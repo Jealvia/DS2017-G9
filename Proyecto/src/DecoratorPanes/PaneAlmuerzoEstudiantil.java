@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -36,15 +38,20 @@ public class PaneAlmuerzoEstudiantil {
     private HBox PanePlatosChoiceBox;
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
-
+    private HBox PanePlatosLabels;
     public PaneAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root4 = new BorderPane();
         titulo = new Label("COMPRA ONLINE");
+        Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
+        titulo.setFont(theFont);
+        Font theFont1 = Font.font("Helvetica", FontWeight.EXTRA_BOLD, 12);
         categoria = new Label("Estudiantil");
         segundo = new Label("segundo");
         sopa = new Label("sopa");
+        segundo.setFont(theFont1);
+        sopa.setFont(theFont1);
         imgLoadFondo3 = new Image("/imagenes/fondo7.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(600);
@@ -60,7 +67,9 @@ public class PaneAlmuerzoEstudiantil {
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
         PaneBotonChoiceBox = new VBox(100, PanePlatosChoiceBox, aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
-        PaneObjetos = new VBox(50, titulo, categoria, PaneBotonChoiceBox);
+        PanePlatosLabels=new HBox(280,segundo,sopa);
+        PanePlatosLabels.setAlignment(Pos.CENTER_LEFT);
+        PaneObjetos = new VBox(1, titulo, categoria,PanePlatosLabels,PaneBotonChoiceBox);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
         PaneObjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -104,7 +113,7 @@ public class PaneAlmuerzoEstudiantil {
 
     public void pantallaAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         PaneAlmuerzoEstudiantil root4 = new PaneAlmuerzoEstudiantil(primaryStage, listaPlatos);
-        Scene scene = new Scene(root4.getRoot(), 1100, 400);
+        Scene scene = new Scene(root4.getRoot(), 600, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

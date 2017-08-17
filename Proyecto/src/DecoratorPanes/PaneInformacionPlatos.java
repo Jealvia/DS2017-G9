@@ -67,14 +67,15 @@ public class PaneInformacionPlatos extends PaneInterfaceBase {
         this.CategoriaLabel = new Label("Categoria: ");
         this.IngredienteLabel = new Label("Ingredientes: ");
         this.DescripcionLabel = new Label("Descripcion: ");
-        Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
+       
 
         RestauranteLabel.setTextFill(Color.rgb(21, 117, 84));
         CategoriaLabel.setTextFill(Color.rgb(21, 117, 84));
         IngredienteLabel.setTextFill(Color.rgb(21, 117, 84));
         DescripcionLabel.setTextFill(Color.rgb(21, 117, 84));
         NombreLabel.setTextFill(Color.rgb(21, 117, 84));
-
+        
+        Font theFont = Font.font("Helvetica", FontWeight.BOLD, 15);
         NombreLabel.setFont(theFont);
         RestauranteLabel.setFont(theFont);
         CategoriaLabel.setFont(theFont);

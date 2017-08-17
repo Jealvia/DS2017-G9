@@ -70,11 +70,11 @@ public class PaneOrganizeCliente {
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                PanaCategoria_CompraOnline compraOnline = new PanaCategoria_CompraOnline();
-//                compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
-//                compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
-                  PaneFormasDePago pago=new PaneFormasDePago(primaryStage);
-                  pago.pantallaFormasDePago(primaryStage);
+                PanaCategoria_CompraOnline compraOnline = new PanaCategoria_CompraOnline();
+                compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
+                compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
+//                  PaneFormasDePago pago=new PaneFormasDePago(primaryStage);
+//                  pago.pantallaFormasDePago(primaryStage);
             }
         });
         menu3.getItems().add(opcion3);
