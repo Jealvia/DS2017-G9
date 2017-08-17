@@ -5,10 +5,7 @@ package DecoratorPanes;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import AlmuerzoBuilder.EjecutivoBuilder;
-import AlmuerzoBuilder.IPrecio;
-import AlmuerzoBuilder.LunchDirector;
-import AlmuerzoBuilder.PostrePrecio;
+
 import SegundaParte.Platos;
 import java.util.ArrayList;
 import javafx.event.*;
