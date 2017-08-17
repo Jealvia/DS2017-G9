@@ -3,22 +3,12 @@ package DecoratorPanes;
 
 import Modelo.Persistencia;
 import SegundaParte.Usuario;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.util.*;
+import javafx.event.*;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 

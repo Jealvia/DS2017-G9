@@ -10,24 +10,16 @@ package DecoratorPanes;
 import Modelo.Persistencia;
 import SegundaParte.Categoria;
 import SegundaParte.Platos;
-import SegundaParte.Restaurante;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 /**
@@ -149,14 +141,6 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
-//    public void pantallaAgregarPlatosAsistente(Stage primaryStage, Restaurante restaurante) {
-//        PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
-//        Scene scene = new Scene(root4.getRoot(), 500, 700);
-//        primaryStage.setScene(scene);
-//        root4.DiseñoVentanaAgregarPlatos(primaryStage, restaurante);
-//        primaryStage.show();
-//    }
-
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);

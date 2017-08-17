@@ -14,7 +14,7 @@ public class Almuerzo {
     public Segundo segundo;
     public Sopa sopa;
     public LinkedList<Platos> extras;
-    public float precio;
+    public double precio;
 
     public Almuerzo() {
     }
@@ -44,11 +44,11 @@ public class Almuerzo {
         this.segundo = segundo;
     }
    
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     

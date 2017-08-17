@@ -8,28 +8,16 @@ package DecoratorPanes;
 //CAMBIA
 //2
 
-import Modelo.Persistencia;
 import SegundaParte.Platos;
-import SegundaParte.Usuario;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.util.*;
+import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 /**
@@ -162,15 +150,6 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
-
-//    public static void pantallaInformacionPlatosCliente(Stage primaryStage, HashMap<Integer, Platos> numPlt, Integer opcion) {
-//        PaneInformacionPlatos root4 = new PaneInformacionPlatos(primaryStage);
-//        Scene scene = new Scene(root4.getRoot(), 500, 600);
-//        primaryStage.setScene(scene);
-//        root4.DiseñoVentanaPlatos(primaryStage, numPlt, opcion);
-//        primaryStage.show();
-//    }
-
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneInformacionPlatos root4 = new PaneInformacionPlatos(primaryStage);

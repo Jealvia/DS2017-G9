@@ -13,22 +13,14 @@ package DecoratorPanes;
 //2
 
 import Modelo.Persistencia;
-import SegundaParte.IRestaurante;
-import SegundaParte.NuevaMalicia;
 import SegundaParte.Platos;
-import SegundaParte.Restaurante;
-import SegundaParte.RestauranteOnline;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 
 public class PaneOrganizeCliente {
 

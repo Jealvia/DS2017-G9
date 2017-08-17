@@ -5,21 +5,18 @@ package DecoratorPanes;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//import static MenuBarAsistente.PaneOrganizaAsistente.root2;
+import AlmuerzoBuilder.EjecutivoBuilder;
+import AlmuerzoBuilder.IPrecio;
+import AlmuerzoBuilder.LunchDirector;
+import AlmuerzoBuilder.PostrePrecio;
 import SegundaParte.Platos;
 import java.util.ArrayList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 /**
@@ -109,12 +106,18 @@ public class PaneAlmuerzoEjecutivo {
         }
     }
     public void eventoBotonAceptar(){
-        aceptar.setOnAction(new EventHandler<ActionEvent>(){
+        aceptar.setOnAction(new EventHandler<ActionEvent>(){   
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE PRESENTA EL PANE FORMAS DE PAGO
+//                LunchDirector  director= new LunchDirector(new EjecutivoBuilder()); 
+//                director.buildAlmuerzo();
+//                if (postres.getValue() != null){
+//                    IPrecio precio = new PostrePrecio(director.getLunch());
+//                    precio = new PostrePrecio(precio);
+//                }else if(bebidas.getValue()!=null){
+//                    
+//                }
             }
-        
         });
     }
     public  void pantallaAlmuerzoEjecutivo(Stage primaryStage,ArrayList<Platos> listaPlatos) {

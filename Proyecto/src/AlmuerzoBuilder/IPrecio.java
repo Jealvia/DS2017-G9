@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DecoratorPanes;
+package AlmuerzoBuilder;
 
 /**
  *
  * @author jimmy
  */
-public class PaneCarnetInteligente {
+public interface IPrecio {
+    
+    public double getPrecio();
     
 }
