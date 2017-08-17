@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package DecoratorPanes;
-//esta cambia
 
 import Modelo.Persistencia;
 import SegundaParte.Platos;
@@ -19,14 +18,12 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-//CAMBIA
-//2
 public class PaneOrganizaAsistente {
 
-    Group root;
-    ArrayList<Platos> lista;
-    ArrayList<Platos> listaPlatos;
-    
+    private Group root;
+    private ArrayList<Platos> lista;
+    private ArrayList<Platos> listaPlatos;
+
     public PaneOrganizaAsistente() {
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
@@ -47,10 +44,10 @@ public class PaneOrganizaAsistente {
         opcion1.setOnAction((ActionEvent event) -> {
             //Karol aqui te toca modificar
             PaneAgregarPlatillo pap = new PaneAgregarPlatillo(primaryStage);
-            for (int i=0;i<listaPlatos.size();i++) {
+            for (int i = 0; i < listaPlatos.size(); i++) {
                 if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
 //                    pap.pantallaAgregarPlatosAsistente(primaryStage, values.getObjRestaurante());
-                    ArrayList<Object> list=new ArrayList<>();
+                    ArrayList<Object> list = new ArrayList<>();
                     list.add(listaPlatos.get(i).getNombreRestaurante());
                     pap.ConstruirPane(primaryStage, list);
                 }
@@ -67,10 +64,9 @@ public class PaneOrganizaAsistente {
         //Objeto Menu2
         Menu menu2 = new Menu("Lista de platos");
         MenuItem opcion2 = new MenuItem("Lista del restaurante");
-        MenuItem opcionModificarPlato = new MenuItem("Modificar Plato");
         //Mostrar lista de platos del restaurante
         opcion2.setOnAction((ActionEvent event) -> {
-            for (int i=0;i<listaPlatos.size();i++) {
+            for (int i = 0; i < listaPlatos.size(); i++) {
                 if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
                     lista.add(listaPlatos.get(i));
                 }
@@ -80,32 +76,15 @@ public class PaneOrganizaAsistente {
             lp.pantallaListaPlatos(primaryStage);
 
         });
-        //Modificar platos
-
-        opcionModificarPlato.setOnAction((ActionEvent event) -> {
-
-            PaneInformacionPlatos pap = new PaneInformacionPlatos(primaryStage);
-
-            for (int i=0;i<listaPlatos.size();i++) {
-                if (restaurante.equals(listaPlatos.get(i).getNombreRestaurante())) {
-//                   pap.pantallaModificarPlatos(primaryStage,values.getObjRestaurante());
-                }
-            }
-        });
         menu2.getItems().add(opcion2);
-        menu2.getItems().add(opcionModificarPlato);
         //Agregando el objeto menu2 al menuBar
         menuBar.getMenus().add(menu2);
-
         //Agrega menu lista por categoria
         Menu menucat = new Menu("Categorias de Platos");
         MenuItem opciones = new MenuItem("Seleccione categoría");
-        MenuItem opcionModificarPlatoCat = new MenuItem("Modificar Plato");
-        //Modificar boton aqui
-
         opciones.setOnAction((ActionEvent event) -> {
             ArrayList<Platos> listplatos = new ArrayList<>();
-            for (int i=0;i<listaPlatos.size();i++) {
+            for (int i = 0; i < listaPlatos.size(); i++) {
                 if (listaPlatos.get(i).getNombreRestaurante().equals(restaurante)) {
                     System.out.println(listaPlatos.get(i).getNombreRestaurante());
                     System.out.println(restaurante);
@@ -113,21 +92,17 @@ public class PaneOrganizaAsistente {
                 }
             }
             PaneCategorias_ListaPlatos tmp = new PaneCategorias_ListaPlatos();
-            tmp.ListaCategorias(listplatos,primaryStage, restaurante);
-            ArrayList<Object> list=new ArrayList<>();
-            tmp.ConstruirPane(primaryStage,list);
-          
+            tmp.ListaCategorias(listplatos, primaryStage, restaurante);
+            ArrayList<Object> list = new ArrayList<>();
+            tmp.ConstruirPane(primaryStage, list);
+
         });
         menucat.getItems().add(opciones);
-        menucat.getItems().add(opcionModificarPlatoCat);
         menuBar.getMenus().add(menucat);
-
         //Objeto Menu3
         Menu menu3 = new Menu("Cerrar Sesion");
         MenuItem opcion3 = new MenuItem("Regresar a Login");
-
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 PaneInicioSesion root = new PaneInicioSesion(primaryStage);
@@ -157,6 +132,4 @@ public class PaneOrganizaAsistente {
         primaryStage.show();
     }
 
-  
-    
 }

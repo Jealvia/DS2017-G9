@@ -26,8 +26,7 @@ public abstract class Restaurante implements IRestaurante{
     private ArrayList<Platos> listaPlatos;
     private FileWriter archivoPlatos;
     private FileWriter archivoAsistentes;
-    private boolean compraOnline;
-    private ArrayList<Asistente> listaAsistentes;   
+    private boolean compraOnline;   
 
     public Restaurante(String nombre, String descripcion, String telefono, boolean compraOnline) {
         this.nombre = nombre;
@@ -85,15 +84,6 @@ public abstract class Restaurante implements IRestaurante{
     public void setCompraOnline(boolean compraOnline) {
         this.compraOnline = compraOnline;
     }
-
-    public ArrayList<Asistente> getListaAsistentes() {
-        return listaAsistentes;
-    }
-
-    public void setListaAsistentes(ArrayList<Asistente> listaAsistentes) {
-        this.listaAsistentes = listaAsistentes;
-    }
-
     public FileWriter getArchivoAsistentes() {
         return archivoAsistentes;
     }

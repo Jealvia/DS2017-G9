@@ -5,9 +5,6 @@
  */
 package DecoratorPanes;
 
-//CAMBIA
-//2
-
 import SegundaParte.Platos;
 import java.util.*;
 import javafx.event.*;
@@ -24,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneInformacionPlatos extends PaneInterfaceBase{
+public class PaneInformacionPlatos extends PaneInterfaceBase {
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -45,7 +42,7 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
     public Button SalirButton;
     public Button ModificarButton;
 
-    public PaneInformacionPlatos(Stage primaryStage){
+    public PaneInformacionPlatos(Stage primaryStage) {
         imgLoadFondo4 = new Image("/imagenes/fondo4.jpg");
         imgFondo4 = new ImageView(imgLoadFondo4);
 
@@ -87,7 +84,6 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
         this.root4 = new BorderPane();
         this.root4.getChildren().add(imgFondo4);
 
-
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
         primaryStage.setTitle("Informacion Platos");
         primaryStage.setResizable(false);
@@ -102,10 +98,9 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
         HBox PaneHorizontalBotones = new HBox(100, RetornarButton, SalirButton);
         PaneHorizontal.setAlignment(Pos.CENTER);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
-        
+
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println("SALIO DEL SISTEMA");
                 primaryStage.close();
                 System.exit(0);//importante para poder salir del Output
             }
@@ -117,14 +112,13 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
             Scene scene = new Scene(root.getRoot(), 300, 400);
             primaryStage.setScene(scene);
             primaryStage.show();
-              
+
         });
 
         Iterator it = numPlt.keySet().iterator();
         while (it.hasNext()) {
             Integer key = (Integer) it.next();
             if (key == opcion) {
-                System.out.println("Clave: " + key + " -> Valor: " + numPlt.get(opcion).getNombre());
                 NombreText.setText(numPlt.get(opcion).getNombre());
                 IngredientesText.setText(numPlt.get(opcion).getIngredientes());
                 RestauranteText.setText(numPlt.get(opcion).getNombreRestaurante());
@@ -140,7 +134,7 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
             }
         }
         VBox PaneOjetos = new VBox(5, NombreLabel, NombreText, RestauranteLabel, RestauranteText, CategoriaLabel, CategoriaText,
-                 IngredienteLabel, IngredientesText, DescripcionLabel, PaneHorizontal, DescripcionText, PaneHorizontalBotones);
+                IngredienteLabel, IngredientesText, DescripcionLabel, PaneHorizontal, DescripcionText, PaneHorizontalBotones);
         PaneOjetos.setAlignment(Pos.CENTER_LEFT);
         PaneOjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -150,16 +144,14 @@ public class PaneInformacionPlatos extends PaneInterfaceBase{
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
+
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneInformacionPlatos root4 = new PaneInformacionPlatos(primaryStage);
         Scene scene = new Scene(root4.getRoot(), 500, 600);
         primaryStage.setScene(scene);
-        root4.DiseñoVentanaPlatos(primaryStage, (HashMap<Integer, Platos>) lista.get(0),(Integer)lista.get(1));
+        root4.DiseñoVentanaPlatos(primaryStage, (HashMap<Integer, Platos>) lista.get(0), (Integer) lista.get(1));
         primaryStage.show();
     }
-
-
-
 
 }

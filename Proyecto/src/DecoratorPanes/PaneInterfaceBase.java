@@ -13,11 +13,14 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public abstract class PaneInterfaceBase implements Pane_Interface<Object>{
+public abstract class PaneInterfaceBase implements Pane_Interface<Object> {
+
     public static BorderPane root;
+
     public PaneInterfaceBase() {
         root = new BorderPane();
     }
+
     public void ConstruirPanePrueba(Stage primaryStage) {
         Scene scene = new Scene(root, 800, 500);
         primaryStage.setScene(scene);

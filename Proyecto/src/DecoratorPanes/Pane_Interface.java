@@ -11,7 +11,8 @@ import javafx.stage.Stage;
 /**
  *
  * @author jimmy
+ * @param <E>
  */
 public interface Pane_Interface<E> {
-    public void ConstruirPane(Stage primaryStage,ArrayList<E> lista);
+    public void ConstruirPane(Stage primaryStage, ArrayList<E> lista);
 }

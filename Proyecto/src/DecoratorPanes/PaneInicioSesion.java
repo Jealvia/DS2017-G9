@@ -1,6 +1,5 @@
 package DecoratorPanes;
 
-
 import Modelo.Persistencia;
 import SegundaParte.Usuario;
 import java.util.*;
@@ -63,7 +62,6 @@ public class PaneInicioSesion<E> {
         this.rootPrincipal.getChildren().add(imgFondo);
         this.informUsuarios = Persistencia.leerUsuarios();
         this.UserContra = new ArrayList<>();
-
         this.TiposRolesBox = new ChoiceBox();
         TiposRolesBox.getItems().addAll("Cliente", "Asistente", "Administrador");
         //Colocar titulo a la ventana y desactivar el boton de control de maximizar
@@ -80,7 +78,6 @@ public class PaneInicioSesion<E> {
             public void handle(ActionEvent event) {
                 for (Map.Entry<String, Usuario> entry : informUsuarios.entrySet()) {
                     String a = (String) TiposRolesBox.getValue();
-                    //ESTA VALIDACION DEBE MEJORAR PORQUE CUALQUIER USUARIO PUEDE ENTRAR COMO ASISTENTE O ADMINITRADOR
                     if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Cliente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
@@ -89,24 +86,19 @@ public class PaneInicioSesion<E> {
                     } else if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
-                        System.out.println("INGRESO AL SISTEMA");
-
                         PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest());
 
                     } else {
                         MensajeLabel.setText("Identification Error!");
                         MensajeLabel.setTextFill(Color.rgb(210, 39, 30));
-                        System.out.println("ERROR DE IDENTIFICACION");
                     }
-                    
-                    
+
                 }
-                
+
             }
         });
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println("SALIO DEL SISTEMA");
                 primaryStage.close();
                 System.exit(0);//importante para poder salir del Output
             }
