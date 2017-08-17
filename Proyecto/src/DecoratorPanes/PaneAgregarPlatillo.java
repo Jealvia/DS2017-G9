@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneAgregarPlatillo extends PaneInterfaceBase{
+public class PaneAgregarPlatillo extends PaneInterfaceBase {
 
     public static BorderPane root4;
     private Image imgLoadFondo4;
@@ -49,7 +49,6 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
     public Button SalirButton;
     public Button ModificarButton;
     public Button AgregarButton;
-    
 
     public PaneAgregarPlatillo(Stage primaryStage) {
         imgLoadFondo4 = new Image("/imagenes/fondo5.jpg");
@@ -110,7 +109,6 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println("SALIO DEL SISTEMA");
                 primaryStage.close();
                 System.exit(0);//importante para poder salir del Output
             }
@@ -125,13 +123,13 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
 
             public void handle(ActionEvent event) {
                 Categoria categoria = new Categoria(CategoriaText.getText().toLowerCase());
-                Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(),IngredientesText.getText(), TipoText.getText(), ServidoText.getText(),categoria,restaurante);
+                Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), IngredientesText.getText(), TipoText.getText(), ServidoText.getText(), categoria, restaurante);
                 listaPlatos.add(pt);
                 Persistencia.writePlatos(listaPlatos);
             }
         });
         VBox PaneOjetos = new VBox(5, NombreLabel, NombreText, CategoriaLabel, CategoriaText,
-                 IngredienteLabel, IngredientesText, TipoLabel, TipoText, ServidoLabel, ServidoText, DescripcionLabel, DescripcionText, PaneHorizontalBotones);
+                IngredienteLabel, IngredientesText, TipoLabel, TipoText, ServidoLabel, ServidoText, DescripcionLabel, DescripcionText, PaneHorizontalBotones);
         PaneOjetos.setAlignment(Pos.CENTER_LEFT);
         PaneOjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -141,6 +139,7 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
                 + "-fx-border-color: Orange;");
         root4.setCenter(PaneOjetos);
     }
+
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         PaneAgregarPlatillo root4 = new PaneAgregarPlatillo(primaryStage);
@@ -149,7 +148,5 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase{
         root4.DiseñoVentanaAgregarPlatos(primaryStage, (String) lista.get(0));
         primaryStage.show();
     }
-
-
 
 }

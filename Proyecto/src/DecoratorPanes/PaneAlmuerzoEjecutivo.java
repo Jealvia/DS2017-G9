@@ -5,10 +5,6 @@ package DecoratorPanes;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import AlmuerzoBuilder.EjecutivoBuilder;
-import AlmuerzoBuilder.IPrecio;
-import AlmuerzoBuilder.LunchDirector;
-import AlmuerzoBuilder.PostrePrecio;
 import SegundaParte.Platos;
 import java.util.ArrayList;
 import javafx.event.*;
@@ -24,6 +20,7 @@ import javafx.stage.Stage;
  * @author jimmy
  */
 public class PaneAlmuerzoEjecutivo {
+
     private Label titulo;
     private Label categoria;
     private Label segundo;
@@ -41,37 +38,37 @@ public class PaneAlmuerzoEjecutivo {
     private HBox PanePlatosChoiceBox;
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
-  
-    public PaneAlmuerzoEjecutivo(Stage primaryStage,ArrayList<Platos> listaPlatos) {
+
+    public PaneAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root3 = new BorderPane();
-        titulo=new Label("COMPRA ONLINE");
-        categoria=new Label("Ejecutivo");
-        postre=new Label("Postres");
-        bebida=new Label("Bebidas");
-        segundo=new Label("Sgundos");
-        sopa=new Label("Sopas");
+        titulo = new Label("COMPRA ONLINE");
+        categoria = new Label("Ejecutivo");
+        postre = new Label("Postres");
+        bebida = new Label("Bebidas");
+        segundo = new Label("Sgundos");
+        sopa = new Label("Sopas");
         imgLoadFondo3 = new Image("/imagenes/fondo10.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(600);
         imgFondo3.setFitWidth(1100);
-        segundos= new ChoiceBox();
+        segundos = new ChoiceBox();
         segundos.setPrefWidth(5000);
-        sopas= new ChoiceBox();
+        sopas = new ChoiceBox();
         sopas.setPrefWidth(5000);
-        postres= new ChoiceBox();
+        postres = new ChoiceBox();
         postres.setPrefWidth(5000);
-        bebidas= new ChoiceBox();
+        bebidas = new ChoiceBox();
         bebidas.setPrefWidth(5000);
-        aceptar=new Button("Aceptar");
+        aceptar = new Button("Aceptar");
         aceptar.setAlignment(Pos.TOP_CENTER);
         llenarChoiceBox(listaPlatos);
-        PanePlatosChoiceBox=new HBox(100,segundos,sopas,postres,bebidas);
+        PanePlatosChoiceBox = new HBox(100, segundos, sopas, postres, bebidas);
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
-        PaneBotonChoiceBox=new VBox(100,PanePlatosChoiceBox,aceptar);
+        PaneBotonChoiceBox = new VBox(100, PanePlatosChoiceBox, aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
-        PaneObjetos=new VBox(50,titulo,categoria,PaneBotonChoiceBox);
+        PaneObjetos = new VBox(50, titulo, categoria, PaneBotonChoiceBox);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
         PaneObjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -87,8 +84,9 @@ public class PaneAlmuerzoEjecutivo {
     public BorderPane getRoot() {
         return root3;
     }
-    public void llenarChoiceBox(ArrayList<Platos> listaPlatos){
-        for(int i=0;i<listaPlatos.size();i++){
+
+    public void llenarChoiceBox(ArrayList<Platos> listaPlatos) {
+        for (int i = 0; i < listaPlatos.size(); i++) {
             switch (listaPlatos.get(i).getTipo()) {
                 case "segundo":
                     segundos.getItems().add(listaPlatos.get(i).getNombre());
@@ -105,27 +103,21 @@ public class PaneAlmuerzoEjecutivo {
             }
         }
     }
-    public void eventoBotonAceptar(){
-        aceptar.setOnAction(new EventHandler<ActionEvent>(){   
+
+    public void eventoBotonAceptar() {
+        aceptar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                LunchDirector  director= new LunchDirector(new EjecutivoBuilder()); 
-//                director.buildAlmuerzo();
-//                if (postres.getValue() != null){
-//                    IPrecio precio = new PostrePrecio(director.getLunch());
-//                    precio = new PostrePrecio(precio);
-//                }else if(bebidas.getValue()!=null){
-//                    
-//                }
+                //AQUI SE PRESENTARA EL PANE FORMAS DE PAGO
             }
         });
     }
-    public  void pantallaAlmuerzoEjecutivo(Stage primaryStage,ArrayList<Platos> listaPlatos) {
-        PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage,listaPlatos);
+
+    public void pantallaAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
+        PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage, listaPlatos);
         Scene scene = new Scene(root3.getRoot(), 1100, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    
 
 }

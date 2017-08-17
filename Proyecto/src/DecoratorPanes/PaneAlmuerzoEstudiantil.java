@@ -20,6 +20,7 @@ import javafx.stage.Stage;
  * @author jimmy
  */
 public class PaneAlmuerzoEstudiantil {
+
     private Label titulo;
     private Label categoria;
     private Label segundo;
@@ -35,31 +36,31 @@ public class PaneAlmuerzoEstudiantil {
     private HBox PanePlatosChoiceBox;
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
-  
-    public PaneAlmuerzoEstudiantil(Stage primaryStage,ArrayList<Platos> listaPlatos) {
+
+    public PaneAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root4 = new BorderPane();
-        titulo=new Label("COMPRA ONLINE");
-        categoria=new Label("Estudiantil");
-        segundo=new Label("segundo");
-        sopa=new Label("sopa");
+        titulo = new Label("COMPRA ONLINE");
+        categoria = new Label("Estudiantil");
+        segundo = new Label("segundo");
+        sopa = new Label("sopa");
         imgLoadFondo3 = new Image("/imagenes/fondo7.jpg");
         imgFondo3 = new ImageView(imgLoadFondo3);
         imgFondo3.setFitHeight(600);
         imgFondo3.setFitWidth(1100);
-        segundos= new ChoiceBox();
+        segundos = new ChoiceBox();
         segundos.setPrefWidth(5000);
-        sopas= new ChoiceBox();
+        sopas = new ChoiceBox();
         sopas.setPrefWidth(5000);
-        aceptar=new Button("Aceptar");
+        aceptar = new Button("Aceptar");
         aceptar.setAlignment(Pos.TOP_CENTER);
         llenarChoiceBox(listaPlatos);
-        PanePlatosChoiceBox=new HBox(100,segundos,sopas);
+        PanePlatosChoiceBox = new HBox(100, segundos, sopas);
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
-        PaneBotonChoiceBox=new VBox(100,PanePlatosChoiceBox,aceptar);
+        PaneBotonChoiceBox = new VBox(100, PanePlatosChoiceBox, aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
-        PaneObjetos=new VBox(50,titulo,categoria,PaneBotonChoiceBox);
+        PaneObjetos = new VBox(50, titulo, categoria, PaneBotonChoiceBox);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
         PaneObjetos.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
@@ -75,8 +76,9 @@ public class PaneAlmuerzoEstudiantil {
     public BorderPane getRoot() {
         return root4;
     }
-    public void llenarChoiceBox(ArrayList<Platos> listaPlatos){
-        for(int i=0;i<listaPlatos.size();i++){
+
+    public void llenarChoiceBox(ArrayList<Platos> listaPlatos) {
+        for (int i = 0; i < listaPlatos.size(); i++) {
             switch (listaPlatos.get(i).getTipo()) {
                 case "segundo":
                     segundos.getItems().add(listaPlatos.get(i).getNombre());
@@ -85,25 +87,26 @@ public class PaneAlmuerzoEstudiantil {
                     sopas.getItems().add(listaPlatos.get(i).getNombre());
                     break;
                 default:
-                    System.out.println("error");
                     break;
             }
         }
     }
-    public void eventoBotonAceptar(){
-        aceptar.setOnAction(new EventHandler<ActionEvent>(){
+
+    public void eventoBotonAceptar() {
+        aceptar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE PRESENTA EL PANE FORMAS DE PAGO
+                //AQUI SE PRESENTARA EL PANE FORMAS DE PAGO
             }
-        
+
         });
     }
-    public  void pantallaAlmuerzoEstudiantil(Stage primaryStage,ArrayList<Platos> listaPlatos) {
-        PaneAlmuerzoEstudiantil root4 = new PaneAlmuerzoEstudiantil(primaryStage,listaPlatos);
+
+    public void pantallaAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
+        PaneAlmuerzoEstudiantil root4 = new PaneAlmuerzoEstudiantil(primaryStage, listaPlatos);
         Scene scene = new Scene(root4.getRoot(), 1100, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    
+
 }

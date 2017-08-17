@@ -25,13 +25,11 @@ import javafx.stage.Stage;
  * @author Julio Alvia
  */
 public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
+
     private BorderPane contenedor;
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
-    
-
-   
 
     public PaneCategorias_ListaPlatos() {
         this.contenedor = new BorderPane();
@@ -77,22 +75,23 @@ public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
             ArrayList<Platos> listapt = new ArrayList<>();
             listapt = PaneCategorias_ListaPlatos.listaPresentar(opcion, restaurante);
             PaneListaPlatos lp = new PaneListaPlatos();
-            lp.listaPlatos(listapt,primaryStage);
+            lp.listaPlatos(listapt, primaryStage);
             lp.pantallaListaPlatos(primaryStage);
         });
-        
+
     }
+
     public static ArrayList<Platos> listaPresentar(String categorias, String restaurante) {
         ArrayList<Platos> listPlatos = Persistencia.leerPlatos();
         ArrayList<Platos> lista = new ArrayList<>();
         if ("-".equals(restaurante)) {
-            for (int i=0;i<listPlatos.size();i++) {
+            for (int i = 0; i < listPlatos.size(); i++) {
                 if (listPlatos.get(i).getCategoria().getNombre().equals(categorias)) {
                     lista.add(listPlatos.get(i));
                 }
             }
         } else {
-            for (int i=0;i<listPlatos.size();i++) {
+            for (int i = 0; i < listPlatos.size(); i++) {
                 if (listPlatos.get(i).getCategoria().getNombre().equals(categorias) && listPlatos.get(i).getNombreRestaurante().equals(restaurante)) {
                     lista.add(listPlatos.get(i));
                 }
@@ -100,6 +99,7 @@ public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
         }
         return lista;
     }
+
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         Scene escena = new Scene(contenedor, 800, 400);

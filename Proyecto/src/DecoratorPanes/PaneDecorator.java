@@ -10,8 +10,9 @@ package DecoratorPanes;
  * @author jimmy
  */
 public abstract class PaneDecorator {
-    
+
     Pane_Interface<Object> pane;
+
     public PaneDecorator(Pane_Interface pane) {
         this.pane = pane;
     }
@@ -24,6 +25,4 @@ public abstract class PaneDecorator {
         this.pane = pane;
     }
 
-    
-    
 }

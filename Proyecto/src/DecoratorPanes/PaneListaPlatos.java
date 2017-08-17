@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package DecoratorPanes;
-//cambia
-//2
 
 import SegundaParte.Platos;
 import java.util.*;
@@ -20,19 +18,12 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class PaneListaPlatos  {
+public class PaneListaPlatos {
 
-    Label nombre;
-    static VBox vbox;
-    HBox hbox;
-    private Stage primaryStage;
-    static BorderPane contenedor;
-    static ArrayList<String> list;
+    private static BorderPane contenedor;
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
     static ListView<String> listaPlatos;
-    HashMap<String, Platos> categoriaPlato;
-
 
     public PaneListaPlatos() {
         this.contenedor = new BorderPane();
@@ -47,7 +38,6 @@ public class PaneListaPlatos  {
     }
 
     public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
-        
         ArrayList<String> lista1 = new ArrayList<>();
         HashMap<Integer, Platos> numPlt = new HashMap<Integer, Platos>();
         VBox vbox = new VBox(10);
@@ -62,7 +52,6 @@ public class PaneListaPlatos  {
             vbox.getChildren().add(hbox);
 
         }
-
         //PARA PRESENTAR UNA LISTA DE OPCIONES
         PaneListaPlatos.tiposPlatos = FXCollections.observableArrayList(lista1);
         listaPlatos = new ListView<String>(tiposPlatos);
@@ -77,21 +66,20 @@ public class PaneListaPlatos  {
         contenedor.setCenter(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             Integer opcion = listaPlatos.getSelectionModel().getSelectedIndex();
-//            PaneInformacionPlatos.pantallaInformacionPlatosCliente(primaryStage, numPlt, opcion);
-            PaneInformacionPlatos paneInfor =new PaneInformacionPlatos(primaryStage);
-            ArrayList<Object> list=new ArrayList<>();
+            PaneInformacionPlatos paneInfor = new PaneInformacionPlatos(primaryStage);
+            ArrayList<Object> list = new ArrayList<>();
             list.add(numPlt);
             list.add(opcion);
             paneInfor.ConstruirPane(primaryStage, list);
         });
-       
+
     }
+
     public void pantallaListaPlatos(Stage primaryStage) {
-       
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
-        
+
     }
 
 }

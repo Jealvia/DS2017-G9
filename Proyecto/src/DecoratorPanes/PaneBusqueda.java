@@ -17,14 +17,16 @@ import javafx.stage.Stage;
  *
  * @author Julio Alvia
  */
-public class PaneBusqueda extends PaneInterfaceBase{
+public class PaneBusqueda extends PaneInterfaceBase {
+
     private BorderPane root;
     private TextField text_nombre;
     private Label busqueda_nombre, busqueda;
     private Button buscar_nombre;
     private HBox organizar;
     private VBox centro;
-    public PaneBusqueda( Stage primaryStage,ArrayList<Platos> listaPlatos) {
+
+    public PaneBusqueda(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         busqueda = new Label("BUSQUEDA");
         buscar_nombre = new Button("Buscar");
         busqueda_nombre = new Label("Nombre");
@@ -48,19 +50,12 @@ public class PaneBusqueda extends PaneInterfaceBase{
             }
         });
     }
+
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
         Scene escena = new Scene(root, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }
-  
- 
 
-
-
-   
-
-  
-    
 }

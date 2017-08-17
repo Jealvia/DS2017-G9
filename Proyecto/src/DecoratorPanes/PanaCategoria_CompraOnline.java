@@ -21,15 +21,17 @@ import javafx.stage.Stage;
  * @author jimmy
  */
 public class PanaCategoria_CompraOnline {
+
     //PARA PRESENTAR LISTA DE OPCIONES
-    static ObservableList<String> categoriaPlato;
-    static ListView<String> listaPlatos;
+    private static ObservableList<String> categoriaPlato;
+    private static ListView<String> listaPlatos;
     private BorderPane contenedor;
 
     public PanaCategoria_CompraOnline() {
         this.contenedor = new BorderPane();
     }
-    public void listaCategoriaCompraOnline(Stage primaryStage,ArrayList<Platos> lista){
+
+    public void listaCategoriaCompraOnline(Stage primaryStage, ArrayList<Platos> lista) {
         Set<Categoria> categoria = new HashSet<>();
         for (Platos m : lista) {
             categoria.add(m.getCategoria());
@@ -56,22 +58,19 @@ public class PanaCategoria_CompraOnline {
         vbox.getChildren().add(listaPlatos);
         contenedor.setCenter(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
-            System.out.println("***"+listaPlatos.getSelectionModel().getSelectedItem());
-            if("ejecutivo".equals(listaPlatos.getSelectionModel().getSelectedItem())){
-                PaneAlmuerzoEjecutivo almuerzoEjecutivo=new PaneAlmuerzoEjecutivo(primaryStage, lista);
+            if ("ejecutivo".equals(listaPlatos.getSelectionModel().getSelectedItem())) {
+                PaneAlmuerzoEjecutivo almuerzoEjecutivo = new PaneAlmuerzoEjecutivo(primaryStage, lista);
                 almuerzoEjecutivo.pantallaAlmuerzoEjecutivo(primaryStage, lista);
-            }else{
-                PaneAlmuerzoEstudiantil almuerzoEstudiantil=new PaneAlmuerzoEstudiantil(primaryStage, lista);
+            } else {
+                PaneAlmuerzoEstudiantil almuerzoEstudiantil = new PaneAlmuerzoEstudiantil(primaryStage, lista);
                 almuerzoEstudiantil.pantallaAlmuerzoEstudiantil(primaryStage, lista);
             }
-            
-            
         });
-        
     }
-     public  void pantallaListaCategoriaCompraOnline(Stage primaryStage){
+
+    public void pantallaListaCategoriaCompraOnline(Stage primaryStage) {
         Scene escena = new Scene(contenedor, 800, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
-     }
+    }
 }
