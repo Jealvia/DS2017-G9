@@ -63,7 +63,7 @@ public class PaneListaPlatos {
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: DARKCYAN;");
         vbox.getChildren().add(listaPlatos);
-        contenedor.setCenter(vbox);
+        contenedor.setTop(vbox);
         listaPlatos.setOnMouseClicked((MouseEvent me) -> {
             Integer opcion = listaPlatos.getSelectionModel().getSelectedIndex();
             PaneInformacionPlatos paneInfor = new PaneInformacionPlatos(primaryStage);
@@ -76,7 +76,7 @@ public class PaneListaPlatos {
     }
 
     public void pantallaListaPlatos(Stage primaryStage) {
-        Scene escena = new Scene(contenedor, 800, 400);
+        Scene escena = new Scene(contenedor, 300, 240);
         primaryStage.setScene(escena);
         primaryStage.show();
 

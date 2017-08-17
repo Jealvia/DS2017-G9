@@ -70,9 +70,11 @@ public class PaneOrganizeCliente {
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                PanaCategoria_CompraOnline compraOnline = new PanaCategoria_CompraOnline();
-                compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
-                compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
+//                PanaCategoria_CompraOnline compraOnline = new PanaCategoria_CompraOnline();
+//                compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
+//                compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
+                  PaneFormasDePago pago=new PaneFormasDePago(primaryStage);
+                  pago.pantallaFormasDePago(primaryStage);
             }
         });
         menu3.getItems().add(opcion3);
@@ -105,7 +107,7 @@ public class PaneOrganizeCliente {
 
     public static void pantallaCliente(Stage primaryStage) {
         PaneOrganizeCliente root4 = new PaneOrganizeCliente();
-        Scene scene = new Scene(root4.getRoot(), 400, 250, Color.ORANGERED);
+        Scene scene = new Scene(root4.getRoot(), 600, 250, Color.ORANGERED);
         primaryStage.setScene(scene);
         root4.menuCliente(primaryStage);
         primaryStage.show();

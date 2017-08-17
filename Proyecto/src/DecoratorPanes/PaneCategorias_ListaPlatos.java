@@ -44,6 +44,8 @@ public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
     }
 
     public void ListaCategorias(ArrayList<Platos> lista, Stage primaryStage, String restaurante) {
+        primaryStage.setTitle("ELEGIR CATEGORIA");
+        primaryStage.setResizable(false);
         Set<Categoria> categoria = new HashSet<>();
         for (Platos m : lista) {
             categoria.add(m.getCategoria());
@@ -102,7 +104,7 @@ public class PaneCategorias_ListaPlatos extends PaneInterfaceBase {
 
     @Override
     public void ConstruirPane(Stage primaryStage, ArrayList<Object> lista) {
-        Scene escena = new Scene(contenedor, 800, 400);
+        Scene escena = new Scene(contenedor, 300, 100);
         primaryStage.setScene(escena);
         primaryStage.show();
     }

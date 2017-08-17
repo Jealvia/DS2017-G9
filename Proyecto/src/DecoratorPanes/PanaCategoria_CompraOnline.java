@@ -31,7 +31,9 @@ public class PanaCategoria_CompraOnline {
         this.contenedor = new BorderPane();
     }
 
-    public void listaCategoriaCompraOnline(Stage primaryStage, ArrayList<Platos> lista) {
+    public void listaCategoriaCompraOnline(Stage primaryStage, ArrayList<Platos> lista){
+        primaryStage.setTitle("ELEGIR CATEGORIA");
+        primaryStage.setResizable(false);
         Set<Categoria> categoria = new HashSet<>();
         for (Platos m : lista) {
             categoria.add(m.getCategoria());
@@ -69,7 +71,7 @@ public class PanaCategoria_CompraOnline {
     }
 
     public void pantallaListaCategoriaCompraOnline(Stage primaryStage) {
-        Scene escena = new Scene(contenedor, 800, 400);
+        Scene escena = new Scene(contenedor, 300, 100);
         primaryStage.setScene(escena);
         primaryStage.show();
     }

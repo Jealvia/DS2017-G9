@@ -39,19 +39,19 @@ public class PaneFormasDePago {
     private TextArea txtCVC;
     private TextArea txtNumero;
     private TextArea txtFechaExpiracion;
-    private HBox PaneObjetos1;
+    private VBox PaneObjetos1;
     private VBox PaneObjetos;
-    private HBox PaneObjetos2;
+    private VBox PaneObjetos2;
 
-    public PaneFormasDePago(Stage primaryStage, ArrayList<Platos> listaPlatos) {
+    public PaneFormasDePago(Stage primaryStage) {
         primaryStage.setTitle("FORMAS DE PAGO");
         primaryStage.setResizable(false);
         root5 = new BorderPane();
         LabeltarjetaCredito = new Label("Tarjeta de Credito");
         LabelCarnetInteligente = new Label("Carnet Inteligente");
         labelTitulo = new Label("PAGO");
-        LabelNumero = new Label("Numero: ");
-        LabelCVC = new Label("CVC: ");
+        LabelNumero = new Label("Numero:");
+        LabelCVC = new Label("CVC:");
         labelFechaExpiracion = new Label("Fecha de expiracion: ");
         txtNumero = new TextArea();
         txtCVC = new TextArea();
@@ -65,18 +65,18 @@ public class PaneFormasDePago {
         imgFondo3.setFitWidth(1100);
         pagarPorTarjeta = new Button("Pagar con tarjeta");
         pagarPorCarnet = new Button("Pagar con Carnet ");
-        PaneObjetos1 = new HBox(200, LabeltarjetaCredito, LabelCarnetInteligente);
-        PaneObjetos1.setAlignment(Pos.CENTER);
-        PaneObjetos2 = new HBox(100, LabelNumero, LabelUsuario);
-        PaneObjetos2.setAlignment(Pos.CENTER);
-        PaneObjetos = new VBox(50, labelTitulo, PaneObjetos1, PaneObjetos2);
-        PaneObjetos.setAlignment(Pos.TOP_CENTER);
-        PaneObjetos.setStyle("-fx-padding: 10;"
+        PaneObjetos1 = new VBox(1, LabeltarjetaCredito,LabelNumero,txtNumero,LabelCVC,txtCVC,labelFechaExpiracion,txtFechaExpiracion);
+        PaneObjetos1.setAlignment(Pos.CENTER_LEFT);
+        PaneObjetos1.setStyle("-fx-padding: 10;"
                 + "-fx-border-style: solid inside;"
                 + "-fx-border-width: 8;"
                 + "-fx-border-insets: 5;"
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: yellow;");
+//        PaneObjetos2=new VBox(10,LabelCarnetInteligente,LabelUsuario,txtUsuario,LabelContraseña,ingreso_Contraseña);
+//        PaneObjetos2.setAlignment(Pos.CENTER_RIGHT);
+        PaneObjetos = new VBox(50, labelTitulo, PaneObjetos1);
+        PaneObjetos.setAlignment(Pos.TOP_CENTER);
         root5.getChildren().addAll(imgFondo3);
         root5.setCenter(PaneObjetos);
     }
@@ -104,9 +104,9 @@ public class PaneFormasDePago {
         });
     }
 
-    public void pantallaFormasDePago(Stage primaryStage, ArrayList<Platos> listaPlatos) {
-        PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage, listaPlatos);
-        Scene scene = new Scene(root3.getRoot(), 1100, 400);
+    public void pantallaFormasDePago(Stage primaryStage) {
+        PaneFormasDePago root = new PaneFormasDePago(primaryStage);
+        Scene scene = new Scene(root.getRoot(), 500, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
