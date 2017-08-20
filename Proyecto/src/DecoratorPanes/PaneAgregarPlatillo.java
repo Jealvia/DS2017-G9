@@ -108,19 +108,21 @@ public class PaneAgregarPlatillo extends PaneInterfaceBase {
         HBox PaneHorizontalBotones = new HBox(100, AgregarButton, RetornarButton, SalirButton);
         PaneHorizontalBotones.setAlignment(Pos.CENTER);
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
             public void handle(ActionEvent event) {
                 primaryStage.close();
                 System.exit(0);//importante para poder salir del Output
             }
         });
         RetornarButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
             public void handle(ActionEvent event) {
-                PaneOrganizaAsistente root = new PaneOrganizaAsistente();
+                PaneOrganizeAsistente root = new PaneOrganizeAsistente();
                 root.pantallaAsistente(primaryStage, restaurante);
             }
         });
         AgregarButton.setOnAction(new EventHandler<ActionEvent>() {
-
+            @Override
             public void handle(ActionEvent event) {
                 Categoria categoria = new Categoria(CategoriaText.getText().toLowerCase());
                 Platos pt = new Platos(NombreText.getText(), DescripcionText.getText(), IngredientesText.getText(), TipoText.getText(), ServidoText.getText(), categoria, restaurante);

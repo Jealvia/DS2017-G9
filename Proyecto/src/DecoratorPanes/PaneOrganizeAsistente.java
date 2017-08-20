@@ -18,13 +18,13 @@ import javafx.stage.Stage;
  *
  * @author jimmy
  */
-public class PaneOrganizaAsistente {
+public class PaneOrganizeAsistente {
 
     private Group root;
     private ArrayList<Platos> lista;
     private ArrayList<Platos> listaPlatos;
 
-    public PaneOrganizaAsistente() {
+    public PaneOrganizeAsistente() {
         this.root = new Group();
         this.lista = new ArrayList<Platos>();
         this.listaPlatos = Persistencia.leerPlatos();
@@ -125,7 +125,7 @@ public class PaneOrganizaAsistente {
     }
 
     public static void pantallaAsistente(Stage primaryStage, String restaurante) {
-        PaneOrganizaAsistente root4 = new PaneOrganizaAsistente();
+        PaneOrganizeAsistente root4 = new PaneOrganizeAsistente();
         Scene scene = new Scene(root4.getRoot(), 500, 200, Color.CADETBLUE);
         primaryStage.setScene(scene);
         root4.menuAsistente(primaryStage, restaurante);

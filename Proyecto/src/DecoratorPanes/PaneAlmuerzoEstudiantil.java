@@ -39,7 +39,11 @@ public class PaneAlmuerzoEstudiantil {
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
     private HBox PanePlatosLabels;
+    private Stage primaryStage;
+    private ArrayList<Platos> listaPlatos;
     public PaneAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
+        this.primaryStage=primaryStage;
+        this.listaPlatos=listaPlatos;
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root4 = new BorderPane();
@@ -79,6 +83,7 @@ public class PaneAlmuerzoEstudiantil {
                 + "-fx-border-color: yellow;");
         root4.getChildren().addAll(imgFondo3);
         root4.setCenter(PaneObjetos);
+        eventoBotonAceptar();
     }
 
     // metodo que me obtiene el root1
@@ -105,7 +110,11 @@ public class PaneAlmuerzoEstudiantil {
         aceptar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE PRESENTARA EL PANE FORMAS DE PAGO
+                //AQUI SE PRESENTARA EL PANE ELEGIR HORAS DE ALMUERZO
+                PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
+                horaRetiro.listaPlatos(listaPlatos, primaryStage);
+                horaRetiro.pantallaListaPlatos(primaryStage);
+                
             }
 
         });

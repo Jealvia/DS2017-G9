@@ -106,7 +106,9 @@ public class PaneFormasDePago {
         pagarPorTarjeta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE CORRERA EL PANE DE ELEGIR HORA DE RECOGER EL ALMUEROZO
+                //AQUI SE MOSTRARA UN MENSAJE DE QUE SE A REALIZADO LA COMPRA PARA ESTO FALTA
+                //Una vez aprobado y procesado el pago,
+                //Se le mostrará al usuario el número de orden
             }
         });
     }
@@ -115,7 +117,9 @@ public class PaneFormasDePago {
         pagarPorTarjeta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE CORRERA EL PANE DE ELEGIR HORA DE RECOGER EL ALMUEROZO
+                //AQUI SE MOSTRARA UN MENSAJE DE QUE SE A REALIZADO LA COMPRA PARA ESTO FALTA
+                //Una vez aprobado y procesado el pago,
+                //Se le mostrará al usuario el número de orden
             }
         });
     }

@@ -41,7 +41,11 @@ public class PaneAlmuerzoEjecutivo {
     private VBox PaneObjetos;
     private VBox PaneBotonChoiceBox;
     private HBox PanePlatosLabels;
+    private Stage primaryStage;
+    private ArrayList<Platos> listaPlatos;
     public PaneAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
+        this.primaryStage=primaryStage;
+        this.listaPlatos=listaPlatos;
         primaryStage.setTitle("COMPRA ONLINE");
         primaryStage.setResizable(false);
         root3 = new BorderPane();
@@ -77,7 +81,7 @@ public class PaneAlmuerzoEjecutivo {
         PanePlatosChoiceBox.setAlignment(Pos.CENTER);
         PaneBotonChoiceBox = new VBox(50, PanePlatosChoiceBox, aceptar);
         PaneBotonChoiceBox.setAlignment(Pos.CENTER);
-        PanePlatosLabels=new HBox(250,segundo,sopa,postre,bebida);
+        PanePlatosLabels=new HBox(235,segundo,sopa,postre,bebida);
         PanePlatosLabels.setAlignment(Pos.CENTER_LEFT);
         PaneObjetos = new VBox(1, titulo, categoria,PanePlatosLabels,PaneBotonChoiceBox);
         PaneObjetos.setAlignment(Pos.TOP_CENTER);
@@ -91,6 +95,7 @@ public class PaneAlmuerzoEjecutivo {
        
         root3.getChildren().addAll(imgFondo3);
         root3.setCenter(PaneObjetos);
+        eventoBotonAceptar();
     }
 
     // metodo que me obtiene el root1
@@ -121,14 +126,18 @@ public class PaneAlmuerzoEjecutivo {
         aceptar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //AQUI SE PRESENTARA EL PANE FORMAS DE PAGO
+                //AQUI SE PRESENTARA EL PANE ELEGIR HORA DE ALMUERZO
+                PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
+                horaRetiro.listaPlatos(listaPlatos, primaryStage);
+                horaRetiro.pantallaListaPlatos(primaryStage);
+                
             }
         });
     }
 
     public void pantallaAlmuerzoEjecutivo(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         PaneAlmuerzoEjecutivo root3 = new PaneAlmuerzoEjecutivo(primaryStage, listaPlatos);
-        Scene scene = new Scene(root3.getRoot(), 1100, 200);
+        Scene scene = new Scene(root3.getRoot(), 1050, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

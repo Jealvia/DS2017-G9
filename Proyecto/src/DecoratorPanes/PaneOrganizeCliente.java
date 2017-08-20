@@ -56,7 +56,6 @@ public class PaneOrganizeCliente {
 
             @Override
             public void handle(ActionEvent event) {
-                // PaneInformacionPlatos.pantallaInformacionPlatos(primaryStage);
                 ArrayList<Object> list = new ArrayList<>();
                 busq.ConstruirPane(primaryStage, list);
             }
@@ -70,11 +69,17 @@ public class PaneOrganizeCliente {
         opcion3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //PROBANDO EL PANE COMPRA ONLINE
                 PanaCategoria_CompraOnline compraOnline = new PanaCategoria_CompraOnline();
                 compraOnline.listaCategoriaCompraOnline(primaryStage, listaPlatos);
                 compraOnline.pantallaListaCategoriaCompraOnline(primaryStage);
+                //PROBANDO EL PANE FORMAS DE PAGO
 //                  PaneFormasDePago pago=new PaneFormasDePago(primaryStage);
 //                  pago.pantallaFormasDePago(primaryStage);
+                //PROBANDO EL PANE HORA DE RETIRO DE ALMUERZO
+//                PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro();
+//                horaRetiro.listaPlatos(listaPlatos, primaryStage);
+//                horaRetiro.pantallaListaPlatos(primaryStage);
             }
         });
         menu3.getItems().add(opcion3);

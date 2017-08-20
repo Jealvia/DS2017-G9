@@ -84,7 +84,7 @@ public class PaneInicioSesion<E> {
                     } else if (entry.getKey().equals(ingresoUsuario.getText()) && entry.getValue().getContraseña().equals(ingreso_Contraseña.getText()) && (a.equals(entry.getValue().getRol()) && "Asistente".equals(entry.getValue().getRol()))) {
                         MensajeLabel.setText("Your password has been confirmed!");
                         MensajeLabel.setTextFill(Color.rgb(21, 117, 84));
-                        PaneOrganizaAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest());
+                        PaneOrganizeAsistente.pantallaAsistente(primaryStage, entry.getValue().getRest());
 
                     } else {
                         MensajeLabel.setText("Identification Error!");
@@ -98,7 +98,7 @@ public class PaneInicioSesion<E> {
         SalirButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 primaryStage.close();
-                System.exit(0);//importante para poder salir del Output
+                System.exit(0);//importante para poder salir del Output8
             }
         });
         // Create the ButtonBox		
