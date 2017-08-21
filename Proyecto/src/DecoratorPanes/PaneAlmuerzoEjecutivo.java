@@ -142,7 +142,7 @@ public class PaneAlmuerzoEjecutivo {
                 System.out.println(valor);
                 System.out.println(almuerzo.getDescripcion() + ", Precio "+ almuerzo.getPrecio());
                 PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
-                horaRetiro.listaPlatos(listaPlatos, primaryStage);
+                horaRetiro.listaPlatos(listaPlatos, primaryStage,valor);
                 horaRetiro.pantallaListaPlatos(primaryStage);
                 
             }

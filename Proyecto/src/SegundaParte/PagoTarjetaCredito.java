@@ -15,7 +15,8 @@ public class PagoTarjetaCredito implements IPago{
 
     @Override
     public boolean realizarPago(double pago) {
-        if(this.tarjeta.getSaldo()<pago){
+        tarjeta=new TarjetaCredito();
+        if(this.tarjeta.getSaldo()>pago){
             return true;
         }else{
             return false;

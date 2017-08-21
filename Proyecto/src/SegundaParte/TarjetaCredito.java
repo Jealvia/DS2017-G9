@@ -13,18 +13,31 @@ import java.util.Date;
  */
 public class TarjetaCredito {
 
-    private String numeros;
-    private String CVC;
-    private Date fechaExpiracion;
-    public static double saldo=99999;
+    private final String numeros="1234";
+    private final String CVC="1234";
+    private final String fechaExpiracion="";
+    public final double saldo=99999;
+
+    public TarjetaCredito() {
+    }
+
+    public String getNumeros() {
+        return numeros;
+    }
+
+    public String getCVC() {
+        return CVC;
+    }
+
+    public String getFechaExpiracion() {
+        return fechaExpiracion;
+    }
 
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        TarjetaCredito.saldo = saldo;
-    }
+    
     
     
 }

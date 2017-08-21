@@ -15,7 +15,8 @@ public class PagoCarnet implements IPago{
     
     @Override
     public boolean realizarPago(double pago) {
-        if(carnet.getSaldo()<pago){
+        carnet=new Carnet();
+        if(carnet.getSaldo()>pago){
             return true;
         }else{
             return false;

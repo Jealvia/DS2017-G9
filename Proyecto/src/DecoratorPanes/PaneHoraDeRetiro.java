@@ -25,7 +25,7 @@ public class PaneHoraDeRetiro {
     private  BorderPane contenedor;
     private Label fechaActual;
     private Button siguiente;
-    
+    private String eleccion;
     
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
@@ -68,7 +68,8 @@ public class PaneHoraDeRetiro {
         }   
         return horarios;
     }
-    public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage) {
+    
+    public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage,double valor) {
         VBox vbox = new VBox(10);
         primaryStage.setTitle("HORARIO DE RETIRO DE ALMUERZO");
         primaryStage.setResizable(false);
@@ -94,19 +95,17 @@ public class PaneHoraDeRetiro {
         vbox.getChildren().addAll(fechaActual,listView,siguiente);
         contenedor.setCenter(vbox);
         listView.setOnMouseClicked((MouseEvent me) -> {
-            
-            
+            this.setEleccion(names.get(listView.getSelectionModel().getSelectedIndex())+";"+valor);
         });
 
     }
+    
     public void eventoBotonSiguiente(Stage primaryStage){
-        siguiente.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //AQUI SE CORRERA EL PANE DE ELEGIR FORMAS DE PAGO
-                PaneFormasDePago pago=new PaneFormasDePago(primaryStage);               
-                pago.pantallaFormasDePago(primaryStage);
-            }
+        siguiente.setOnAction((ActionEvent event) -> {
+            //AQUI SE CORRERA EL PANE DE ELEGIR FORMAS DE PAGO
+            
+            PaneFormasDePago pago=new PaneFormasDePago(primaryStage);
+            pago.pantallaFormasDePago(primaryStage,this.getEleccion());
         });
     }
 
@@ -114,8 +113,18 @@ public class PaneHoraDeRetiro {
         Scene escena = new Scene(contenedor, 300, 300);
         primaryStage.setScene(escena);
         primaryStage.show();
-
+        
     }
+
+    public String getEleccion() {
+        return eleccion;
+    }
+
+    public void setEleccion(String eleccion) {
+        this.eleccion = eleccion;
+    }
+    
+    
 }
 
 
