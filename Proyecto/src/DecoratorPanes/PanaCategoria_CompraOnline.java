@@ -31,6 +31,7 @@ public class PanaCategoria_CompraOnline {
         this.contenedor = new BorderPane();
     }
 
+    
     public void listaCategoriaCompraOnline(Stage primaryStage, ArrayList<Platos> lista){
         primaryStage.setTitle("ELEGIR CATEGORIA");
         primaryStage.setResizable(false);

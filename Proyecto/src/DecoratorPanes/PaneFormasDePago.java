@@ -5,6 +5,9 @@
  */
 package DecoratorPanes;
 
+import SegundaParte.Pago;
+import SegundaParte.PagoCarnet;
+import SegundaParte.PagoTarjetaCredito;
 import SegundaParte.Platos;
 import java.util.ArrayList;
 import javafx.event.*;
@@ -53,7 +56,7 @@ public class PaneFormasDePago {
         LabelNumero = new Label("Numero:");
         LabelCVC = new Label("CVC:");
         labelFechaExpiracion = new Label("Fecha de expiracion: ");
-        LabelUsuario=new Label("Usuario:" );
+        LabelUsuario=new Label("Numero de matricula:" );
         LabelContraseña=new Label("Contraseña: ");
         txtNumero = new TextField();
         txtCVC = new TextField();
@@ -106,6 +109,11 @@ public class PaneFormasDePago {
         pagarPorTarjeta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Pago pago=new Pago(new PagoTarjetaCredito());
+                boolean resultado=pago.ejecutarPago(0);
+                if(resultado){
+                    //se envia un mensaje de exito y se retorna lo que se deba retornar
+                }
                 //AQUI SE MOSTRARA UN MENSAJE DE QUE SE A REALIZADO LA COMPRA PARA ESTO FALTA
                 //Una vez aprobado y procesado el pago,
                 //Se le mostrará al usuario el número de orden
@@ -117,6 +125,11 @@ public class PaneFormasDePago {
         pagarPorTarjeta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Pago pago =new Pago(new PagoCarnet());
+                boolean resultado=pago.ejecutarPago(0);
+                if(resultado){
+                    //se envia un mensaje de exito y se retorna lo que se deba retornar
+                }
                 //AQUI SE MOSTRARA UN MENSAJE DE QUE SE A REALIZADO LA COMPRA PARA ESTO FALTA
                 //Una vez aprobado y procesado el pago,
                 //Se le mostrará al usuario el número de orden
