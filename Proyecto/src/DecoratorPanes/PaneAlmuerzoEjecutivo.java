@@ -6,6 +6,10 @@ package DecoratorPanes;
  * and open the template in the editor.
  */
 import SegundaParte.Platos;
+import SoloDecorator.BebidaDecorator;
+import SoloDecorator.Ejecutivo;
+import SoloDecorator.IPrecio;
+import SoloDecorator.PostreDecorator;
 import java.util.ArrayList;
 import javafx.event.*;
 import javafx.geometry.Pos;
@@ -127,6 +131,16 @@ public class PaneAlmuerzoEjecutivo {
             @Override
             public void handle(ActionEvent event) {
                 //AQUI SE PRESENTARA EL PANE ELEGIR HORA DE ALMUERZO
+                IPrecio almuerzo = new Ejecutivo();
+                if (postres.getValue() != null){
+                    almuerzo = new PostreDecorator(almuerzo);
+                }
+                if (bebidas.getValue() != null){
+                    almuerzo = new BebidaDecorator(almuerzo) ;
+                }
+                double valor = almuerzo.getPrecio();
+                System.out.println(valor);
+                System.out.println(almuerzo.getDescripcion() + ", Precio "+ almuerzo.getPrecio());
                 PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
                 horaRetiro.listaPlatos(listaPlatos, primaryStage);
                 horaRetiro.pantallaListaPlatos(primaryStage);

@@ -6,6 +6,8 @@
 package DecoratorPanes;
 
 import SegundaParte.Platos;
+import SoloDecorator.Estudiantil;
+import SoloDecorator.IPrecio;
 import java.util.ArrayList;
 import javafx.event.*;
 import javafx.geometry.Pos;
@@ -111,6 +113,10 @@ public class PaneAlmuerzoEstudiantil {
             @Override
             public void handle(ActionEvent event) {
                 //AQUI SE PRESENTARA EL PANE ELEGIR HORAS DE ALMUERZO
+                IPrecio almuerzo = new Estudiantil();
+                double valor = almuerzo.getPrecio();
+                System.out.println(valor);
+                System.out.println(almuerzo.getDescripcion() + ", Precio "+ almuerzo.getPrecio());
                 PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
                 horaRetiro.listaPlatos(listaPlatos, primaryStage);
                 horaRetiro.pantallaListaPlatos(primaryStage);
