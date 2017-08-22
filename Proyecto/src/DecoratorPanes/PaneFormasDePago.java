@@ -125,9 +125,11 @@ public class PaneFormasDePago {
         primaryStage.setScene(scene);
         diseñoVentanaFormasDePago();
         primaryStage.show();
-        
+        double valor =Double.valueOf(arreglo[1]).doubleValue();
         pagarPorCarnet.setOnAction((ActionEvent event) -> {
-            System.out.println("Valor a pagar"+valorPagar);
+            
+            
+            
             Carnet carnet=new Carnet();
             Pago pago = new Pago(new PagoCarnet());
             boolean resultado = pago.ejecutarPago(Double.parseDouble(arreglo[1]));
@@ -137,18 +139,18 @@ public class PaneFormasDePago {
                 JOptionPane.showMessageDialog(null, "Numero de matricula inexistente", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
             }else if(!ingreso_Contraseña.getText().equals(carnet.getContraseña())){
                 JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
-            }else if(carnet.getSaldo()+ valorPagar > carnet.getMonto()){
+            }else if(carnet.getSaldo()+ valor > carnet.getMonto()){
                 JOptionPane.showMessageDialog(null, "Saldo insuficiente", "ERROR", JOptionPane.WARNING_MESSAGE); 
             }else {
-                carnet.setSaldo(carnet.getSaldo()+valorPagar);
-                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n Saldo restante:" +carnet.getSaldo()+"");
+                carnet.setSaldo(valor);
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n Monto usado:" +carnet.getSaldo()+"");
                 PaneOrganizeCliente.pantallaCliente(primaryStage);
                 
                 
             }
         });
         pagarPorTarjeta.setOnAction((ActionEvent event) -> {
-            System.out.println("hola" + valorPagar);
+            
             TarjetaCredito tarjeta=new TarjetaCredito();
             Pago pago = new Pago(new PagoTarjetaCredito());
             boolean resultado = pago.ejecutarPago(Double.parseDouble(arreglo[1]));
