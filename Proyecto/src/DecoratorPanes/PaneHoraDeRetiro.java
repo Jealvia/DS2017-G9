@@ -26,6 +26,15 @@ public class PaneHoraDeRetiro {
     private Label fechaActual;
     private Button siguiente;
     private String eleccion;
+    private double val ;
+
+    public double getVal() {
+        return val;
+    }
+
+    public void setVal(double val) {
+        this.val = val;
+    }
     
     //PARA PRESENTAR LISTA DE OPCIONES
     static ObservableList<String> tiposPlatos;
@@ -70,6 +79,7 @@ public class PaneHoraDeRetiro {
     }
     
     public void listaPlatos(ArrayList<Platos> lista, Stage primaryStage,double valor) {
+        this.val = valor;
         VBox vbox = new VBox(10);
         primaryStage.setTitle("HORARIO DE RETIRO DE ALMUERZO");
         primaryStage.setResizable(false);

@@ -15,7 +15,7 @@ public class TarjetaCredito {
 
     private final String numeros="1234";
     private final String CVC="1234";
-    private final String fechaExpiracion="";
+    private final String fechaExpiracion="04/20";
     public final double saldo=99999;
 
     public TarjetaCredito() {

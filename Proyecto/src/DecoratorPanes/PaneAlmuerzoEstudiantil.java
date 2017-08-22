@@ -44,6 +44,7 @@ public class PaneAlmuerzoEstudiantil {
     private Stage primaryStage;
     private ArrayList<Platos> listaPlatos;
     
+    
     public PaneAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {
         this.primaryStage=primaryStage;
         this.listaPlatos=listaPlatos;
@@ -118,6 +119,7 @@ public class PaneAlmuerzoEstudiantil {
                 double valor = almuerzo.getPrecio();
                 System.out.println(valor);
                 System.out.println(almuerzo.getDescripcion() + ", Precio "+ almuerzo.getPrecio());
+                
                 PaneHoraDeRetiro horaRetiro=new PaneHoraDeRetiro(primaryStage);
                 horaRetiro.listaPlatos(listaPlatos, primaryStage,valor);
                 horaRetiro.pantallaListaPlatos(primaryStage);
@@ -125,6 +127,7 @@ public class PaneAlmuerzoEstudiantil {
             }
 
         });
+        
     }
 
     public void pantallaAlmuerzoEstudiantil(Stage primaryStage, ArrayList<Platos> listaPlatos) {

@@ -79,7 +79,7 @@ public class PaneFormasDePago {
         root5.getChildren().addAll(imgFondo3);
 
     }
-
+    
     // metodo que me obtiene el root1
     public BorderPane getRoot() {
         return root5;
@@ -116,7 +116,8 @@ public class PaneFormasDePago {
     public void eventoBotonPagarPorCarnet() {
         
     }
-
+    
+    
     public void pantallaFormasDePago(Stage primaryStage,String eleccion) {
         String[] arreglo=eleccion.split(";");
         PaneFormasDePago root = new PaneFormasDePago(primaryStage);
@@ -124,23 +125,26 @@ public class PaneFormasDePago {
         primaryStage.setScene(scene);
         diseñoVentanaFormasDePago();
         primaryStage.show();
+        
         pagarPorCarnet.setOnAction((ActionEvent event) -> {
-            System.out.println(valorPagar);
+            System.out.println("Valor a pagar"+valorPagar);
             Carnet carnet=new Carnet();
             Pago pago = new Pago(new PagoCarnet());
             boolean resultado = pago.ejecutarPago(Double.parseDouble(arreglo[1]));
-            if (resultado) {
-                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n");
-                PaneOrganizeCliente.pantallaCliente(primaryStage);
-                
-            } else if(txtUsuario==null||ingreso_Contraseña==null){
+            if(txtUsuario==null||ingreso_Contraseña==null){
                 JOptionPane.showMessageDialog(null, "Faltan llenar campos", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
             }else if(!txtUsuario.getText().equals(carnet.getNumeroMatricula())){
                 JOptionPane.showMessageDialog(null, "Numero de matricula inexistente", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
             }else if(!ingreso_Contraseña.getText().equals(carnet.getContraseña())){
                 JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
-            }else{
+            }else if(carnet.getSaldo()+ valorPagar > carnet.getMonto()){
                 JOptionPane.showMessageDialog(null, "Saldo insuficiente", "ERROR", JOptionPane.WARNING_MESSAGE); 
+            }else {
+                carnet.setSaldo(carnet.getSaldo()+valorPagar);
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n Saldo restante:" +carnet.getSaldo()+"");
+                PaneOrganizeCliente.pantallaCliente(primaryStage);
+                
+                
             }
         });
         pagarPorTarjeta.setOnAction((ActionEvent event) -> {
@@ -148,11 +152,7 @@ public class PaneFormasDePago {
             TarjetaCredito tarjeta=new TarjetaCredito();
             Pago pago = new Pago(new PagoTarjetaCredito());
             boolean resultado = pago.ejecutarPago(Double.parseDouble(arreglo[1]));
-            if (resultado) {
-                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n");
-                PaneOrganizeCliente.pantallaCliente(primaryStage);
-                
-            } else if(txtNumero==null||txtCVC==null||txtFechaExpiracion==null){
+            if(txtNumero==null||txtCVC==null||txtFechaExpiracion==null){
                 JOptionPane.showMessageDialog(null, "Faltan llenar campos", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
             }else if(!txtCVC.getText().equals(tarjeta.getCVC())){
                 JOptionPane.showMessageDialog(null, "CVC incorrecto", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
@@ -160,9 +160,11 @@ public class PaneFormasDePago {
                 JOptionPane.showMessageDialog(null, "Numeros incorrectos", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
             }else if(!txtFechaExpiracion.getText().equals(tarjeta.getNumeros())){
                 JOptionPane.showMessageDialog(null, "Fecha incorrecta", "Error de autenticación", JOptionPane.WARNING_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Saldo insuficiente", "ERROR", JOptionPane.WARNING_MESSAGE); 
-            }
+            }else {
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente\n Hora: "+arreglo[0]+"\n");
+                PaneOrganizeCliente.pantallaCliente(primaryStage);
+                
+            } 
             //AQUI SE MOSTRARA UN MENSAJE DE QUE SE A REALIZADO LA COMPRA PARA ESTO FALTA
             //Una vez aprobado y procesado el pago,
             //Se le mostrará al usuario el número de orden

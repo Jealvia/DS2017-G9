@@ -13,14 +13,14 @@ public class Carnet {
     
     private final String numeroMatricula="201709654";
     private final String contraseña="a";
-    private final double saldo=20.50;
+    private static double monto = 8.50;
+    private  double saldo;
 
     public Carnet() {
     }
 
     
-    
-    public String getNumeroMatricula() {
+     public String getNumeroMatricula() {
         return numeroMatricula;
     }
 
@@ -32,6 +32,15 @@ public class Carnet {
         return saldo;
     }
 
+    public static double getMonto() {
+        return monto;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+   
+    
     
     
     
